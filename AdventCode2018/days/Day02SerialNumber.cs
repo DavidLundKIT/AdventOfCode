@@ -1,6 +1,5 @@
-﻿using System;
+﻿using days;
 using System.Collections.Generic;
-using System.IO;
 
 namespace day02
 {
@@ -12,11 +11,11 @@ namespace day02
 
         public string[] ParseData(string datapath)
         {
-            var rows = File.ReadAllLines(datapath);
+            var rows = DataHelpers.ReadLinesFromFile(datapath);
             return rows;
         }
 
-        public int CheckSum(string [] sns)
+        public int CheckSum(string[] sns)
         {
             int count2chs = 0;
             int count3chs = 0;
@@ -36,7 +35,7 @@ namespace day02
                 }
             }
 
-            checksum = count2chs*count3chs;
+            checksum = count2chs * count3chs;
 
             return checksum;
         }
@@ -64,8 +63,8 @@ namespace day02
         public LetterCountResult GetLetterCountResult(Dictionary<char, int> lc)
         {
             LetterCountResult lcr = new LetterCountResult();
-            lcr.DoubleLetterCount = lc.ContainsValue(2) ? 1: 0;
-            lcr.TripleLetterCount = lc.ContainsValue(3) ? 1: 0;
+            lcr.DoubleLetterCount = lc.ContainsValue(2) ? 1 : 0;
+            lcr.TripleLetterCount = lc.ContainsValue(3) ? 1 : 0;
 
             return lcr;
         }
@@ -104,11 +103,11 @@ namespace day02
                 if (chs1[i] != chs2[i])
                 {
                     diffs++;
-                    diffIndex= i;
+                    diffIndex = i;
                     ch1 = chs1[i];
                     ch2 = chs2[i];
                 }
-            } 
+            }
 
             if (diffs != 1)
             {

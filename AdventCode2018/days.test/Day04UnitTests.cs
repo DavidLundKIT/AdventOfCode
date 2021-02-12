@@ -1,14 +1,11 @@
-using System;
-using Xunit;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
+using Xunit;
 
 namespace day04.tests
 {
     public class Day04UnitTests
     {
-        [Theory(Skip="Done")]
+        [Theory(Skip = "Done")]
         [InlineData("Guard #797 begins shift", 797)]
         [InlineData("Guard #2579 begins shift", 2579)]
         [InlineData("Guard #2381 begins shift", 2381)]
@@ -22,7 +19,7 @@ namespace day04.tests
         [Fact(Skip = "Done")]
         public void Day04_ParseFile_OK()
         {
-            string datapath = @"C:\Work\fun\AdventCode2018\data\day04a.txt";
+            string datapath = "day04a.txt";
             //string outpath = @"C:\Work\fun\AdventCode2018\data\day04aout.txt";
             var sut = new Day04GuardWorkSchedule();
 
@@ -41,19 +38,19 @@ namespace day04.tests
             var guardDict = sut.GaurdSumMinutes(events);
             var actualMaxMinutes = guardDict.Values.Max();
             var actualMaxGuard = guardDict.First(i => i.Value == actualMaxMinutes);
-            Assert.Equal(2381 , actualMaxGuard.Key);
+            Assert.Equal(2381, actualMaxGuard.Key);
 
             var minuteDict = sut.SleepiestMinuteForGuard(events, actualMaxGuard.Key);
-            var mostFrequentMinuteCount =  minuteDict.Values.Max();
+            var mostFrequentMinuteCount = minuteDict.Values.Max();
             Assert.Equal(18, minuteDict.Values.Max());
-            var actualMaxMinute = minuteDict.First(m =>m.Value == mostFrequentMinuteCount);
+            var actualMaxMinute = minuteDict.First(m => m.Value == mostFrequentMinuteCount);
             Assert.Equal(104764, actualMaxGuard.Key * actualMaxMinute.Key);
         }
 
         [Fact(Skip = "Done")]
         public void Day04_Part2_OK()
         {
-            string datapath = @"C:\Work\fun\AdventCode2018\data\day04a.txt";
+            string datapath = "day04a.txt";
             var sut = new Day04GuardWorkSchedule();
 
             var rows = sut.ReadDataFile(datapath);
@@ -71,8 +68,8 @@ namespace day04.tests
             foreach (var guard in guardDict.Keys)
             {
                 var minuteDict = sut.SleepiestMinuteForGuard(events, guard);
-                var minuteCount =  minuteDict.Values.Max();
-                var minuteAtMax = minuteDict.First(m =>m.Value == minuteCount);
+                var minuteCount = minuteDict.Values.Max();
+                var minuteAtMax = minuteDict.First(m => m.Value == minuteCount);
                 if (minuteCount > mostFrequentMinuteCount)
                 {
                     actualMaxGuard = guard;

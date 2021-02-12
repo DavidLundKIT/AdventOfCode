@@ -1,20 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.IO;
-using Xunit;
-using System.Diagnostics;
 using days.day08;
+using Xunit;
 
 namespace days.test
 {
     public class Day08UnitTests
     {
-        [Fact(Skip="Answer day 8")]
+        [Fact(Skip="Answers Day 8")]
         public void Day08_ParseData_OK()
         {
-            string datapath = @"C:\Work\fun\AdventCode2018\data\day08.txt";
-            var row = File.ReadAllText(datapath);
+            string datapath = "day08.txt";
+            var row = DataHelpers.ReadTextFromFile(datapath);
             Day08Input src = new Day08Input(row);
 
             NavigationNode root = new NavigationNode(src);
@@ -24,7 +19,7 @@ namespace days.test
             Assert.Equal(25752, rootNodeSum);
         }
 
-        [Theory(Skip="Done")]
+        [Theory(Skip = "Done")]
         [InlineData("2 3 0 3 10 11 12 1 1 0 1 99 2 1 1 2", 138, 66)]
         public void Day08_ParseTestData(string row, int expected, int expectedNodeSum)
         {

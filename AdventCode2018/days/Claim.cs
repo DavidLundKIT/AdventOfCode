@@ -1,5 +1,3 @@
-using System;
-
 namespace day03
 {
     public class Claim
@@ -14,7 +12,7 @@ namespace day03
         {
             Claim c = new Claim();
 
-            string[] data = row.Split(new char[]{ ' ', ':', 'x', ',', ':'});
+            string[] data = row.Split(new char[] { ' ', ':', 'x', ',', ':' });
             c.ClaimId = data[0];
             c.X = int.Parse(data[2]);
             c.Y = int.Parse(data[3]);

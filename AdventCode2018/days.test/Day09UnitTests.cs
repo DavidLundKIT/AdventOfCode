@@ -1,17 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.IO;
-using Xunit;
-using System.Diagnostics;
 using days.day09;
+using Xunit;
 
 namespace days.test
 {
     public class Day09UnitTests
     {
         // 411 players; last marble is worth 71170 points
-        [Theory(Skip = "Answer day 9 last 2. Obs! the last takes forever.")]
+        [Theory(Skip = "Answer day 9 last 2. Obs! the last takes forever 115 minutes.")]
         [InlineData(9, 25, 32)]
         [InlineData(10, 1618, 8317)]
         [InlineData(13, 7999, 146373)]
@@ -19,7 +14,7 @@ namespace days.test
         [InlineData(21, 6111, 54718)]
         [InlineData(30, 5807, 37305)]
         [InlineData(411, 71170, 425688)]
-        //[InlineData(411, 7117000, 3526561003)]
+        [InlineData(411, 7117000, 3526561003)]
         public void Day09_PlayGame(long players, int lastMarble, long highScore)
         {
             var game = new MarblesGame(players, lastMarble);

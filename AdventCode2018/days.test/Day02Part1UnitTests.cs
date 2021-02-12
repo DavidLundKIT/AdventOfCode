@@ -1,8 +1,6 @@
-using System;
-using Xunit;
-using day02;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Xunit;
 
 namespace day02.tests
 {
@@ -11,7 +9,7 @@ namespace day02.tests
         [Fact(Skip = "Done")]
         public void Day02_ParseInputFile_OK()
         {
-            string datapath = @"C:\Work\fun\AdventCode2018\data\day02a.txt";
+            string datapath = "day02a.txt";
             var sut = new Day02SerialNumber();
 
             List<string> sns = new List<string>(sut.ParseData(datapath));
@@ -57,7 +55,7 @@ namespace day02.tests
         [Fact(Skip = "Done")]
         public void Day02_ChecksumPart1_Answer()
         {
-            string datapath = @"C:\Work\fun\AdventCode2018\data\day02a.txt";
+            string datapath = "day02a.txt";
             var sut = new Day02SerialNumber();
 
             var sns = sut.ParseData(datapath);
@@ -88,7 +86,7 @@ namespace day02.tests
         public void Day02_FindSerialNumberPart2_Answer()
         {
             string expected = "jiwamotgsfrudclzbyzkhlrvp";
-            string datapath = @"C:\Work\fun\AdventCode2018\data\day02a.txt";
+            string datapath = "day02a.txt";
             var sut = new Day02SerialNumber();
 
             var sns = sut.ParseData(datapath);

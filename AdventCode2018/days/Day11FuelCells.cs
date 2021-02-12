@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.IO;
-
 namespace days.day10
 {
     public class FuelCellCalculator
@@ -12,9 +7,9 @@ namespace days.day10
             int rackId = x + 10;
             int powerLevel = rackId * y;
             powerLevel += gridSerialNumber;
-            powerLevel *=rackId;
+            powerLevel *= rackId;
             // get the hundreds digit
-            int hundredsdigit = (powerLevel/100)%10;
+            int hundredsdigit = (powerLevel / 100) % 10;
             return hundredsdigit - 5;
         }
 
@@ -22,9 +17,9 @@ namespace days.day10
         {
             for (int i = 1; i <= 300; i++)
             {
-                for (int j = 1; j <= 300; j++)           
+                for (int j = 1; j <= 300; j++)
                 {
-                    grid[i,j] = Power(i, j, gridSerialNumber);
+                    grid[i, j] = Power(i, j, gridSerialNumber);
                 }
             }
         }
@@ -39,14 +34,14 @@ namespace days.day10
 
             for (int i = 1; i <= 298; i++)
             {
-                for (int j = 1; j <= 298; j++)           
+                for (int j = 1; j <= 298; j++)
                 {
                     power = 0;
                     for (int di = 0; di < size; di++)
                     {
                         for (int dj = 0; dj < size; dj++)
                         {
-                            power += grid[i+di, j+dj];
+                            power += grid[i + di, j + dj];
                         }
                     }
                     if (power > maxPower)
@@ -72,14 +67,14 @@ namespace days.day10
             {
                 for (int i = 1; i <= (300 - size + 1); i++)
                 {
-                    for (int j = 1; j <= (300 - size + 1); j++)           
+                    for (int j = 1; j <= (300 - size + 1); j++)
                     {
                         power = 0;
                         for (int di = 0; di < size; di++)
                         {
                             for (int dj = 0; dj < size; dj++)
                             {
-                                power += grid[i+di, j+dj];
+                                power += grid[i + di, j + dj];
                             }
                         }
                         if (power > maxPower)

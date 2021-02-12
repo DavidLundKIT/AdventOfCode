@@ -1,8 +1,4 @@
-using System;
 using Xunit;
-using System.Collections.Generic;
-using System.Linq;
-using day05;
 
 namespace day05.tests
 {
@@ -11,7 +7,7 @@ namespace day05.tests
         [Fact(Skip = "Done")]
         public void Day05_parsedata_ok()
         {
-            string datapath = @"C:\Work\fun\AdventCode2018\data\day05a.txt";
+            string datapath = "day05a.txt";
             //string datapath2 = @"C:\Work\fun\AdventCode2018\data\input.txt";
             var sut = new Day05Polymers();
 
@@ -35,23 +31,23 @@ dabCBAcCcaDA      Either 'cC' or 'Cc' are removed (the result is the same).
 dabCBAcaDA        No further actions can be taken.
 
          */
-         [Theory(Skip="Done")]
-         [InlineData("aA", "", 0)]
-         [InlineData("abBA", "", 0)]
-         [InlineData("aabAAB", "aabAAB", 6)]
-         [InlineData("dabAcCaCBAcCcaDA", "dabCBAcaDA", 10)]
-         public void Day05_ReactPolymers(string poly, string expected, int size)
-         {
+        [Theory(Skip = "Done")]
+        [InlineData("aA", "", 0)]
+        [InlineData("abBA", "", 0)]
+        [InlineData("aabAAB", "aabAAB", 6)]
+        [InlineData("dabAcCaCBAcCcaDA", "dabCBAcaDA", 10)]
+        public void Day05_ReactPolymers(string poly, string expected, int size)
+        {
             var sut = new Day05Polymers();
             var actual = sut.React(poly);
             Assert.Equal(expected, actual);
             Assert.Equal(actual.Length, size);
-         }
+        }
 
         [Fact(Skip = "Done")]
         public void Day05_PolymerPart1_Answer()
         {
-            string datapath = @"C:\Work\fun\AdventCode2018\data\day05a.txt";
+            string datapath = "day05a.txt";
             //string datapath2 = @"C:\Work\fun\AdventCode2018\data\input.txt";
             var sut = new Day05Polymers();
 
@@ -63,23 +59,23 @@ dabCBAcaDA        No further actions can be taken.
             Assert.Equal(10368, reactedPoly.Length);
         }
 
-         [Theory(Skip="Done")]
-         [InlineData("dabAcCaCBAcCcaDA", "a", 6)]
-         [InlineData("dabAcCaCBAcCcaDA", "b", 8)]
-         [InlineData("dabAcCaCBAcCcaDA", "c", 4)]
-         [InlineData("dabAcCaCBAcCcaDA", "d", 6)]
-         public void Day05_RemoveThenReactPolymers(string poly, string unit, int size)
-         {
+        [Theory(Skip = "Done")]
+        [InlineData("dabAcCaCBAcCcaDA", "a", 6)]
+        [InlineData("dabAcCaCBAcCcaDA", "b", 8)]
+        [InlineData("dabAcCaCBAcCcaDA", "c", 4)]
+        [InlineData("dabAcCaCBAcCcaDA", "d", 6)]
+        public void Day05_RemoveThenReactPolymers(string poly, string unit, int size)
+        {
             var sut = new Day05Polymers();
             var temp = sut.RemoveUnit(poly, unit);
             var actual = sut.React(temp);
             Assert.Equal(actual.Length, size);
-         }
+        }
 
         [Fact(Skip = "Done")]
         public void Day05_PolymerPart2_Answer()
         {
-            string datapath = @"C:\Work\fun\AdventCode2018\data\day05a.txt";
+            string datapath = "day05a.txt";
             string alphas = "abcdefghijklmnopqrstuvwxyz";
             //string datapath2 = @"C:\Work\fun\AdventCode2018\data\input.txt";
             var sut = new Day05Polymers();
@@ -94,11 +90,10 @@ dabCBAcaDA        No further actions can be taken.
                 string result = rows[0];
                 result = sut.RemoveUnit(result, ch.ToString());
                 result = sut.React(result);
-                minLength = (result.Length < minLength)? result.Length: minLength;
+                minLength = (result.Length < minLength) ? result.Length : minLength;
             }
 
             Assert.Equal(4122, minLength);
         }
-
     }
 }

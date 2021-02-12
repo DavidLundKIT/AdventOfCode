@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace days
 {
@@ -12,6 +10,14 @@ namespace days
             string baseDir = AppContext.BaseDirectory;
             string filePath = $"{baseDir}\\Data\\{filename}";
             string[] orbits = File.ReadAllLines(filePath);
+            return orbits;
+        }
+
+        public static string ReadTextFromFile(string filename)
+        {
+            string baseDir = AppContext.BaseDirectory;
+            string filePath = $"{baseDir}\\Data\\{filename}";
+            string orbits = File.ReadAllText(filePath);
             return orbits;
         }
     }

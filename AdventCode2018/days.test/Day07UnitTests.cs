@@ -1,4 +1,4 @@
-using System;
+using days;
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
@@ -10,11 +10,11 @@ namespace days.test
 {
     public class Day07UnitTests
     {
-        [Fact(Skip = "Not using")]
+        [Fact(Skip = "")]
         public void Day07_ParseDataToDictionarys_ok()
         {
             string datapath = "day07.txt";
-            var rows = File.ReadAllLines(datapath);
+            var rows = DataHelpers.ReadLinesFromFile(datapath);
             Assert.Equal(101, rows.Length);
             List<string> values = new List<string>();
             Dictionary<string, List<string>> steps = new Dictionary<string, List<string>>();

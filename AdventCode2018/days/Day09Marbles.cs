@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -33,13 +32,13 @@ namespace days.day09
             if (marble % 23 == 0)
             {
                 // scoring opportunity
-                Players[player-1]+=marble;
+                Players[player - 1] += marble;
                 pos -= 7;
                 if (pos < 0)
                 {
                     pos = Marbles.Count + pos;
                 }
-                Players[player-1] += Marbles[pos];
+                Players[player - 1] += Marbles[pos];
                 Marbles.RemoveAt(pos);
                 Current = pos;
                 if (Current == Marbles.Count)

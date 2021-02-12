@@ -1,6 +1,5 @@
-﻿using System;
+﻿using days;
 using System.Collections.Generic;
-using System.IO;
 
 namespace day03
 {
@@ -60,7 +59,7 @@ namespace day03
 
         public List<Claim> ParseData(string datapath)
         {
-            var rows = File.ReadAllLines(datapath);
+            var rows = DataHelpers.ReadLinesFromFile(datapath);
             List<Claim> claims = new List<Claim>();
             foreach (var row in rows)
             {
@@ -76,7 +75,7 @@ namespace day03
             {
                 for (int j = claim.Y; j < claim.Y + claim.Height; j++)
                 {
-                    cloth[i, j] ++;
+                    cloth[i, j]++;
                 }
             }
         }
@@ -96,7 +95,7 @@ namespace day03
             {
                 for (int j = 0; j < dimY; j++)
                 {
-                    if (cloth[i,j] > 1)
+                    if (cloth[i, j] > 1)
                     {
                         overlap++;
                     }
@@ -111,7 +110,7 @@ namespace day03
             {
                 for (int j = claim.Y; j < claim.Y + claim.Height; j++)
                 {
-                    if (cloth[i,j] > 1)
+                    if (cloth[i, j] > 1)
                     {
                         return true;
                     }
@@ -122,8 +121,8 @@ namespace day03
 
 
         public bool HitTest(Claim r1, Claim r2)
-        { 
-            return ((r1.X + r1.Width >= r2.X) && (r1.X <= r2.X + r2.Width) && (r1.Y + r1.Height >= r2.Y) && (r1.Y <= r2.Y + r2.Height)); 
+        {
+            return ((r1.X + r1.Width >= r2.X) && (r1.X <= r2.X + r2.Width) && (r1.Y + r1.Height >= r2.Y) && (r1.Y <= r2.Y + r2.Height));
         }
     }
 }

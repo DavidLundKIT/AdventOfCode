@@ -1,7 +1,7 @@
-﻿using System;
-using System.IO;
+﻿using days;
+using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 
 /*
 --- Day 4: Repose Record ---
@@ -60,7 +60,7 @@ namespace day04
     {
         public string[] ReadDataFile(string datapath)
         {
-            var rows = File.ReadAllLines(datapath);
+            var rows = DataHelpers.ReadLinesFromFile(datapath);
             return rows;
         }
 
@@ -96,7 +96,7 @@ namespace day04
 
             if (item.Contains("Guard #"))
             {
-                var gd = item.Split('#',' ');
+                var gd = item.Split('#', ' ');
                 guard = int.Parse(gd[2]);
             }
             return guard;
@@ -160,7 +160,7 @@ namespace day04
                         awake = item.Key.Minute;
                         for (int i = asleep; i < awake; i++)
                         {
-                            minuteDict[i] ++;
+                            minuteDict[i]++;
                         }
                     }
                 }

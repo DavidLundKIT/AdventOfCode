@@ -1,7 +1,5 @@
-using System;
-using Xunit;
-using day03;
 using System.Collections.Generic;
+using Xunit;
 
 namespace day03.tests
 {
@@ -10,7 +8,7 @@ namespace day03.tests
         [Fact(Skip = "Done")]
         public void Day03_ParseInputFile_OK()
         {
-            string datapath = @"C:\Work\fun\AdventCode2018\data\day03a.txt";
+            string datapath = "day03a.txt";
             var sut = new Day03ClaimChecker();
 
             List<Claim> rows = sut.ParseData(datapath);
@@ -21,7 +19,7 @@ namespace day03.tests
         [Fact(Skip = "Done")]
         public void Day03_ParseClaimRow()
         {
-            string row ="#123 @ 3,2: 5x4";
+            string row = "#123 @ 3,2: 5x4";
 
             Claim c = Claim.MakeClaim(row);
 
@@ -35,13 +33,13 @@ namespace day03.tests
         [Fact(Skip = "Done")]
         public void Day03_MarkUpCloth_Part1_answer()
         {
-            string datapath = @"C:\Work\fun\AdventCode2018\data\day03a.txt";
+            string datapath = "day03a.txt";
             var sut = new Day03ClaimChecker();
 
             List<Claim> claims = sut.ParseData(datapath);
             Assert.NotNull(claims);
             Assert.Equal(1385, claims.Count);
-            int[,] cloth = new int[1000,1000];
+            int[,] cloth = new int[1000, 1000];
 
             sut.MarkupCloth(cloth, claims);
             int expected = 116491;
@@ -52,13 +50,13 @@ namespace day03.tests
         [Fact(Skip = "Done")]
         public void Day03_MarkUpCloth_Part2_answer()
         {
-            string datapath = @"C:\Work\fun\AdventCode2018\data\day03a.txt";
+            string datapath = "day03a.txt";
             var sut = new Day03ClaimChecker();
 
             List<Claim> claims = sut.ParseData(datapath);
             Assert.NotNull(claims);
             Assert.Equal(1385, claims.Count);
-            int[,] cloth = new int[1000,1000];
+            int[,] cloth = new int[1000, 1000];
 
             sut.MarkupCloth(cloth, claims);
             int expected = 116491;

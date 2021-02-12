@@ -1,10 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.IO;
-using Xunit;
-using System.Diagnostics;
 using days.day10;
+using Xunit;
 
 namespace days.test
 {

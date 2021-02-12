@@ -11,7 +11,7 @@ namespace days.test
         [Fact(Skip = "Done")]
         public void Day06_ParseData_ok()
         {
-            string datapath = @"C:\Work\fun\AdventCode2018\data\day06a.txt";
+            string datapath = "day06a.txt";
 
             var sut = new ChronalCoordination();
             var actual = sut.ParseDataFile(datapath);
@@ -23,7 +23,7 @@ namespace days.test
         [Fact(Skip = "Done")]
         public void Day06_FindMaxXY_ok()
         {
-            string datapath = @"C:\Work\fun\AdventCode2018\data\day06a.txt";
+            string datapath = "day06a.txt";
 
             var sut = new ChronalCoordination();
             var coords = sut.ParseDataFile(datapath);
@@ -34,10 +34,10 @@ namespace days.test
             Assert.Equal(351, max.Y);
         }
 
-        [Fact(Skip="Day 6 Answer part 1")]
+        [Fact(Skip="Part 1")]
         public void Day06_FillGrid_ok()
         {
-            string datapath = @"C:\Work\fun\AdventCode2018\data\day06a.txt";
+            string datapath = "day06a.txt";
 
             var sut = new ChronalCoordination();
             var coords = sut.ParseDataFile(datapath);
@@ -75,10 +75,10 @@ namespace days.test
             Assert.Equal(4475, maxArea);
         }
 
-        [Fact(Skip= "Day 6 Answer part 2")]
+        [Fact(Skip= "Part 2")]
         public void Day06_FindAreaSumUnder10000()
         {
-            string datapath = @"C:\Work\fun\AdventCode2018\data\day06a.txt";
+            string datapath = "day06a.txt";
 
             var sut = new ChronalCoordination();
             var coords = sut.ParseDataFile(datapath);

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 
 namespace days.day08
@@ -7,12 +6,12 @@ namespace days.day08
     {
         int GiveMe();
     }
-    public class Day08Input: IDay08Input
+    public class Day08Input : IDay08Input
     {
         public Day08Input(string row)
         {
             InputValues = new List<int>();
-            string [] ints = row.Split(new char[] {' '});
+            string[] ints = row.Split(new char[] { ' ' });
             foreach (var item in ints)
             {
                 InputValues.Add(int.Parse(item));

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 
 namespace days.day06
 {
@@ -9,17 +8,17 @@ namespace days.day06
         public List<ChronalCoords> ParseDataFile(string datapath)
         {
             List<ChronalCoords> list = new List<ChronalCoords>();
-            var rows = File.ReadAllLines(datapath);
+            var rows = DataHelpers.ReadLinesFromFile(datapath);
             foreach (var row in rows)
             {
-                var xy = row.Split(new char[] { ','});
+                var xy = row.Split(new char[] { ',' });
                 ChronalCoords cc = new ChronalCoords();
                 cc.X = int.Parse(xy[0].Trim());
                 cc.Y = int.Parse(xy[1].Trim());
                 list.Add(cc);
             }
             return list;
-        } 
+        }
 
         public ChronalCoords FindMaxXY(List<ChronalCoords> coords)
         {

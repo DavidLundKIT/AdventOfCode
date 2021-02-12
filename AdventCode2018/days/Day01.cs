@@ -1,7 +1,5 @@
 ﻿using days;
-using System;
 using System.Collections.Generic;
-using System.IO;
 
 namespace day01
 {
@@ -34,7 +32,7 @@ namespace day01
                 freq += change;
             }
 
-            return freq; 
+            return freq;
         }
 
         public int FindFirstRepeatFrequency(int[] freqChanges)
@@ -61,7 +59,7 @@ namespace day01
                     }
                 }
             }
-            return freq; 
+            return freq;
         }
     }
 }

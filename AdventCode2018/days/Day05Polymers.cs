@@ -1,7 +1,5 @@
-﻿using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Linq;
+﻿using days;
+using System;
 
 namespace day05
 {
@@ -9,7 +7,7 @@ namespace day05
     {
         public string[] ReadDataFile(string datapath)
         {
-            var rows = File.ReadAllLines(datapath);
+            var rows = DataHelpers.ReadLinesFromFile(datapath);
             return rows;
         }
 
