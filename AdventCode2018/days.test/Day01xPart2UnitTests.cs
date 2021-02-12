@@ -6,7 +6,7 @@ namespace day01.tests
 {
     public class Day01xPart2UnitTests
     {
-        [Fact(Skip = "Done")]
+        [Fact(Skip = "")]
         public void Day01_FirstRepeatFreq_is_0()
         {
             int expected = 0;
@@ -18,7 +18,7 @@ namespace day01.tests
             Assert.Equal(expected, actual);
         }
 
-        [Fact(Skip = "Done")]
+        [Fact(Skip = "")]
         public void Day01_FirstRepeatFreq_is_10()
         {
             int expected = 10;
@@ -30,7 +30,7 @@ namespace day01.tests
             Assert.Equal(expected, actual);
         }
 
-        [Fact(Skip = "Done")]
+        [Fact(Skip = "")]
         public void Day01_FirstRepeatFreq_is_5()
         {
             int expected = 5;
@@ -42,7 +42,7 @@ namespace day01.tests
             Assert.Equal(expected, actual);
         }
 
-        [Fact(Skip = "Done")]
+        [Fact(Skip = "")]
         public void Day01_FirstRepeatFreq_is_14()
         {
             int expected = 14;
@@ -54,11 +54,11 @@ namespace day01.tests
             Assert.Equal(expected, actual);
         }
 
-        [Fact(Skip = "Done")]
+        [Fact(Skip = "")]
         public void Day01_FirstRepeatFreq_part_2_answer()
         {
             int expected = 124645;
-            string datapath = @"C:\Work\fun\AdventCode2018\data\day01a.txt";
+            string datapath = "day01a.txt";
 
             Day01 sut = new Day01();
             int[] data = sut.ParseData(datapath);

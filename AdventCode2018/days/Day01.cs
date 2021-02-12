@@ -1,4 +1,5 @@
-﻿using System;
+﻿using days;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -12,7 +13,7 @@ namespace day01
 
         public int[] ParseData(string datapath)
         {
-            var rows = File.ReadAllLines(datapath);
+            var rows = DataHelpers.ReadLinesFromFile(datapath);
             List<int> data = new List<int>();
             foreach (var row in rows)
             {

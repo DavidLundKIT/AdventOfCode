@@ -29,7 +29,7 @@ namespace days.day10
         {
             List<StarData> data = new List<StarData>();
 
-            var rows = File.ReadAllLines(datapath);
+            var rows = DataHelpers.ReadLinesFromFile(datapath);
             foreach (var row in rows)
             {
                 data.Add(new StarData(row));

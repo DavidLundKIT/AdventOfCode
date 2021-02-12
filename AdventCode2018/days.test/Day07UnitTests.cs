@@ -13,7 +13,7 @@ namespace days.test
         [Fact(Skip = "Not using")]
         public void Day07_ParseDataToDictionarys_ok()
         {
-            string datapath = @"C:\Work\fun\AdventCode2018\data\day07.txt";
+            string datapath = "day07.txt";
             var rows = File.ReadAllLines(datapath);
             Assert.Equal(101, rows.Length);
             List<string> values = new List<string>();
@@ -52,7 +52,7 @@ namespace days.test
         [Fact]
         public void Day07_ParseDataToRulesListTest_ok()
         {
-            string datapath = @"C:\Work\fun\AdventCode2018\data\day07t.txt";
+            string datapath = "day07t.txt";
 
             InstructionComparer sut = new InstructionComparer(datapath);
             foreach (var step in sut.Steps)
@@ -75,7 +75,7 @@ namespace days.test
         [Fact]
         public void Day07_ParseDataToRulesList_ok()
         {
-            string datapath = @"C:\Work\fun\AdventCode2018\data\day07.txt";
+            string datapath = "day07.txt";
 
             InstructionComparer sut = new InstructionComparer(datapath);
             foreach (var step in sut.Steps)

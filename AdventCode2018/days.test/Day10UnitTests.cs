@@ -13,7 +13,7 @@ namespace days.test
         [Fact]
         public void Day10_ParseStartPoints()
         {
-            string datapath = @"C:\Work\fun\AdventCode2018\data\day10.txt";
+            string datapath = "day10.txt";
             Messages sut = new Messages();
 
             var starData = sut.ParseStarData(datapath);

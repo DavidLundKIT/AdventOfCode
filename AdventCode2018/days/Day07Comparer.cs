@@ -22,7 +22,7 @@ namespace days.day07
 
         public InstructionComparer(string rulesPath)
         {
-            var rows = File.ReadAllLines(rulesPath);
+            var rows = DataHelpers.ReadLinesFromFile(rulesPath);
             Steps = new List<string>();
             Rules = new List<Rule>();
             foreach (var row in rows)
