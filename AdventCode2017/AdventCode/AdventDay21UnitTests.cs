@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AdventCode
 {
+    [Ignore]
     [TestClass]
     public class AdventDay21UnitTests
     {
@@ -72,6 +73,7 @@ namespace AdventCode
             Assert.AreEqual(197, sut.CountPixels(sut.ArtWork));
         }
 
+        // takes 2.6 minutes
         [TestMethod]
         public void Day21_Solution_PartB()
         {
