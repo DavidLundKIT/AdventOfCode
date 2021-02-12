@@ -1,0 +1,582 @@
+﻿idx: 0, Angle: -3,1031500635686053
+  PolarPoint a:-3,1031500635686053, d: 26,019223662515376 cartPt: Point (0, 27) s0: 0, s1: 0, ts: 0
+idx: 1, Angle: -3,096169374168216
+  PolarPoint a:-3,096169374168216, d: 22,02271554554524 cartPt: Point (4, 27) s0: 0, s1: 0, ts: 0
+idx: 2, Angle: -3,0916342578678506
+  PolarPoint a:-3,0916342578678506, d: 20,024984394500787 cartPt: Point (6, 27) s0: 0, s1: 0, ts: 0
+idx: 3, Angle: -3,064820762320015
+  PolarPoint a:-3,064820762320015, d: 13,038404810405298 cartPt: Point (13, 27) s0: 0, s1: 0, ts: 0
+idx: 4, Angle: -3,050932766389048
+  PolarPoint a:-3,050932766389048, d: 11,045361017187261 cartPt: Point (15, 27) s0: 0, s1: 0, ts: 0
+idx: 5, Angle: -3,0419240010986313
+  PolarPoint a:-3,0419240010986313, d: 10,04987562112089 cartPt: Point (16, 27) s0: 0, s1: 0, ts: 0
+idx: 6, Angle: -3,0309354324158977
+  PolarPoint a:-3,0309354324158977, d: 18,110770276274835 cartPt: Point (8, 26) s0: 0, s1: 0, ts: 0
+idx: 7, Angle: -3,0221637275714546
+  PolarPoint a:-3,0221637275714546, d: 25,179356624028344 cartPt: Point (1, 25) s0: 0, s1: 0, ts: 0
+idx: 8, Angle: -3,0060649396042924
+  PolarPoint a:-3,0060649396042924, d: 22,20360331117452 cartPt: Point (4, 25) s0: 0, s1: 0, ts: 0
+idx: 9, Angle: -2,976443976175166
+  PolarPoint a:-2,976443976175166, d: 24,331050121192877 cartPt: Point (2, 24) s0: 0, s1: 0, ts: 0
+  PolarPoint a:-2,976443976175166, d: 18,24828759089466 cartPt: Point (8, 25) s0: 0, s1: 0, ts: 0
+idx: 10, Angle: -2,969401839066854
+  PolarPoint a:-2,969401839066854, d: 23,345235059857504 cartPt: Point (3, 24) s0: 0, s1: 0, ts: 0
+idx: 11, Angle: -2,9441970937399127
+  PolarPoint a:-2,9441970937399127, d: 5,0990195135927845 cartPt: Point (21, 27) s0: 0, s1: 0, ts: 0
+idx: 12, Angle: -2,936197264400026
+  PolarPoint a:-2,936197264400026, d: 24,515301344262525 cartPt: Point (2, 23) s0: 0, s1: 0, ts: 0
+idx: 13, Angle: -2,9275319700259717
+  PolarPoint a:-2,9275319700259717, d: 23,53720459187964 cartPt: Point (3, 23) s0: 0, s1: 0, ts: 0
+idx: 14, Angle: -2,9147938055359073
+  PolarPoint a:-2,9147938055359073, d: 13,341664064126334 cartPt: Point (13, 25) s0: 0, s1: 0, ts: 0
+idx: 15, Angle: -2,9105019863938963
+  PolarPoint a:-2,9105019863938963, d: 17,46424919657298 cartPt: Point (9, 24) s0: 0, s1: 0, ts: 0
+idx: 16, Angle: -2,90604767286893
+  PolarPoint a:-2,90604767286893, d: 25,709920264364882 cartPt: Point (1, 22) s0: 0, s1: 0, ts: 0
+idx: 17, Angle: -2,8864102629689747
+  PolarPoint a:-2,8864102629689747, d: 23,769728648009426 cartPt: Point (3, 22) s0: 0, s1: 0, ts: 0
+idx: 18, Angle: -2,8809902618424523
+  PolarPoint a:-2,8809902618424523, d: 15,524174696260024 cartPt: Point (11, 24) s0: 0, s1: 0, ts: 0
+idx: 19, Angle: -2,875340604438868
+  PolarPoint a:-2,875340604438868, d: 11,40175425099138 cartPt: Point (15, 25) s0: 0, s1: 0, ts: 0
+idx: 20, Angle: -2,8685839505030826
+  PolarPoint a:-2,8685839505030826, d: 25,96150997149434 cartPt: Point (1, 21) s0: 0, s1: 0, ts: 0
+idx: 21, Angle: -2,8632929945846817
+  PolarPoint a:-2,8632929945846817, d: 21,840329667841555 cartPt: Point (5, 22) s0: 0, s1: 0, ts: 0
+idx: 22, Angle: -2,8555412118724752
+  PolarPoint a:-2,8555412118724752, d: 17,72004514666935 cartPt: Point (9, 23) s0: 0, s1: 0, ts: 0
+idx: 23, Angle: -2,819842099193151
+  PolarPoint a:-2,819842099193151, d: 18,973665961010276 cartPt: Point (8, 22) s0: 0, s1: 0, ts: 0
+idx: 24, Angle: -2,788602265762883
+  PolarPoint a:-2,788602265762883, d: 20,248456731316587 cartPt: Point (7, 21) s0: 0, s1: 0, ts: 0
+idx: 25, Angle: -2,782821983319221
+  PolarPoint a:-2,782821983319221, d: 25,632011235952593 cartPt: Point (2, 19) s0: 0, s1: 0, ts: 0
+idx: 26, Angle: -2,774418819771574
+  PolarPoint a:-2,774418819771574, d: 27,85677655436824 cartPt: Point (0, 18) s0: 0, s1: 0, ts: 0
+idx: 27, Angle: -2,761086276477428
+  PolarPoint a:-2,761086276477428, d: 21,540659228538015 cartPt: Point (6, 20) s0: 0, s1: 0, ts: 0
+idx: 28, Angle: -2,746801533890032
+  PolarPoint a:-2,746801533890032, d: 13 cartPt: Point (14, 23) s0: 0, s1: 0, ts: 0
+idx: 29, Angle: -2,743070207923373
+  PolarPoint a:-2,743070207923373, d: 20,615528128088304 cartPt: Point (7, 20) s0: 0, s1: 0, ts: 0
+idx: 30, Angle: -2,7091848780192556
+  PolarPoint a:-2,7091848780192556, d: 28,635642126552707 cartPt: Point (0, 16) s0: 0, s1: 0, ts: 0
+idx: 31, Angle: -2,704965493776252
+  PolarPoint a:-2,704965493776252, d: 16,55294535724685 cartPt: Point (11, 21) s0: 0, s1: 0, ts: 0
+idx: 32, Angle: -2,701750070774057
+  PolarPoint a:-2,701750070774057, d: 18,788294228055936 cartPt: Point (9, 20) s0: 0, s1: 0, ts: 0
+idx: 33, Angle: -2,6992184306130484
+  PolarPoint a:-2,6992184306130484, d: 21,02379604162864 cartPt: Point (7, 19) s0: 0, s1: 0, ts: 0
+idx: 34, Angle: -2,694072678432623
+  PolarPoint a:-2,694072678432623, d: 27,730849247724095 cartPt: Point (1, 16) s0: 0, s1: 0, ts: 0
+idx: 35, Angle: -2,677945044588987
+  PolarPoint a:-2,677945044588987, d: 17,88854381999832 cartPt: Point (10, 20) s0: 0, s1: 0, ts: 0
+  PolarPoint a:-2,677945044588987, d: 4,47213595499958 cartPt: Point (22, 26) s0: 0, s1: 0, ts: 0
+idx: 36, Angle: -2,6607053733944572
+  PolarPoint a:-2,6607053733944572, d: 25,942243542145693 cartPt: Point (3, 16) s0: 0, s1: 0, ts: 0
+idx: 37, Angle: -2,645169900184911
+  PolarPoint a:-2,645169900184911, d: 27,294688127912362 cartPt: Point (2, 15) s0: 0, s1: 0, ts: 0
+idx: 38, Angle: -2,6344941491974563
+  PolarPoint a:-2,6344941491974563, d: 20,591260281974 cartPt: Point (8, 18) s0: 0, s1: 0, ts: 0
+idx: 39, Angle: -2,6271413405307653
+  PolarPoint a:-2,6271413405307653, d: 26,419689627245813 cartPt: Point (3, 15) s0: 0, s1: 0, ts: 0
+idx: 40, Angle: -2,62244653934327
+  PolarPoint a:-2,62244653934327, d: 16,1245154965971 cartPt: Point (12, 20) s0: 0, s1: 0, ts: 0
+idx: 41, Angle: -2,618314331457818
+  PolarPoint a:-2,618314331457818, d: 30,01666203960727 cartPt: Point (0, 13) s0: 0, s1: 0, ts: 0
+idx: 42, Angle: -2,6135182051634334
+  PolarPoint a:-2,6135182051634334, d: 27,784887978899608 cartPt: Point (2, 14) s0: 0, s1: 0, ts: 0
+idx: 43, Angle: -2,601173153319209
+  PolarPoint a:-2,601173153319209, d: 29,154759474226502 cartPt: Point (1, 13) s0: 0, s1: 0, ts: 0
+  PolarPoint a:-2,601173153319209, d: 5,830951894845301 cartPt: Point (21, 25) s0: 0, s1: 0, ts: 0
+idx: 44, Angle: -2,5899376710612465
+  PolarPoint a:-2,5899376710612465, d: 15,264337522473747 cartPt: Point (13, 20) s0: 0, s1: 0, ts: 0
+idx: 45, Angle: -2,587285157388242
+  PolarPoint a:-2,587285157388242, d: 24,698178070456937 cartPt: Point (5, 15) s0: 0, s1: 0, ts: 0
+idx: 46, Angle: -2,578276392097825
+  PolarPoint a:-2,578276392097825, d: 22,47220505424423 cartPt: Point (7, 16) s0: 0, s1: 0, ts: 0
+idx: 47, Angle: -2,5702551737561663
+  PolarPoint a:-2,5702551737561663, d: 16,64331697709324 cartPt: Point (12, 19) s0: 0, s1: 0, ts: 0
+idx: 48, Angle: -2,5672878234150915
+  PolarPoint a:-2,5672878234150915, d: 20,248456731316587 cartPt: Point (9, 17) s0: 0, s1: 0, ts: 0
+idx: 49, Angle: -2,5636907166275478
+  PolarPoint a:-2,5636907166275478, d: 27,459060435491963 cartPt: Point (3, 13) s0: 0, s1: 0, ts: 0
+idx: 50, Angle: -2,5535900500422257
+  PolarPoint a:-2,5535900500422257, d: 21,633307652783937 cartPt: Point (8, 16) s0: 0, s1: 0, ts: 0
+  PolarPoint a:-2,5535900500422257, d: 18,027756377319946 cartPt: Point (11, 18) s0: 0, s1: 0, ts: 0
+idx: 51, Angle: -2,5269297016676275
+  PolarPoint a:-2,5269297016676275, d: 20,808652046684813 cartPt: Point (9, 16) s0: 0, s1: 0, ts: 0
+idx: 52, Angle: -2,5213431676069717
+  PolarPoint a:-2,5213431676069717, d: 8,602325267042627 cartPt: Point (19, 23) s0: 0, s1: 0, ts: 0
+idx: 53, Angle: -2,5175696006130366
+  PolarPoint a:-2,5175696006130366, d: 30,805843601498726 cartPt: Point (1, 10) s0: 0, s1: 0, ts: 0
+idx: 54, Angle: -2,5088438185876103
+  PolarPoint a:-2,5088438185876103, d: 18,601075237738275 cartPt: Point (11, 17) s0: 0, s1: 0, ts: 0
+idx: 55, Angle: -2,498091544796509
+  PolarPoint a:-2,498091544796509, d: 15 cartPt: Point (14, 19) s0: 0, s1: 0, ts: 0
+idx: 56, Angle: -2,4905159321453136
+  PolarPoint a:-2,4905159321453136, d: 26,40075756488817 cartPt: Point (5, 12) s0: 0, s1: 0, ts: 0
+idx: 57, Angle: -2,485897027348257
+  PolarPoint a:-2,485897027348257, d: 16,401219466856727 cartPt: Point (13, 18) s0: 0, s1: 0, ts: 0
+idx: 58, Angle: -2,4775464907631086
+  PolarPoint a:-2,4775464907631086, d: 29,206163733020468 cartPt: Point (3, 10) s0: 0, s1: 0, ts: 0
+idx: 59, Angle: -2,461071428922579
+  PolarPoint a:-2,461071428922579, d: 27,018512172212592 cartPt: Point (5, 11) s0: 0, s1: 0, ts: 0
+idx: 60, Angle: -2,44685437739309
+  PolarPoint a:-2,44685437739309, d: 31,240998703626616 cartPt: Point (2, 8) s0: 0, s1: 0, ts: 0
+  PolarPoint a:-2,44685437739309, d: 7,810249675906654 cartPt: Point (20, 23) s0: 0, s1: 0, ts: 0
+idx: 61, Angle: -2,4370985893475754
+  PolarPoint a:-2,4370985893475754, d: 26,248809496813376 cartPt: Point (6, 11) s0: 0, s1: 0, ts: 0
+idx: 62, Angle: -2,4227626539681686
+  PolarPoint a:-2,4227626539681686, d: 31,89043743820395 cartPt: Point (2, 7) s0: 0, s1: 0, ts: 0
+idx: 63, Angle: -2,4186133001883023
+  PolarPoint a:-2,4186133001883023, d: 22,67156809750927 cartPt: Point (9, 13) s0: 0, s1: 0, ts: 0
+idx: 64, Angle: -2,4149503129080676
+  PolarPoint a:-2,4149503129080676, d: 12,041594578792296 cartPt: Point (17, 20) s0: 0, s1: 0, ts: 0
+idx: 65, Angle: -2,408777551803287
+  PolarPoint a:-2,408777551803287, d: 26,90724809414742 cartPt: Point (6, 10) s0: 0, s1: 0, ts: 0
+  PolarPoint a:-2,408777551803287, d: 13,45362404707371 cartPt: Point (16, 19) s0: 0, s1: 0, ts: 0
+idx: 66, Angle: -2,403777593469328
+  PolarPoint a:-2,403777593469328, d: 14,866068747318506 cartPt: Point (15, 18) s0: 0, s1: 0, ts: 0
+idx: 67, Angle: -2,38648825011112
+  PolarPoint a:-2,38648825011112, d: 23,345235059857504 cartPt: Point (9, 12) s0: 0, s1: 0, ts: 0
+idx: 68, Angle: -2,384758148031105
+  PolarPoint a:-2,384758148031105, d: 24,758836806279895 cartPt: Point (8, 11) s0: 0, s1: 0, ts: 0
+idx: 69, Angle: -2,38321493937961
+  PolarPoint a:-2,38321493937961, d: 26,1725046566048 cartPt: Point (7, 10) s0: 0, s1: 0, ts: 0
+idx: 70, Angle: -2,376599820878883
+  PolarPoint a:-2,376599820878883, d: 34,655446902326915 cartPt: Point (1, 4) s0: 0, s1: 0, ts: 0
+idx: 71, Angle: -2,356194490192345
+  PolarPoint a:-2,356194490192345, d: 36,76955262170047 cartPt: Point (0, 2) s0: 0, s1: 0, ts: 0
+  PolarPoint a:-2,356194490192345, d: 33,94112549695428 cartPt: Point (2, 4) s0: 0, s1: 0, ts: 0
+  PolarPoint a:-2,356194490192345, d: 31,11269837220809 cartPt: Point (4, 6) s0: 0, s1: 0, ts: 0
+  PolarPoint a:-2,356194490192345, d: 28,284271247461902 cartPt: Point (6, 8) s0: 0, s1: 0, ts: 0
+  PolarPoint a:-2,356194490192345, d: 24,041630560342615 cartPt: Point (9, 11) s0: 0, s1: 0, ts: 0
+  PolarPoint a:-2,356194490192345, d: 16,97056274847714 cartPt: Point (14, 16) s0: 0, s1: 0, ts: 0
+  PolarPoint a:-2,356194490192345, d: 12,727922061357855 cartPt: Point (17, 19) s0: 0, s1: 0, ts: 0
+  PolarPoint a:-2,356194490192345, d: 2,8284271247461903 cartPt: Point (24, 26) s0: 0, s1: 0, ts: 0
+  PolarPoint a:-2,356194490192345, d: 1,4142135623730951 cartPt: Point (25, 27) s0: 0, s1: 0, ts: 0
+idx: 72, Angle: -2,3373288041706743
+  PolarPoint a:-2,3373288041706743, d: 37,48332962798263 cartPt: Point (0, 1) s0: 0, s1: 0, ts: 0
+idx: 73, Angle: -2,335789159505807
+  PolarPoint a:-2,335789159505807, d: 34,655446902326915 cartPt: Point (2, 3) s0: 0, s1: 0, ts: 0
+idx: 74, Angle: -2,327630832353585
+  PolarPoint a:-2,327630832353585, d: 24,758836806279895 cartPt: Point (9, 10) s0: 0, s1: 0, ts: 0
+idx: 75, Angle: -2,32590073027357
+  PolarPoint a:-2,32590073027357, d: 23,345235059857504 cartPt: Point (10, 11) s0: 0, s1: 0, ts: 0
+idx: 76, Angle: -2,323947607757091
+  PolarPoint a:-2,323947607757091, d: 21,93171219946131 cartPt: Point (11, 12) s0: 0, s1: 0, ts: 0
+idx: 77, Angle: -2,3191743743184148
+  PolarPoint a:-2,3191743743184148, d: 38,2099463490856 cartPt: Point (0, 0) s0: 0, s1: 0, ts: 0
+idx: 78, Angle: -2,310771210770768
+  PolarPoint a:-2,310771210770768, d: 31,144823004794873 cartPt: Point (5, 5) s0: 0, s1: 0, ts: 0
+idx: 79, Angle: -2,3086113869153615
+  PolarPoint a:-2,3086113869153615, d: 29,732137494637012 cartPt: Point (6, 6) s0: 0, s1: 0, ts: 0
+idx: 80, Angle: -2,3062360944704023
+  PolarPoint a:-2,3062360944704023, d: 28,319604517012593 cartPt: Point (7, 7) s0: 0, s1: 0, ts: 0
+idx: 81, Angle: -2,292451177659658
+  PolarPoint a:-2,292451177659658, d: 33,301651610693426 cartPt: Point (4, 3) s0: 0, s1: 0, ts: 0
+idx: 82, Angle: -2,289626326416521
+  PolarPoint a:-2,289626326416521, d: 31,89043743820395 cartPt: Point (5, 4) s0: 0, s1: 0, ts: 0
+idx: 83, Angle: -2,2848870254070546
+  PolarPoint a:-2,2848870254070546, d: 19,849433241279208 cartPt: Point (13, 13) s0: 0, s1: 0, ts: 0
+idx: 84, Angle: -2,2831539248892256
+  PolarPoint a:-2,2831539248892256, d: 29,068883707497267 cartPt: Point (7, 6) s0: 0, s1: 0, ts: 0
+idx: 85, Angle: -2,279422598922567
+  PolarPoint a:-2,279422598922567, d: 9,219544457292887 cartPt: Point (20, 21) s0: 0, s1: 0, ts: 0
+idx: 86, Angle: -2,2763645044801075
+  PolarPoint a:-2,2763645044801075, d: 35,4682957019364 cartPt: Point (3, 1) s0: 0, s1: 0, ts: 0
+idx: 87, Angle: -2,2730532583039036
+  PolarPoint a:-2,2730532583039036, d: 17,029386365926403 cartPt: Point (15, 15) s0: 0, s1: 0, ts: 0
+idx: 88, Angle: -2,2655346029916
+  PolarPoint a:-2,2655346029916, d: 23,430749027719962 cartPt: Point (11, 10) s0: 0, s1: 0, ts: 0
+  PolarPoint a:-2,2655346029916, d: 7,810249675906654 cartPt: Point (21, 22) s0: 0, s1: 0, ts: 0
+idx: 89, Angle: -2,2612427838495885
+  PolarPoint a:-2,2612427838495885, d: 29,832867780352597 cartPt: Point (7, 5) s0: 0, s1: 0, ts: 0
+idx: 90, Angle: -2,256525837701183
+  PolarPoint a:-2,256525837701183, d: 14,212670403551895 cartPt: Point (17, 17) s0: 0, s1: 0, ts: 0
+idx: 91, Angle: -2,2531128816696446
+  PolarPoint a:-2,2531128816696446, d: 20,615528128088304 cartPt: Point (13, 12) s0: 0, s1: 0, ts: 0
+idx: 92, Angle: -2,2455372690184494
+  PolarPoint a:-2,2455372690184494, d: 12,806248474865697 cartPt: Point (18, 18) s0: 0, s1: 0, ts: 0
+idx: 93, Angle: -2,2286849319771065
+  PolarPoint a:-2,2286849319771065, d: 27,80287754891569 cartPt: Point (9, 6) s0: 0, s1: 0, ts: 0
+idx: 94, Angle: -2,223642957895671
+  PolarPoint a:-2,223642957895671, d: 21,400934559032695 cartPt: Point (13, 11) s0: 0, s1: 0, ts: 0
+idx: 95, Angle: -2,2218730482393765
+  PolarPoint a:-2,2218730482393765, d: 26,40075756488817 cartPt: Point (10, 7) s0: 0, s1: 0, ts: 0
+idx: 96, Angle: -2,214297435588181
+  PolarPoint a:-2,214297435588181, d: 35 cartPt: Point (5, 0) s0: 0, s1: 0, ts: 0
+  PolarPoint a:-2,214297435588181, d: 15 cartPt: Point (17, 16) s0: 0, s1: 0, ts: 0
+idx: 97, Angle: -2,2083451249335893
+  PolarPoint a:-2,2083451249335893, d: 33,60059523282288 cartPt: Point (6, 1) s0: 0, s1: 0, ts: 0
+idx: 98, Angle: -2,201875714266226
+  PolarPoint a:-2,201875714266226, d: 32,202484376209235 cartPt: Point (7, 2) s0: 0, s1: 0, ts: 0
+idx: 99, Angle: -2,1995926132103296
+  PolarPoint a:-2,1995926132103296, d: 27,202941017470888 cartPt: Point (10, 6) s0: 0, s1: 0, ts: 0
+idx: 100, Angle: -2,1962813670341257
+  PolarPoint a:-2,1962813670341257, d: 22,20360331117452 cartPt: Point (13, 10) s0: 0, s1: 0, ts: 0
+idx: 101, Angle: -2,1948193797716535
+  PolarPoint a:-2,1948193797716535, d: 30,805843601498726 cartPt: Point (8, 3) s0: 0, s1: 0, ts: 0
+idx: 102, Angle: -2,191045812777718
+  PolarPoint a:-2,191045812777718, d: 25,80697580112788 cartPt: Point (11, 7) s0: 0, s1: 0, ts: 0
+  PolarPoint a:-2,191045812777718, d: 17,204650534085253 cartPt: Point (16, 14) s0: 0, s1: 0, ts: 0
+idx: 103, Angle: -2,1870932641909677
+  PolarPoint a:-2,1870932641909677, d: 29,410882339705484 cartPt: Point (9, 4) s0: 0, s1: 0, ts: 0
+idx: 104, Angle: -2,184003675669406
+  PolarPoint a:-2,184003675669406, d: 33,015148038438355 cartPt: Point (7, 1) s0: 0, s1: 0, ts: 0
+idx: 105, Angle: -2,1815222911841055
+  PolarPoint a:-2,1815222911841055, d: 12,206555615733702 cartPt: Point (19, 18) s0: 0, s1: 0, ts: 0
+idx: 106, Angle: -2,178598322908857
+  PolarPoint a:-2,178598322908857, d: 28,0178514522438 cartPt: Point (10, 5) s0: 0, s1: 0, ts: 0
+idx: 107, Angle: -2,1763409903998667
+  PolarPoint a:-2,1763409903998667, d: 15,811388300841896 cartPt: Point (17, 15) s0: 0, s1: 0, ts: 0
+idx: 108, Angle: -2,17084654019665
+  PolarPoint a:-2,17084654019665, d: 23,021728866442675 cartPt: Point (13, 9) s0: 0, s1: 0, ts: 0
+idx: 109, Angle: -2,158798930342464
+  PolarPoint a:-2,158798930342464, d: 28,844410203711913 cartPt: Point (10, 4) s0: 0, s1: 0, ts: 0
+  PolarPoint a:-2,158798930342464, d: 25,238858928247925 cartPt: Point (12, 7) s0: 0, s1: 0, ts: 0
+idx: 110, Angle: -2,1498705961626277
+  PolarPoint a:-2,1498705961626277, d: 31,064449134018133 cartPt: Point (9, 2) s0: 0, s1: 0, ts: 0
+idx: 111, Angle: -2,1486982637571423
+  PolarPoint a:-2,1486982637571423, d: 27,459060435491963 cartPt: Point (11, 5) s0: 0, s1: 0, ts: 0
+idx: 112, Angle: -2,14717154738608
+  PolarPoint a:-2,14717154738608, d: 23,853720883753127 cartPt: Point (13, 8) s0: 0, s1: 0, ts: 0
+idx: 113, Angle: -2,1421338066285234
+  PolarPoint a:-2,1421338066285234, d: 16,64331697709324 cartPt: Point (17, 14) s0: 0, s1: 0, ts: 0
+idx: 114, Angle: -2,137525544318403
+  PolarPoint a:-2,137525544318403, d: 26,076809620810597 cartPt: Point (12, 6) s0: 0, s1: 0, ts: 0
+idx: 115, Angle: -2,129395642138459
+  PolarPoint a:-2,129395642138459, d: 9,433981132056603 cartPt: Point (21, 20) s0: 0, s1: 0, ts: 0
+idx: 116, Angle: -2,125103822996448
+  PolarPoint a:-2,125103822996448, d: 24,698178070456937 cartPt: Point (13, 7) s0: 0, s1: 0, ts: 0
+idx: 117, Angle: -2,1224513093234436
+  PolarPoint a:-2,1224513093234436, d: 15,264337522473747 cartPt: Point (18, 15) s0: 0, s1: 0, ts: 0
+idx: 118, Angle: -2,1193457292454245
+  PolarPoint a:-2,1193457292454245, d: 21,095023109728988 cartPt: Point (15, 10) s0: 0, s1: 0, ts: 0
+idx: 119, Angle: -2,1112158270654806
+  PolarPoint a:-2,1112158270654806, d: 5,830951894845301 cartPt: Point (23, 23) s0: 0, s1: 0, ts: 0
+idx: 120, Angle: -2,095592098445004
+  PolarPoint a:-2,095592098445004, d: 21,95449840010015 cartPt: Point (15, 9) s0: 0, s1: 0, ts: 0
+idx: 121, Angle: -2,0940746489268722
+  PolarPoint a:-2,0940746489268722, d: 30,01666203960727 cartPt: Point (11, 2) s0: 0, s1: 0, ts: 0
+idx: 122, Angle: -2,0899424410414196
+  PolarPoint a:-2,0899424410414196, d: 16,1245154965971 cartPt: Point (18, 14) s0: 0, s1: 0, ts: 0
+idx: 123, Angle: -2,0778948311872334
+  PolarPoint a:-2,0778948311872334, d: 30,886890422961002 cartPt: Point (11, 1) s0: 0, s1: 0, ts: 0
+idx: 124, Angle: -2,0736395377227574
+  PolarPoint a:-2,0736395377227574, d: 22,825424421026653 cartPt: Point (15, 8) s0: 0, s1: 0, ts: 0
+idx: 125, Angle: -2,0626055027835952
+  PolarPoint a:-2,0626055027835952, d: 31,76476034853718 cartPt: Point (11, 0) s0: 0, s1: 0, ts: 0
+idx: 126, Angle: -2,060753653048625
+  PolarPoint a:-2,060753653048625, d: 17 cartPt: Point (18, 13) s0: 0, s1: 0, ts: 0
+idx: 127, Angle: -2,0344439357957027
+  PolarPoint a:-2,0344439357957027, d: 8,94427190999916 cartPt: Point (22, 20) s0: 0, s1: 0, ts: 0
+idx: 128, Angle: -2,0169018757383004
+  PolarPoint a:-2,0169018757383004, d: 25,495097567963924 cartPt: Point (15, 5) s0: 0, s1: 0, ts: 0
+idx: 129, Angle: -2,0032041023654346
+  PolarPoint a:-2,0032041023654346, d: 14,317821063276353 cartPt: Point (20, 15) s0: 0, s1: 0, ts: 0
+idx: 130, Angle: -1,97568811307998
+  PolarPoint a:-1,97568811307998, d: 15,231546211727817 cartPt: Point (20, 14) s0: 0, s1: 0, ts: 0
+idx: 131, Angle: -1,965587446494658
+  PolarPoint a:-1,965587446494658, d: 13 cartPt: Point (21, 16) s0: 0, s1: 0, ts: 0
+idx: 132, Angle: -1,9614033704925835
+  PolarPoint a:-1,9614033704925835, d: 18,384776310850235 cartPt: Point (19, 11) s0: 0, s1: 0, ts: 0
+idx: 133, Angle: -1,9591150449673627
+  PolarPoint a:-1,9591150449673627, d: 23,769728648009426 cartPt: Point (17, 6) s0: 0, s1: 0, ts: 0
+idx: 134, Angle: -1,9513027039072615
+  PolarPoint a:-1,9513027039072615, d: 26,92582403567252 cartPt: Point (16, 3) s0: 0, s1: 0, ts: 0
+  PolarPoint a:-1,9513027039072615, d: 21,540659228538015 cartPt: Point (18, 8) s0: 0, s1: 0, ts: 0
+idx: 135, Angle: -1,9451299428024806
+  PolarPoint a:-1,9451299428024806, d: 30,083217912982647 cartPt: Point (15, 0) s0: 0, s1: 0, ts: 0
+idx: 136, Angle: -1,9379701606131159
+  PolarPoint a:-1,9379701606131159, d: 13,92838827718412 cartPt: Point (21, 15) s0: 0, s1: 0, ts: 0
+idx: 137, Angle: -1,9295669970654687
+  PolarPoint a:-1,9295669970654687, d: 25,632011235952593 cartPt: Point (17, 4) s0: 0, s1: 0, ts: 0
+  PolarPoint a:-1,9295669970654687, d: 17,08800749063506 cartPt: Point (20, 12) s0: 0, s1: 0, ts: 0
+idx: 138, Angle: -1,9195673303788037
+  PolarPoint a:-1,9195673303788037, d: 23,40939982143925 cartPt: Point (18, 6) s0: 0, s1: 0, ts: 0
+idx: 139, Angle: -1,9055331641117113
+  PolarPoint a:-1,9055331641117113, d: 24,351591323771842 cartPt: Point (18, 5) s0: 0, s1: 0, ts: 0
+idx: 140, Angle: -1,9040406279065694
+  PolarPoint a:-1,9040406279065694, d: 27,51363298439521 cartPt: Point (17, 2) s0: 0, s1: 0, ts: 0
+idx: 141, Angle: -1,892546881191539
+  PolarPoint a:-1,892546881191539, d: 25,298221281347036 cartPt: Point (18, 4) s0: 0, s1: 0, ts: 0
+  PolarPoint a:-1,892546881191539, d: 12,649110640673518 cartPt: Point (22, 16) s0: 0, s1: 0, ts: 0
+idx: 142, Angle: -1,8817946074004375
+  PolarPoint a:-1,8817946074004375, d: 29,410882339705484 cartPt: Point (17, 0) s0: 0, s1: 0, ts: 0
+idx: 143, Angle: -1,8804992713373527
+  PolarPoint a:-1,8804992713373527, d: 26,248809496813376 cartPt: Point (18, 3) s0: 0, s1: 0, ts: 0
+idx: 144, Angle: -1,878849107818673
+  PolarPoint a:-1,878849107818673, d: 23,08679276123039 cartPt: Point (19, 6) s0: 0, s1: 0, ts: 0
+idx: 145, Angle: -1,8766751981997487
+  PolarPoint a:-1,8766751981997487, d: 19,924858845171276 cartPt: Point (20, 9) s0: 0, s1: 0, ts: 0
+idx: 146, Angle: -1,8692952583810758
+  PolarPoint a:-1,8692952583810758, d: 27,202941017470888 cartPt: Point (18, 2) s0: 0, s1: 0, ts: 0
+  PolarPoint a:-1,8692952583810758, d: 13,601470508735444 cartPt: Point (22, 15) s0: 0, s1: 0, ts: 0
+idx: 147, Angle: -1,8662371639386166
+  PolarPoint a:-1,8662371639386166, d: 24,041630560342615 cartPt: Point (19, 5) s0: 0, s1: 0, ts: 0
+idx: 148, Angle: -1,8588517738455226
+  PolarPoint a:-1,8588517738455226, d: 28,160255680657446 cartPt: Point (18, 1) s0: 0, s1: 0, ts: 0
+idx: 149, Angle: -1,856847768512215
+  PolarPoint a:-1,856847768512215, d: 17,72004514666935 cartPt: Point (21, 11) s0: 0, s1: 0, ts: 0
+idx: 150, Angle: -1,849095985800008
+  PolarPoint a:-1,849095985800008, d: 14,560219778561036 cartPt: Point (22, 14) s0: 0, s1: 0, ts: 0
+idx: 151, Angle: -1,8438050298816073
+  PolarPoint a:-1,8438050298816073, d: 25,96150997149434 cartPt: Point (19, 3) s0: 0, s1: 0, ts: 0
+idx: 152, Angle: -1,8313987185422376
+  PolarPoint a:-1,8313987185422376, d: 15,524174696260024 cartPt: Point (22, 13) s0: 0, s1: 0, ts: 0
+idx: 153, Angle: -1,8281200417659853
+  PolarPoint a:-1,8281200417659853, d: 19,6468827043885 cartPt: Point (21, 9) s0: 0, s1: 0, ts: 0
+idx: 154, Angle: -1,8157749899217608
+  PolarPoint a:-1,8157749899217608, d: 24,73863375370596 cartPt: Point (20, 4) s0: 0, s1: 0, ts: 0
+  PolarPoint a:-1,8157749899217608, d: 20,615528128088304 cartPt: Point (21, 8) s0: 0, s1: 0, ts: 0
+  PolarPoint a:-1,8157749899217608, d: 16,492422502470642 cartPt: Point (22, 12) s0: 0, s1: 0, ts: 0
+  PolarPoint a:-1,8157749899217608, d: 12,36931687685298 cartPt: Point (23, 16) s0: 0, s1: 0, ts: 0
+  PolarPoint a:-1,8157749899217608, d: 8,246211251235321 cartPt: Point (24, 20) s0: 0, s1: 0, ts: 0
+idx: 155, Angle: -1,7975951748487824
+  PolarPoint a:-1,7975951748487824, d: 13,341664064126334 cartPt: Point (23, 15) s0: 0, s1: 0, ts: 0
+idx: 156, Angle: -1,7942729279355296
+  PolarPoint a:-1,7942729279355296, d: 22,561028345356956 cartPt: Point (21, 6) s0: 0, s1: 0, ts: 0
+idx: 157, Angle: -1,7894652726688385
+  PolarPoint a:-1,7894652726688385, d: 9,219544457292887 cartPt: Point (24, 19) s0: 0, s1: 0, ts: 0
+idx: 158, Angle: -1,7818896600176433
+  PolarPoint a:-1,7818896600176433, d: 14,317821063276353 cartPt: Point (23, 14) s0: 0, s1: 0, ts: 0
+idx: 159, Angle: -1,7681918866447774
+  PolarPoint a:-1,7681918866447774, d: 5,0990195135927845 cartPt: Point (25, 23) s0: 0, s1: 0, ts: 0
+idx: 160, Angle: -1,7590178320996674
+  PolarPoint a:-1,7590178320996674, d: 21,37755832643195 cartPt: Point (22, 7) s0: 0, s1: 0, ts: 0
+idx: 161, Angle: -1,7359450042095235
+  PolarPoint a:-1,7359450042095235, d: 24,331050121192877 cartPt: Point (22, 4) s0: 0, s1: 0, ts: 0
+  PolarPoint a:-1,7359450042095235, d: 18,24828759089466 cartPt: Point (23, 10) s0: 0, s1: 0, ts: 0
+idx: 162, Angle: -1,729451588981298
+  PolarPoint a:-1,729451588981298, d: 25,317977802344327 cartPt: Point (22, 3) s0: 0, s1: 0, ts: 0
+idx: 163, Angle: -1,719686274404394
+  PolarPoint a:-1,719686274404394, d: 20,223748416156685 cartPt: Point (23, 8) s0: 0, s1: 0, ts: 0
+idx: 164, Angle: -1,7126933813990606
+  PolarPoint a:-1,7126933813990606, d: 21,213203435596427 cartPt: Point (23, 7) s0: 0, s1: 0, ts: 0
+  PolarPoint a:-1,7126933813990606, d: 7,0710678118654755 cartPt: Point (25, 21) s0: 0, s1: 0, ts: 0
+idx: 165, Angle: -1,687905071361761
+  PolarPoint a:-1,687905071361761, d: 17,11724276862369 cartPt: Point (24, 11) s0: 0, s1: 0, ts: 0
+idx: 166, Angle: -1,6856729322117958
+  PolarPoint a:-1,6856729322117958, d: 26,1725046566048 cartPt: Point (23, 2) s0: 0, s1: 0, ts: 0
+idx: 167, Angle: -1,6775319994440323
+  PolarPoint a:-1,6775319994440323, d: 28,160255680657446 cartPt: Point (23, 0) s0: 0, s1: 0, ts: 0
+idx: 168, Angle: -1,6704649792860586
+  PolarPoint a:-1,6704649792860586, d: 10,04987562112089 cartPt: Point (25, 18) s0: 0, s1: 0, ts: 0
+idx: 169, Angle: -1,6447353644528369
+  PolarPoint a:-1,6447353644528369, d: 27,073972741361768 cartPt: Point (24, 1) s0: 0, s1: 0, ts: 0
+idx: 170, Angle: -1,6373644905707205
+  PolarPoint a:-1,6373644905707205, d: 15,033296378372908 cartPt: Point (25, 13) s0: 0, s1: 0, ts: 0
+idx: 171, Angle: -1,6295521495106193
+  PolarPoint a:-1,6295521495106193, d: 17,029386365926403 cartPt: Point (25, 11) s0: 0, s1: 0, ts: 0
+idx: 172, Angle: -1,6207547225168393
+  PolarPoint a:-1,6207547225168393, d: 20,024984394500787 cartPt: Point (25, 8) s0: 0, s1: 0, ts: 0
+idx: 173, Angle: -1,6142472221864275
+  PolarPoint a:-1,6142472221864275, d: 23,021728866442675 cartPt: Point (25, 5) s0: 0, s1: 0, ts: 0
+idx: 174, Angle: -1,6092389168160846
+  PolarPoint a:-1,6092389168160846, d: 26,019223662515376 cartPt: Point (25, 2) s0: 0, s1: 0, ts: 0
+idx: 175, Angle: -1,6064954394742206
+  PolarPoint a:-1,6064954394742206, d: 28,0178514522438 cartPt: Point (25, 0) s0: 0, s1: 0, ts: 0
+idx: 176, Angle: -1,5707963267948966
+  PolarPoint a:-1,5707963267948966, d: 20 cartPt: Point (26, 8) s0: 0, s1: 0, ts: 0
+  PolarPoint a:-1,5707963267948966, d: 17 cartPt: Point (26, 11) s0: 0, s1: 0, ts: 0
+  PolarPoint a:-1,5707963267948966, d: 12 cartPt: Point (26, 16) s0: 0, s1: 0, ts: 0
+  PolarPoint a:-1,5707963267948966, d: 11 cartPt: Point (26, 17) s0: 0, s1: 0, ts: 0
+idx: 177, Angle: -1,5337762109209665
+  PolarPoint a:-1,5337762109209665, d: 27,018512172212592 cartPt: Point (27, 1) s0: 0, s1: 0, ts: 0
+idx: 178, Angle: -1,5083775167989393
+  PolarPoint a:-1,5083775167989393, d: 16,0312195418814 cartPt: Point (27, 12) s0: 0, s1: 0, ts: 0
+idx: 179, Angle: -1,4994888620096063
+  PolarPoint a:-1,4994888620096063, d: 28,071337695236398 cartPt: Point (28, 0) s0: 0, s1: 0, ts: 0
+idx: 180, Angle: -1,4968572891369563
+  PolarPoint a:-1,4968572891369563, d: 27,073972741361768 cartPt: Point (28, 1) s0: 0, s1: 0, ts: 0
+idx: 181, Angle: -1,4876550949064553
+  PolarPoint a:-1,4876550949064553, d: 12,041594578792296 cartPt: Point (27, 16) s0: 0, s1: 0, ts: 0
+idx: 182, Angle: -1,4711276743037347
+  PolarPoint a:-1,4711276743037347, d: 10,04987562112089 cartPt: Point (27, 18) s0: 0, s1: 0, ts: 0
+idx: 183, Angle: -1,460139105621001
+  PolarPoint a:-1,460139105621001, d: 27,16615541441225 cartPt: Point (29, 1) s0: 0, s1: 0, ts: 0
+  PolarPoint a:-1,460139105621001, d: 9,055385138137417 cartPt: Point (27, 19) s0: 0, s1: 0, ts: 0
+idx: 184, Angle: -1,446441332248135
+  PolarPoint a:-1,446441332248135, d: 16,1245154965971 cartPt: Point (28, 12) s0: 0, s1: 0, ts: 0
+idx: 185, Angle: -1,4410937896389846
+  PolarPoint a:-1,4410937896389846, d: 23,194827009486403 cartPt: Point (29, 5) s0: 0, s1: 0, ts: 0
+idx: 186, Angle: -1,4288992721907328
+  PolarPoint a:-1,4288992721907328, d: 14,142135623730951 cartPt: Point (28, 14) s0: 0, s1: 0, ts: 0
+  PolarPoint a:-1,4288992721907328, d: 7,0710678118654755 cartPt: Point (27, 21) s0: 0, s1: 0, ts: 0
+idx: 187, Angle: -1,4141944498128813
+  PolarPoint a:-1,4141944498128813, d: 19,235384061671343 cartPt: Point (29, 9) s0: 0, s1: 0, ts: 0
+idx: 188, Angle: -1,4056476493802699
+  PolarPoint a:-1,4056476493802699, d: 18,24828759089466 cartPt: Point (29, 10) s0: 0, s1: 0, ts: 0
+idx: 189, Angle: -1,3909428270024184
+  PolarPoint a:-1,3909428270024184, d: 22,360679774997898 cartPt: Point (30, 6) s0: 0, s1: 0, ts: 0
+idx: 190, Angle: -1,3876855095324125
+  PolarPoint a:-1,3876855095324125, d: 27,459060435491963 cartPt: Point (31, 1) s0: 0, s1: 0, ts: 0
+idx: 191, Angle: -1,380808038876181
+  PolarPoint a:-1,380808038876181, d: 26,476404589747453 cartPt: Point (31, 2) s0: 0, s1: 0, ts: 0
+idx: 192, Angle: -1,356735643231075
+  PolarPoint a:-1,356735643231075, d: 23,53720459187964 cartPt: Point (31, 5) s0: 0, s1: 0, ts: 0
+idx: 193, Angle: -1,3473197256542635
+  PolarPoint a:-1,3473197256542635, d: 22,561028345356956 cartPt: Point (31, 6) s0: 0, s1: 0, ts: 0
+idx: 194, Angle: -1,3258176636680326
+  PolarPoint a:-1,3258176636680326, d: 28,861739379323623 cartPt: Point (33, 0) s0: 0, s1: 0, ts: 0
+  PolarPoint a:-1,3258176636680326, d: 8,246211251235321 cartPt: Point (28, 20) s0: 0, s1: 0, ts: 0
+idx: 195, Angle: -1,317122230656254
+  PolarPoint a:-1,317122230656254, d: 27,892651361962706 cartPt: Point (33, 1) s0: 0, s1: 0, ts: 0
+idx: 196, Angle: -1,3156139361740782
+  PolarPoint a:-1,3156139361740782, d: 23,769728648009426 cartPt: Point (32, 5) s0: 0, s1: 0, ts: 0
+idx: 197, Angle: -1,3101939350475555
+  PolarPoint a:-1,3101939350475555, d: 15,524174696260024 cartPt: Point (30, 13) s0: 0, s1: 0, ts: 0
+idx: 198, Angle: -1,3045442776439713
+  PolarPoint a:-1,3045442776439713, d: 22,80350850198276 cartPt: Point (32, 6) s0: 0, s1: 0, ts: 0
+idx: 199, Angle: -1,2924966677897853
+  PolarPoint a:-1,2924966677897853, d: 14,560219778561036 cartPt: Point (30, 14) s0: 0, s1: 0, ts: 0
+  PolarPoint a:-1,2924966677897853, d: 7,280109889280518 cartPt: Point (28, 21) s0: 0, s1: 0, ts: 0
+idx: 200, Angle: -1,2627435457711202
+  PolarPoint a:-1,2627435457711202, d: 23,08679276123039 cartPt: Point (33, 6) s0: 0, s1: 0, ts: 0
+idx: 201, Angle: -1,2490457723982544
+  PolarPoint a:-1,2490457723982544, d: 22,135943621178654 cartPt: Point (33, 7) s0: 0, s1: 0, ts: 0
+  PolarPoint a:-1,2490457723982544, d: 12,649110640673518 cartPt: Point (30, 16) s0: 0, s1: 0, ts: 0
+  PolarPoint a:-1,2490457723982544, d: 9,486832980505138 cartPt: Point (29, 19) s0: 0, s1: 0, ts: 0
+idx: 202, Angle: -1,2341215074081695
+  PolarPoint a:-1,2341215074081695, d: 21,18962010041709 cartPt: Point (33, 8) s0: 0, s1: 0, ts: 0
+idx: 203, Angle: -1,2315037123408519
+  PolarPoint a:-1,2315037123408519, d: 18,027756377319946 cartPt: Point (32, 11) s0: 0, s1: 0, ts: 0
+idx: 204, Angle: -1,217805938967986
+  PolarPoint a:-1,217805938967986, d: 20,248456731316587 cartPt: Point (33, 9) s0: 0, s1: 0, ts: 0
+idx: 205, Angle: -1,2120256565243244
+  PolarPoint a:-1,2120256565243244, d: 8,54400374531753 cartPt: Point (29, 20) s0: 0, s1: 0, ts: 0
+idx: 206, Angle: -1,1902899496825317
+  PolarPoint a:-1,1902899496825317, d: 16,15549442140351 cartPt: Point (32, 13) s0: 0, s1: 0, ts: 0
+idx: 207, Angle: -1,1801892830972098
+  PolarPoint a:-1,1801892830972098, d: 18,384776310850235 cartPt: Point (33, 11) s0: 0, s1: 0, ts: 0
+idx: 208, Angle: -1,1659045405098132
+  PolarPoint a:-1,1659045405098132, d: 7,615773105863909 cartPt: Point (29, 21) s0: 0, s1: 0, ts: 0
+idx: 209, Angle: -1,1525719972156676
+  PolarPoint a:-1,1525719972156676, d: 9,848857801796104 cartPt: Point (30, 19) s0: 0, s1: 0, ts: 0
+idx: 210, Angle: -1,1071487177940904
+  PolarPoint a:-1,1071487177940904, d: 8,94427190999916 cartPt: Point (30, 20) s0: 0, s1: 0, ts: 0
+idx: 211, Angle: -1,0768549578753155
+  PolarPoint a:-1,0768549578753155, d: 14,7648230602334 cartPt: Point (33, 15) s0: 0, s1: 0, ts: 0
+idx: 212, Angle: -1,0636978224025597
+  PolarPoint a:-1,0636978224025597, d: 10,295630140987 cartPt: Point (31, 19) s0: 0, s1: 0, ts: 0
+idx: 213, Angle: -1,042721878368537
+  PolarPoint a:-1,042721878368537, d: 13,892443989449804 cartPt: Point (33, 16) s0: 0, s1: 0, ts: 0
+idx: 214, Angle: -0,960070362405688
+  PolarPoint a:-0,960070362405688, d: 12,206555615733702 cartPt: Point (33, 18) s0: 0, s1: 0, ts: 0
+idx: 215, Angle: -0,7853981633974483
+  PolarPoint a:-0,7853981633974483, d: 8,48528137423857 cartPt: Point (32, 22) s0: 0, s1: 0, ts: 0
+  PolarPoint a:-0,7853981633974483, d: 1,4142135623730951 cartPt: Point (27, 27) s0: 0, s1: 0, ts: 0
+idx: 216, Angle: -0,6202494859828215
+  PolarPoint a:-0,6202494859828215, d: 8,602325267042627 cartPt: Point (33, 23) s0: 0, s1: 0, ts: 0
+idx: 217, Angle: -0,5404195002705842
+  PolarPoint a:-0,5404195002705842, d: 5,830951894845301 cartPt: Point (31, 25) s0: 0, s1: 0, ts: 0
+idx: 218, Angle: -0,3217505543966422
+  PolarPoint a:-0,3217505543966422, d: 3,1622776601683795 cartPt: Point (29, 27) s0: 0, s1: 0, ts: 0
+idx: 219, Angle: -0,14189705460416394
+  PolarPoint a:-0,14189705460416394, d: 7,0710678118654755 cartPt: Point (33, 27) s0: 0, s1: 0, ts: 0
+idx: 220, Angle: 0
+  PolarPoint a:0, d: 7 cartPt: Point (33, 28) s0: 0, s1: 0, ts: 0
+idx: 221, Angle: 0,19739555984988075
+  PolarPoint a:0,19739555984988075, d: 5,0990195135927845 cartPt: Point (31, 29) s0: 0, s1: 0, ts: 0
+idx: 222, Angle: 0,40489178628508343
+  PolarPoint a:0,40489178628508343, d: 7,615773105863909 cartPt: Point (33, 31) s0: 0, s1: 0, ts: 0
+idx: 223, Angle: 0,4636476090008061
+  PolarPoint a:0,4636476090008061, d: 2,23606797749979 cartPt: Point (28, 29) s0: 0, s1: 0, ts: 0
+idx: 224, Angle: 0,6435011087932844
+  PolarPoint a:0,6435011087932844, d: 5 cartPt: Point (30, 31) s0: 0, s1: 0, ts: 0
+idx: 225, Angle: 0,7853981633974483
+  PolarPoint a:0,7853981633974483, d: 1,4142135623730951 cartPt: Point (27, 29) s0: 0, s1: 0, ts: 0
+  PolarPoint a:0,7853981633974483, d: 5,656854249492381 cartPt: Point (30, 32) s0: 0, s1: 0, ts: 0
+idx: 226, Angle: 0,9272952180016122
+  PolarPoint a:0,9272952180016122, d: 5 cartPt: Point (29, 32) s0: 0, s1: 0, ts: 0
+idx: 227, Angle: 1,0303768265243125
+  PolarPoint a:1,0303768265243125, d: 5,830951894845301 cartPt: Point (29, 33) s0: 0, s1: 0, ts: 0
+idx: 228, Angle: 1,1902899496825317
+  PolarPoint a:1,1902899496825317, d: 5,385164807134504 cartPt: Point (28, 33) s0: 0, s1: 0, ts: 0
+idx: 229, Angle: 1,5707963267948966
+  PolarPoint a:1,5707963267948966, d: 3 cartPt: Point (26, 31) s0: 0, s1: 0, ts: 0
+idx: 230, Angle: 1,7681918866447774
+  PolarPoint a:1,7681918866447774, d: 5,0990195135927845 cartPt: Point (25, 33) s0: 0, s1: 0, ts: 0
+idx: 231, Angle: 2,0344439357957027
+  PolarPoint a:2,0344439357957027, d: 2,23606797749979 cartPt: Point (25, 30) s0: 0, s1: 0, ts: 0
+idx: 232, Angle: 2,158798930342464
+  PolarPoint a:2,158798930342464, d: 3,605551275463989 cartPt: Point (24, 31) s0: 0, s1: 0, ts: 0
+idx: 233, Angle: 2,2455372690184494
+  PolarPoint a:2,2455372690184494, d: 6,4031242374328485 cartPt: Point (22, 33) s0: 0, s1: 0, ts: 0
+idx: 234, Angle: 2,356194490192345
+  PolarPoint a:2,356194490192345, d: 1,4142135623730951 cartPt: Point (25, 29) s0: 0, s1: 0, ts: 0
+idx: 235, Angle: 2,498091544796509
+  PolarPoint a:2,498091544796509, d: 5 cartPt: Point (22, 31) s0: 0, s1: 0, ts: 0
+idx: 236, Angle: 2,5535900500422257
+  PolarPoint a:2,5535900500422257, d: 7,211102550927978 cartPt: Point (20, 32) s0: 0, s1: 0, ts: 0
+idx: 237, Angle: 2,714965160462917
+  PolarPoint a:2,714965160462917, d: 12,083045973594572 cartPt: Point (15, 33) s0: 0, s1: 0, ts: 0
+idx: 238, Angle: 2,723368324010564
+  PolarPoint a:2,723368324010564, d: 9,848857801796104 cartPt: Point (17, 32) s0: 0, s1: 0, ts: 0
+idx: 239, Angle: 2,746801533890032
+  PolarPoint a:2,746801533890032, d: 13 cartPt: Point (14, 33) s0: 0, s1: 0, ts: 0
+idx: 240, Angle: 2,761086276477428
+  PolarPoint a:2,761086276477428, d: 5,385164807134504 cartPt: Point (21, 30) s0: 0, s1: 0, ts: 0
+idx: 241, Angle: 2,782821983319221
+  PolarPoint a:2,782821983319221, d: 8,54400374531753 cartPt: Point (18, 31) s0: 0, s1: 0, ts: 0
+idx: 242, Angle: 2,79856871316909
+  PolarPoint a:2,79856871316909, d: 14,866068747318506 cartPt: Point (12, 33) s0: 0, s1: 0, ts: 0
+idx: 243, Angle: 2,819842099193151
+  PolarPoint a:2,819842099193151, d: 9,486832980505138 cartPt: Point (17, 31) s0: 0, s1: 0, ts: 0
+  PolarPoint a:2,819842099193151, d: 12,649110640673518 cartPt: Point (14, 32) s0: 0, s1: 0, ts: 0
+  PolarPoint a:2,819842099193151, d: 15,811388300841896 cartPt: Point (11, 33) s0: 0, s1: 0, ts: 0
+idx: 244, Angle: 2,8555412118724752
+  PolarPoint a:2,8555412118724752, d: 17,72004514666935 cartPt: Point (9, 33) s0: 0, s1: 0, ts: 0
+idx: 245, Angle: 2,8706458032513726
+  PolarPoint a:2,8706458032513726, d: 18,681541692269406 cartPt: Point (8, 33) s0: 0, s1: 0, ts: 0
+idx: 246, Angle: 2,91811605244916
+  PolarPoint a:2,91811605244916, d: 22,561028345356956 cartPt: Point (4, 33) s0: 0, s1: 0, ts: 0
+idx: 247, Angle: 2,922923707715851
+  PolarPoint a:2,922923707715851, d: 18,439088914585774 cartPt: Point (8, 32) s0: 0, s1: 0, ts: 0
+idx: 248, Angle: 2,930499320367047
+  PolarPoint a:2,930499320367047, d: 14,317821063276353 cartPt: Point (12, 31) s0: 0, s1: 0, ts: 0
+idx: 249, Angle: 2,9441970937399127
+  PolarPoint a:2,9441970937399127, d: 20,396078054371138 cartPt: Point (6, 32) s0: 0, s1: 0, ts: 0
+idx: 250, Angle: 2,961739153797315
+  PolarPoint a:2,961739153797315, d: 22,360679774997898 cartPt: Point (4, 32) s0: 0, s1: 0, ts: 0
+idx: 251, Angle: 2,9669204545815537
+  PolarPoint a:2,9669204545815537, d: 17,26267650163207 cartPt: Point (9, 31) s0: 0, s1: 0, ts: 0
+idx: 252, Angle: 2,969401839066854
+  PolarPoint a:2,969401839066854, d: 23,345235059857504 cartPt: Point (3, 32) s0: 0, s1: 0, ts: 0
+idx: 253, Angle: 2,976443976175166
+  PolarPoint a:2,976443976175166, d: 6,082762530298219 cartPt: Point (20, 29) s0: 0, s1: 0, ts: 0
+  PolarPoint a:2,976443976175166, d: 12,165525060596439 cartPt: Point (14, 30) s0: 0, s1: 0, ts: 0
+idx: 254, Angle: 2,9829373914033916
+  PolarPoint a:2,9829373914033916, d: 25,317977802344327 cartPt: Point (1, 32) s0: 0, s1: 0, ts: 0
+idx: 255, Angle: 3,017237659043032
+  PolarPoint a:3,017237659043032, d: 24,186773244895647 cartPt: Point (2, 31) s0: 0, s1: 0, ts: 0
+idx: 256, Angle: 3,024483909022929
+  PolarPoint a:3,024483909022929, d: 17,11724276862369 cartPt: Point (9, 30) s0: 0, s1: 0, ts: 0
+idx: 257, Angle: 3,036715714859559
+  PolarPoint a:3,036715714859559, d: 19,1049731745428 cartPt: Point (7, 30) s0: 0, s1: 0, ts: 0
+idx: 258, Angle: 3,046640947247037
+  PolarPoint a:3,046640947247037, d: 21,095023109728988 cartPt: Point (5, 30) s0: 0, s1: 0, ts: 0
+idx: 259, Angle: 3,050932766389048
+  PolarPoint a:3,050932766389048, d: 22,090722034374522 cartPt: Point (4, 30) s0: 0, s1: 0, ts: 0
+idx: 260, Angle: 3,054854314913808
+  PolarPoint a:3,054854314913808, d: 23,08679276123039 cartPt: Point (3, 30) s0: 0, s1: 0, ts: 0
+idx: 261, Angle: 3,058451421701352
+  PolarPoint a:3,058451421701352, d: 12,041594578792296 cartPt: Point (14, 29) s0: 0, s1: 0, ts: 0
+idx: 262, Angle: 3,064820762320015
+  PolarPoint a:3,064820762320015, d: 26,076809620810597 cartPt: Point (0, 30) s0: 0, s1: 0, ts: 0
+idx: 263, Angle: 3,0860941483440762
+  PolarPoint a:3,0860941483440762, d: 18,027756377319946 cartPt: Point (8, 29) s0: 0, s1: 0, ts: 0
+idx: 264, Angle: 3,0981417581982624
+  PolarPoint a:3,0981417581982624, d: 23,021728866442675 cartPt: Point (3, 29) s0: 0, s1: 0, ts: 0
+idx: 265, Angle: 3,099950074491205
+  PolarPoint a:3,099950074491205, d: 24,020824298928627 cartPt: Point (2, 29) s0: 0, s1: 0, ts: 0
+idx: 266, Angle: 3,141592653589793
+  PolarPoint a:3,141592653589793, d: 25 cartPt: Point (1, 28) s0: 0, s1: 0, ts: 0
+  PolarPoint a:3,141592653589793, d: 19 cartPt: Point (7, 28) s0: 0, s1: 0, ts: 0
+  PolarPoint a:3,141592653589793, d: 17 cartPt: Point (9, 28) s0: 0, s1: 0, ts: 0
+  PolarPoint a:3,141592653589793, d: 11 cartPt: Point (15, 28) s0: 0, s1: 0, ts: 0
+  PolarPoint a:3,141592653589793, d: 5 cartPt: Point (21, 28) s0: 0, s1: 0, ts: 0
+  PolarPoint a:3,141592653589793, d: 3 cartPt: Point (23, 28) s0: 0, s1: 0, ts: 0
+  PolarPoint a:3,141592653589793, d: 1 cartPt: Point (25, 28) s0: 0, s1: 0, ts: 0
