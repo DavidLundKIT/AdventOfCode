@@ -4,18 +4,19 @@ using System.Linq;
 using System.IO;
 using System.Text;
 using Xunit;
+using tests;
 
 namespace tests
 {
     public class Day04UnitTests
     {
-        private const string _indatafile = @"C:\Repos\AdventOfCode\Advent2016\data\day04.txt";
-        private const string _outdatafile = @"C:\Repos\AdventOfCode\Advent2016\data\day04out.txt";
+        private const string _indatafile = "day04.txt";
+        private const string _outdatafile = "day04out.txt";
 
         [Fact]
         public void Day04ValidRoomSumPart1()
         {
-            var rooms = File.ReadAllLines(_indatafile);
+            var rooms = DataUtils.ReadAllLines(_indatafile);
             Assert.Equal(991, rooms.Length);
 
             int totalSectorID = 0;
@@ -49,7 +50,7 @@ namespace tests
             string expectedRoomName = "northpole object storage";
             int totalSectorID = 0;
             int sectorId;
-            var rooms = File.ReadAllLines(_indatafile);
+            var rooms = DataUtils.ReadAllLines(_indatafile);
             using (var roomNames = File.CreateText(_outdatafile))
             {
                 Assert.Equal(991, rooms.Length);

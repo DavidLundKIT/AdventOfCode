@@ -1,17 +1,17 @@
 using System;
 using System.IO;
 using Xunit;
-
+using tests;
 namespace tests
 {
     public class Day03UnitTests
     {
-        private const string _indatafile = @"C:\Repos\AdventOfCode\Advent2016\data\day03.txt";
+        private const string _indatafile = "day03.txt";
 
         [Fact]
         public void Day03TrianglesPart1()
         {
-            var triangles = File.ReadAllLines(_indatafile);
+            var triangles = DataUtils.ReadAllLines(_indatafile);
 
             Assert.Equal(1915, triangles.Length);
             int validTriangles = 0;
@@ -35,7 +35,7 @@ namespace tests
         [Fact]
         public void Day03TrianglesVerticalPart2()
         {
-            var triangles = File.ReadAllLines(_indatafile);
+            var triangles = DataUtils.ReadAllLines(_indatafile);
 
             Assert.Equal(1915, triangles.Length);
             int validTriangles = 0;

@@ -1,17 +1,16 @@
 using System;
-using System.IO;
 using Xunit;
 
 namespace tests
 {
     public class Day02UnitTests
     {
-        private const string _indatafile = @"C:\Repos\AdventOfCode\Advent2016\data\day02.txt";
+        private const string _indatafile = "day02.txt";
 
         [Fact]
         public void Day02ReadInput()
         {
-            var instructions = File.ReadAllLines(_indatafile);
+            var instructions = DataUtils.ReadAllLines(_indatafile);
 
             Assert.Equal(5, instructions.Length);
 
@@ -52,7 +51,7 @@ namespace tests
         [Fact]
         public void Day02DiamondKeyPadPart2()
         {
-            var instructions = File.ReadAllLines(_indatafile);
+            var instructions = DataUtils.ReadAllLines(_indatafile);
 
             Assert.Equal(5, instructions.Length);
 
@@ -65,6 +64,5 @@ namespace tests
             }
             Assert.Equal("-2-6-11-9-6", result);
         }
-       
     }
 }

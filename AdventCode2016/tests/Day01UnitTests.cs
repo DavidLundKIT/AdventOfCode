@@ -1,12 +1,13 @@
 using System;
 using System.IO;
 using Xunit;
+using tests;
 
 namespace tests
 {
     public class Day01UnitTests
     {
-        private const string _indatafile = @"C:\Repos\AdventOfCode\Advent2016\data\day01.txt";
+        private const string _indatafile = "day01.txt";
         
         public Day01UnitTests()
         {
@@ -16,7 +17,8 @@ namespace tests
         [Fact]
         public void Day01DistanceFirstPart()
         {
-            string indata = File.ReadAllText(_indatafile);
+            string indata = DataUtils.ReadAllText(_indatafile);
+
             Assert.NotNull(indata);
             DistanceCalculator sut = new DistanceCalculator();
 
@@ -73,7 +75,7 @@ namespace tests
         [Fact]
         public void Day01DistancesecondPart()
         {
-            string indata = File.ReadAllText(_indatafile);
+            string indata = DataUtils.ReadAllText(_indatafile);
             Assert.NotNull(indata);
             int crossingDistance = 0;
             DistanceCalculator sut = new DistanceCalculator();

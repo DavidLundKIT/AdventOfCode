@@ -62,7 +62,8 @@ namespace tests
             Assert.Equal(expectedPassword, pwd.ToString());
         }
 
-        [Fact(Skip = "This is the answer to day 5 part 1. Takes 17s.")]
+        //[Fact(Skip = "This is the answer to day 5 part 1. Takes 17s.")]
+        [Fact]
         public void Day05_GeneratePart1DoorPassword()
         {
             string doorId = "uqwqemis";
@@ -116,7 +117,8 @@ namespace tests
         }
 
 
-        [Fact(Skip = "Answer day 5 part 2 takes 20s.")]
+        //[Fact(Skip = "Answer day 5 part 2 takes 20s.")]
+        [Fact]
         public void Day05_GeneratePart2DoorPassword()
         {
             string doorId = "uqwqemis";
