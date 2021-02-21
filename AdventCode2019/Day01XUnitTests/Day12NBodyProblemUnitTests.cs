@@ -412,7 +412,7 @@ namespace AdventOfCode2019XUnitTests
             // x: 161428 = 2*2*40357
             // y: 167624 = 2*2*2*23*911
             // z: 193052 = 2*2*17*17*167
-            long result = 2L * 2 * 2 * 17 * 17 * 23* 167 * 911 * 40357;
+            long result = 2L * 2 * 2 * 17 * 17 * 23 * 167 * 911 * 40357;
             Assert.Equal(326489627728984, result);
         }
     }

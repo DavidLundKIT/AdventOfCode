@@ -72,9 +72,9 @@ namespace AdventOfCode2019XUnitTests
                     {
                         if (sifImage[i, j] == ' ')
                         {
-                            if (chs[i*25 + j] != '2')
+                            if (chs[i * 25 + j] != '2')
                             {
-                                sifImage[i, j] = chs[i*25 + j];
+                                sifImage[i, j] = chs[i * 25 + j];
                                 assignments++;
                             }
                         }
@@ -100,7 +100,7 @@ namespace AdventOfCode2019XUnitTests
                 }
             }
 
-            Assert.Equal('a','a');
+            Assert.Equal('a', 'a');
         }
 
         [Fact]
@@ -137,7 +137,7 @@ namespace AdventOfCode2019XUnitTests
                     {
                         for (int l = 0; l < 4; l++)
                         {
-                        Debug.Write(sifImage[(i * 25) + j]);
+                            Debug.Write(sifImage[(i * 25) + j]);
                         }
                     }
                     Debug.WriteLine(" ");

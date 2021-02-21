@@ -4,7 +4,7 @@ namespace AdventOfCode2019XUnitTests
 {
     public class Day04SecureContainerUnitTests
     {
-         [Fact]
+        [Fact]
         public void Day04_CheckPwd_111111_Ok()
         {
             int pwd = 111111;
@@ -144,7 +144,7 @@ namespace AdventOfCode2019XUnitTests
                     // not a match
                     if (hasDouble)
                     {
-                        if (didx == idx -1)
+                        if (didx == idx - 1)
                         {
                             validDouble = true;
                         }

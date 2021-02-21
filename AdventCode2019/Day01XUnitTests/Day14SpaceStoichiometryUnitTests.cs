@@ -164,7 +164,7 @@ namespace AdventOfCode2019XUnitTests
             Assert.Equal(1065255, oreCost);
         }
 
-        [Fact(Skip ="Never ran to completion")]
+        [Fact(Skip = "Never ran to completion")]
         public void Day14Part2_Example03()
         {
             string[] map = new string[] {
@@ -238,7 +238,7 @@ namespace AdventOfCode2019XUnitTests
             Assert.Equal(5586022, fuel);
         }
 
-        [Fact(Skip ="Worked took 15 minutes")]
+        [Fact(Skip = "Worked took 15 minutes")]
         public void Day14Part2_Example05()
         {
             string[] map = new string[] {
@@ -282,7 +282,7 @@ namespace AdventOfCode2019XUnitTests
             Assert.Equal(460664, fuel);
         }
 
-        [Fact(Skip ="Worked, took 22 minutes")]
+        [Fact(Skip = "Worked, took 22 minutes")]
         public void Day14Part2_TestSolution()
         {
             string[] map = DayDataUtilities.ReadLinesFromFile("day14.txt");

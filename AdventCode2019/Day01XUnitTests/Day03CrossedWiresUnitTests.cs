@@ -1,7 +1,5 @@
 ﻿using AdventOfCode2019;
-using System;
 using System.Collections.Generic;
-using System.IO;
 using Xunit;
 
 namespace AdventOfCode2019XUnitTests

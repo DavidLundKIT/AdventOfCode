@@ -72,7 +72,7 @@ namespace AdventOfCode2019XUnitTests
             {
                 if (count == 200)
                 {
-                    rock200 = dictPolar[angle].Find(r => r.dist == dictPolar[angle].Min(p=>p.dist));
+                    rock200 = dictPolar[angle].Find(r => r.dist == dictPolar[angle].Min(p => p.dist));
                     break;
                 }
                 count++;

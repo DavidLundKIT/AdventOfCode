@@ -103,7 +103,7 @@ namespace AdventOfCode2019XUnitTests
                         sut.ProgramValues = values;
                         sut.Noun = noun;
                         sut.Run();
-                        
+
                         if (expectedOutput == sut.ProgramValues[0])
                         {
                             Assert.Equal(6472, 100 * noun + verb);

@@ -1,9 +1,6 @@
 ﻿using AdventOfCode2019;
-using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using Xunit;
 
@@ -61,7 +58,7 @@ namespace AdventOfCode2019XUnitTests
                                             };
             NameValueCollection orbitMap = OrbitalMapper.FillOrbitMap(orbits);
             OrbitalMapper.PrintKeysAndValues(orbitMap);
-            
+
             List<string> youOrbits = new List<string>();
             youOrbits = OrbitalMapper.GetOrbits(orbitMap, "YOU", youOrbits);
             List<string> santaOrbits = new List<string>();
@@ -73,7 +70,7 @@ namespace AdventOfCode2019XUnitTests
         }
 
 
-        [Fact(Skip ="Working but takes a minute")]
+        [Fact(Skip = "Working but takes a minute")]
         public void Day06Part1_TestSolution()
         {
             string[] orbits = DayDataUtilities.ReadLinesFromFile("day06.txt");
