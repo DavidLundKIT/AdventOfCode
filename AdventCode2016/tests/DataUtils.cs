@@ -9,14 +9,15 @@ namespace tests
         
         public static string[] ReadAllLines(string filename)
         {
-            var path = $"{BaseDir}\\{filename}";
+
+            var path = $"{AppContext.BaseDirectory}\\data\\{filename}";
             var lines = File.ReadAllLines(path);
             return lines;
         }
 
         public static string ReadAllText(string filename)
         {
-            var path = $"{BaseDir}\\{filename}";
+            var path = $"{AppContext.BaseDirectory}\\data\\{filename}";
             var lines = File.ReadAllText(path);
             return lines;
         }
