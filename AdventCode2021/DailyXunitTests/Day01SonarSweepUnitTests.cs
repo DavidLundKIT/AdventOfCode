@@ -1,7 +1,5 @@
-﻿using System;
+﻿using AdventCode2021;
 using System.Collections.Generic;
-using System.Text;
-using AdventCode2021;
 using Xunit;
 
 namespace DailyXunitTests
