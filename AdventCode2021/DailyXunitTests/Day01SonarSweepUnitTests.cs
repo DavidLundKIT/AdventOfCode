@@ -39,7 +39,7 @@ namespace DailyXunitTests
         }
 
         [Fact]
-        public void CreateSsumList_OK()
+        public void CreateSumList_OK()
         {
             var sut = new SonarSweeper();
             int expected = 263;
