@@ -18,12 +18,12 @@ namespace AdventCode2021
             }
         }
 
-        public int MapVentsHV()
+        public int MapVents(bool all)
         {
             MapHV = new Dictionary<string, int>();
             foreach (var vent in Vents)
             {
-                var points = vent.GetPointsHV();
+                List<Point> points = all ? vent.GetPointsHVD() : vent.GetPointsHV();
                 foreach (var point in points)
                 {
                     string key = point.ToString();
@@ -74,6 +74,30 @@ namespace AdventCode2021
                 {
                     list.Add(new Point(x, A.Y));
                 }
+            }
+            return list;
+        }
+
+        public List<Point> GetPointsHVD()
+        {
+            List<Point> list = GetPointsHV();
+            if (A.X != B.X && A.Y != B.Y)
+            {
+                // 45 degree lines
+                int slope = (B.Y - A.Y) / (B.X - A.X);
+                int rslope = (B.Y - A.Y) % (B.X - A.X);
+                if (Math.Abs(slope) == 1 && rslope == 0)
+                {
+                    int c = A.Y - slope * A.X;
+                    int xmin = Math.Min(A.X, B.X);
+                    int xmax = Math.Max(A.X, B.X);
+                    for (int x = xmin; x <= xmax; x++)
+                    {
+                        int y = slope * x + c;
+                        list.Add(new Point(x, y));
+                    }
+                }
+
             }
             return list;
         }
