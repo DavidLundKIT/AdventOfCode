@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace AdventCode2021
@@ -96,6 +97,10 @@ namespace AdventCode2021
                         int y = slope * x + c;
                         list.Add(new Point(x, y));
                     }
+                }
+                else
+                {
+                    Debug.WriteLine($"Bad slope {A} -> {B}");
                 }
 
             }
