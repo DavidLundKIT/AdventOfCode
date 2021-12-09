@@ -40,6 +40,7 @@ namespace AdventCode2021
                 Fish[ii] = fish;
             }
         }
+
         public void DoDay2()
         {
             long saveFish = FishPerDay[0];

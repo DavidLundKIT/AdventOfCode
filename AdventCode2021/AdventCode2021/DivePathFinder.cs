@@ -63,5 +63,4 @@ namespace AdventCode2021
             return Horizontal * Depth;
         }
     }
-
 }

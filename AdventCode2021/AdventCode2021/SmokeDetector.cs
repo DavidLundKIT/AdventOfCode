@@ -18,7 +18,6 @@ namespace AdventCode2021
             BasinPoints = new Dictionary<string, int>();
         }
 
-
         public int FindTotalRiskLevel()
         {
             int rows = Data.Length;
@@ -36,8 +35,8 @@ namespace AdventCode2021
                     }
                 }
             }
-            int totalRisk = LowPoints.Count + LowPoints.Sum();
 
+            int totalRisk = LowPoints.Count + LowPoints.Sum();
             return totalRisk;
         }
 
@@ -114,6 +113,7 @@ namespace AdventCode2021
                 return false;
             return true;
         }
+
         public long FindTop3BasinValues()
         {
             Basins.Sort();

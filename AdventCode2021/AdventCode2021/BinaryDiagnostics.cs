@@ -98,7 +98,6 @@ namespace AdventCode2021
                         return zeroes;
                     return FindOxygenRating(zeroes, index + 1);
                 }
-
             }
             return data;
         }
@@ -127,12 +126,9 @@ namespace AdventCode2021
             return data;
         }
 
-
-
         public long CalcLifeSupportValue()
         {
             return Convert.ToInt32(Oxygen, 2) * Convert.ToInt32(CO2, 2);
         }
-
     }
 }
