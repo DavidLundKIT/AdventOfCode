@@ -14,7 +14,7 @@ namespace DailyXunitTests
             var lines = Utils.ReadLinesFromFile("Day12Test1.txt");
             Assert.Equal(7, lines.Length);
             var sut = new CavePathFinder(lines);
-            //var ret = sut.FindPath("start");
+            var ret = sut.FindPath("start");
 
             Assert.Equal(10, sut.Paths.Count);
         }

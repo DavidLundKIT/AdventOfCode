@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 namespace AdventCode2021
 {
@@ -37,39 +37,42 @@ namespace AdventCode2021
 
         public bool FindPath(string node)
         {
-            string lcNode = node.ToLower();
-            if (Path.Contains(node))
-            {
-                // only uppercase can be visited multiple times
-                if (String.Equals(node, lcNode, StringComparison.InvariantCulture))
-                {
-                    // in the path and lower case, stop here.
-                    return false;
-                }
-            }
-            
-            // we can go here again
-            Path.Push(node);
-
             if (node == "end")
             {
                 // found a path
+                Path.Push(node);
                 AddPathToPaths();
                 Path.Pop();
                 return false;
             }
 
-            foreach (var nodeNext in MapNodes[node])
+            string lcNode = node.ToLower();
+            // only uppercase can be visited multiple times
+            bool onlyOnce = String.Equals(node, lcNode, StringComparison.InvariantCulture);
+
+            // is it in the list already?
+            List<string> nextNodes;
+            do
             {
-                FindPath(nodeNext);
-            }
+                var meNodes = Path.Where(n => n == node).ToList();
+                if (meNodes.Count >= 1 && onlyOnce)
+                    return false;
+                if (MapNodes[node].Count == meNodes.Count)
+                {
+                    return false;
+                }
+                nextNodes = MapNodes[node].GetRange(meNodes.Count, MapNodes[node].Count - meNodes.Count);
+                Path.Push(node);
+                FindPath(nextNodes[0]);
+            } while (nextNodes.Count > 0);
             return false;
         }
 
         public void AddPathToPaths()
         {
             // hit end make the path
-            var nodes = Path.ToArray();
+            List<string> nodes = new List<string>(Path.ToArray());
+            nodes.Reverse();
             var path = string.Join(",", nodes);
             if (Paths.ContainsKey(path))
                 Paths[path]++;
