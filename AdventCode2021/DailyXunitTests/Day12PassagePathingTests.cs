@@ -15,7 +15,6 @@ namespace DailyXunitTests
             Assert.Equal(7, lines.Length);
             var sut = new CavePathFinder(lines);
             sut.FindAllPaths();
-
             Assert.Equal(10, sut.Paths.Count);
         }
 

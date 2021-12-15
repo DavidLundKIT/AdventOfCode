@@ -7,12 +7,14 @@ namespace AdventCode2021
     public class CavePathFinder
     {
         public Dictionary<string, List<string>> MapNodes { get; set; }
+        public Dictionary<string, int> UsedNodes { get; set; }
         public Stack<string> Path;
         public Dictionary<string, int> Paths;
 
         public CavePathFinder(string[] lines)
         {
             MapNodes = new Dictionary<string, List<string>>();
+            UsedNodes = new Dictionary<string, int>();
             Paths = new Dictionary<string, int>();
             Path = new Stack<string>();
 
@@ -56,9 +58,18 @@ namespace AdventCode2021
             foreach (var node in startPaths)
             {
                 Path.Clear();
+                UsedNodes.Clear();
                 Path.Push("start");
                 FindPath(node);
             }
+        }
+
+        public void AddUsedNode(string key)
+        {
+            if (UsedNodes.ContainsKey(key))
+                UsedNodes[key]++;
+            else
+                UsedNodes.Add(key, 1);
         }
 
         public bool FindPath(string node)
@@ -93,6 +104,5 @@ namespace AdventCode2021
             } while (nextNodes.Count > 0);
             return false;
         }
-
     }
 }
