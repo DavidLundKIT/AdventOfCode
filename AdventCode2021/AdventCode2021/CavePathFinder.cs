@@ -19,8 +19,10 @@ namespace AdventCode2021
             foreach (var line in lines)
             {
                 var parts = line.Split('-', StringSplitOptions.RemoveEmptyEntries);
-                AddNodePair(parts[0], parts[1]);
-                AddNodePair(parts[1], parts[0]);
+                if (!parts[1].Equals("start"))
+                    AddNodePair(parts[0], parts[1]);
+                if (!parts[0].Equals("start"))
+                    AddNodePair(parts[1], parts[0]);
             }
         }
 
@@ -33,6 +35,30 @@ namespace AdventCode2021
                 MapNodes.Add(a, nodes);
             }
             MapNodes[a].Add(b);
+        }
+
+        public void AddPathToPaths()
+        {
+            // hit end make the path
+            List<string> nodes = new List<string>(Path.ToArray());
+            nodes.Reverse();
+            var path = string.Join(",", nodes);
+            if (Paths.ContainsKey(path))
+                Paths[path]++;
+            else
+                Paths.Add(path, 1);
+        }
+
+        public void FindAllPaths()
+        {
+            var startPaths = MapNodes["start"];
+
+            foreach (var node in startPaths)
+            {
+                Path.Clear();
+                Path.Push("start");
+                FindPath(node);
+            }
         }
 
         public bool FindPath(string node)
@@ -68,16 +94,5 @@ namespace AdventCode2021
             return false;
         }
 
-        public void AddPathToPaths()
-        {
-            // hit end make the path
-            List<string> nodes = new List<string>(Path.ToArray());
-            nodes.Reverse();
-            var path = string.Join(",", nodes);
-            if (Paths.ContainsKey(path))
-                Paths[path]++;
-            else
-                Paths.Add(path, 1);
-        }
     }
 }
