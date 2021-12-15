@@ -26,7 +26,6 @@ namespace AdventCode2021
         }
 
         public Dictionary<string, char> Converter { get; set; }
-
         public Element Start { get; set; }
 
         public PolymerizerLinked(string[] lines)
@@ -50,6 +49,7 @@ namespace AdventCode2021
                 Converter.Add(parts[0], parts[1][0]);
             }
         }
+
         public void PairInsertion()
         {
             Element cur = Start;
@@ -68,12 +68,10 @@ namespace AdventCode2021
         public long QuantityOfElements()
         {
             Dictionary<char, long> elems = new Dictionary<char, long>();
-
             var cur = Start;
 
             do
             {
-
                 if (elems.ContainsKey(cur.Value))
                     elems[cur.Value]++;
                 else

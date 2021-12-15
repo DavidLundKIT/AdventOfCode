@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace AdventCode2021
 {
-    public class KeyPolymerizer
+    /// <summary>
+    /// BUST also good on memory but 40!+ calculations
+    /// </summary>
+    public class PolymerizerKey
     {
         public string Template { get; set; }
-
         public Dictionary<string, string> Converter { get; set; }
         public Dictionary<char, long> Elems { get; set; }
 
-        public KeyPolymerizer(string[] lines)
+        public PolymerizerKey(string[] lines)
         {
             Converter = new Dictionary<string, string>();
             Elems = new Dictionary<char, long>();
