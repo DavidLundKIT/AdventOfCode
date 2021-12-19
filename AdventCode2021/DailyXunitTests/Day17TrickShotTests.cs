@@ -23,7 +23,7 @@ namespace DailyXunitTests
 
         [Theory]
         [InlineData(7, 2, true)]
-        [InlineData(7, 40, true)]
+        [InlineData(7, 40, false)]
         [InlineData(6, 3, true)]
         [InlineData(9, 0, true)]
         [InlineData(17, -4, false)]
