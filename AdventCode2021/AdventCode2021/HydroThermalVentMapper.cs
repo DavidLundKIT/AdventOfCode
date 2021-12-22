@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace AdventCode2021
@@ -109,37 +108,4 @@ namespace AdventCode2021
         }
     }
 
-    public class Point : IEquatable<Point>
-    {
-        public int X { get; set; }
-        public int Y { get; set; }
-
-        public Point(string line)
-        {
-            var vals = line.Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
-            X = int.Parse(vals[0]);
-            Y = int.Parse(vals[1]);
-        }
-        public Point(int x, int y)
-        {
-            X = x;
-            Y = y;
-        }
-
-        public Point()
-        {
-        }
-
-        public override string ToString()
-        {
-            return $"{X},{Y}";
-        }
-
-        public bool Equals([AllowNull] Point other)
-        {
-            if (other == null)
-                return false;
-            return (other.X == X && other.Y == Y);
-        }
-    }
 }
