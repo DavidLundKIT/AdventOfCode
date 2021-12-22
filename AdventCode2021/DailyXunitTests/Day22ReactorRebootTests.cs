@@ -1,8 +1,5 @@
 ﻿using AdventCode2021;
 using Xunit;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DailyXunitTests
 {
@@ -34,7 +31,7 @@ namespace DailyXunitTests
             Assert.Equal(420, sut.Commands.Count);
 
             long actual = sut.DoReboot50();
-            Assert.Equal(0, actual);
+            Assert.Equal(648023, actual);
         }
     }
 }
