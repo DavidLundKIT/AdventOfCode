@@ -2,7 +2,8 @@
 using Xunit;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Diagnostics;
 
 namespace DailyXunitTests
 {
@@ -44,6 +45,66 @@ namespace DailyXunitTests
             } while (probe.Y >= target.Y1);
 
             Assert.Equal(expected, inside);
+        }
+
+        [Fact]
+        public void Day17_Puzzle1_FindX_OK()
+        {
+            var target = PuzzleTarget;
+            Dictionary<int, List<Tuple<int, int, int>>> dictVoT = new Dictionary<int, List<Tuple<int, int, int>>>();
+
+            foreach (var velX in Enumerable.Range(10, target.X2))
+            {
+                var sut = new TrickShotProbe(velX, 0);
+                int sec = 0;
+                do
+                {
+                    sec++;
+                    sut.DoSecondX();
+                    if (target.InsideX(sut.X))
+                    {
+                        Debug.WriteLine($"velX: {velX}, t: {sec}, X: {sut.X}");
+                        if (!dictVoT.ContainsKey(velX))
+                            dictVoT.Add(velX, new List<Tuple<int, int, int>>());
+
+                        dictVoT[velX].Add(new Tuple<int, int, int>(velX, sec, sut.X));
+                    }
+
+                } while (sut.X <= target.X2 && sut.Velx > 0);
+            }
+            Assert.NotEmpty(dictVoT);
+        }
+
+        [Fact]
+        public void Day17_Puzzle1_FindY_OK()
+        {
+            var target = PuzzleTarget;
+            Dictionary<int, List<Tuple<int, int, int>>> dictVoT = new Dictionary<int, List<Tuple<int, int, int>>>();
+
+            foreach (var velY in Enumerable.Range(1, 1000))
+            {
+                var sut = new TrickShotProbe(0, velY);
+                int sec = 0;
+                int maxY = 0;
+                do
+                {
+                    sec++;
+                    sut.DoSecondY();
+                    if (sut.Y > maxY)
+                        maxY = sut.Y;
+                    if (target.InsideY(sut.Y))
+                    {
+                        Debug.WriteLine($"velY: {velY}, t: {sec}, Y: {sut.Y},  maxY: {maxY}");
+                        if (!dictVoT.ContainsKey(velY))
+                            dictVoT.Add(velY, new List<Tuple<int, int, int>>());
+
+                        dictVoT[velY].Add(new Tuple<int, int, int>(velY, sec, maxY));
+                    }
+
+                } while (sut.Y >= target.Y1);
+            }
+            // Look in the dictionary for highest max value.
+            Assert.NotEmpty(dictVoT);
         }
     }
 }

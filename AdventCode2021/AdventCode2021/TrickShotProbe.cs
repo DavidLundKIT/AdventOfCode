@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
+﻿using System.Diagnostics;
 
 namespace AdventCode2021
 {
@@ -23,20 +20,30 @@ namespace AdventCode2021
             Debug.WriteLine($"S {Sec}: V {Velx}, {Vely} - P: {X}, {Y}");
         }
 
-        public void DoSecond()
+        public void DoSecondX()
         {
-            Sec++;
             X += Velx;
-            Y += Vely;
             if (Velx > 0)
             {
                 Velx--;
-            }else if (Velx < 0)
+            }
+            else if (Velx < 0)
             {
                 Velx++;
             }
+        }
 
+        public void DoSecondY()
+        {
+            Y += Vely;
             Vely--;
+        }
+
+        public void DoSecond()
+        {
+            Sec++;
+            DoSecondX();
+            DoSecondY();
             Debug.WriteLine($"S {Sec}: V {Velx}, {Vely} - P: {X}, {Y}");
         }
     }
@@ -56,9 +63,19 @@ namespace AdventCode2021
             Y2 = y2;
         }
 
+        public bool InsideX(int x)
+        {
+            return (X1 <= x && x <= X2);
+        }
+
+        public bool InsideY(int y)
+        {
+            return (Y1 <= y && y <= Y2);
+        }
+
         public bool Inside(int x, int y)
         {
-            return (X1 <= x && x <= X2 && Y1 <= y && y <= Y2);
+            return InsideX(x) && InsideY(y);
         }
     }
 }
