@@ -11,7 +11,7 @@ namespace DailyXunitTests
     public class Day21DiracDiceTests
     {
         [Fact]
-        public void DiracDice_Test_OK()
+        public void DiracDice_DeterminedTest_OK()
         {
             var sut = new DiracDice(4, 8);
 
@@ -34,7 +34,7 @@ namespace DailyXunitTests
             var sut = new DiracDice(4, 8);
 
             long actual = sut.GameQuantum();
-            Assert.Equal(739785, actual);
+            Assert.Equal(444356092776315, actual);
         }
 
         [Fact]

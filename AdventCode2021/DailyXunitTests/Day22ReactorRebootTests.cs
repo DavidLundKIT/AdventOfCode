@@ -5,7 +5,7 @@ namespace DailyXunitTests
 {
     public class Day22ReactorRebootTests
     {
-        [Theory]
+        [Theory(Skip = "Takes 2.5 minutes")]
         [InlineData("Day22test1.txt", 4, 39)]
         [InlineData("Day22test2.txt", 22, 590784)]
         //[InlineData("Day22.txt", 420, 0)]
@@ -21,7 +21,7 @@ namespace DailyXunitTests
             Assert.Equal(expected, actual);
         }
 
-        [Fact]
+        [Fact(Skip = "Takes 2.5 minutes")]
         public void Day22_Puzzle1_OK()
         {
             var lines = Utils.ReadLinesFromFile("Day22.txt");

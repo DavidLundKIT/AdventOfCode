@@ -1,4 +1,7 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 
 namespace AdventCode2021
 {
@@ -45,6 +48,66 @@ namespace AdventCode2021
             DoSecondX();
             DoSecondY();
             Debug.WriteLine($"S {Sec}: V {Velx}, {Vely} - P: {X}, {Y}");
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="target"></param>
+        /// <returns></returns>
+        public static Dictionary<int, List<Tuple<int, int, int>>> FindValidVelocityXs(Target target)
+        {
+            Dictionary<int, List<Tuple<int, int, int>>> dictVoT = new Dictionary<int, List<Tuple<int, int, int>>>();
+
+            foreach (var velX in Enumerable.Range(10, target.X2))
+            {
+                var sut = new TrickShotProbe(velX, 0);
+                int sec = 0;
+                do
+                {
+                    sec++;
+                    sut.DoSecondX();
+                    if (target.InsideX(sut.X))
+                    {
+                        Debug.WriteLine($"velX: {velX}, t: {sec}, X: {sut.X}");
+                        if (!dictVoT.ContainsKey(velX))
+                            dictVoT.Add(velX, new List<Tuple<int, int, int>>());
+
+                        dictVoT[velX].Add(new Tuple<int, int, int>(velX, sec, sut.X));
+                    }
+
+                } while (sut.X <= target.X2 && sut.Velx > 0);
+            }
+            return dictVoT;
+        }
+
+        public static Dictionary<int, List<Tuple<int, int, int>>> FindValidVelocityYs(Target target)
+        {
+            Dictionary<int, List<Tuple<int, int, int>>> dictVoT = new Dictionary<int, List<Tuple<int, int, int>>>();
+
+            foreach (var velY in Enumerable.Range(-130, 1000))
+            {
+                var sut = new TrickShotProbe(0, velY);
+                int sec = 0;
+                int maxY = int.MinValue;
+                do
+                {
+                    sec++;
+                    sut.DoSecondY();
+                    if (sut.Y > maxY)
+                        maxY = sut.Y;
+                    if (target.InsideY(sut.Y))
+                    {
+                        Debug.WriteLine($"velY: {velY}, t: {sec}, Y: {sut.Y},  maxY: {maxY}");
+                        if (!dictVoT.ContainsKey(velY))
+                            dictVoT.Add(velY, new List<Tuple<int, int, int>>());
+
+                        dictVoT[velY].Add(new Tuple<int, int, int>(velY, sec, maxY));
+                    }
+
+                } while (sut.Y >= target.Y1);
+            }
+            return dictVoT;
         }
     }
 

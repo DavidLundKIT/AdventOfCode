@@ -1,9 +1,8 @@
 ﻿using AdventCode2021;
-using Xunit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Diagnostics;
+using Xunit;
 
 namespace DailyXunitTests
 {
@@ -50,61 +49,76 @@ namespace DailyXunitTests
         [Fact]
         public void Day17_Puzzle1_FindX_OK()
         {
-            var target = PuzzleTarget;
-            Dictionary<int, List<Tuple<int, int, int>>> dictVoT = new Dictionary<int, List<Tuple<int, int, int>>>();
-
-            foreach (var velX in Enumerable.Range(10, target.X2))
-            {
-                var sut = new TrickShotProbe(velX, 0);
-                int sec = 0;
-                do
-                {
-                    sec++;
-                    sut.DoSecondX();
-                    if (target.InsideX(sut.X))
-                    {
-                        Debug.WriteLine($"velX: {velX}, t: {sec}, X: {sut.X}");
-                        if (!dictVoT.ContainsKey(velX))
-                            dictVoT.Add(velX, new List<Tuple<int, int, int>>());
-
-                        dictVoT[velX].Add(new Tuple<int, int, int>(velX, sec, sut.X));
-                    }
-
-                } while (sut.X <= target.X2 && sut.Velx > 0);
-            }
+            var dictVoT = TrickShotProbe.FindValidVelocityXs(PuzzleTarget);
             Assert.NotEmpty(dictVoT);
+            int actual = dictVoT.Values.Max(l => l.Max(t => t.Item2));
+            Assert.Equal(20, actual);
         }
 
         [Fact]
-        public void Day17_Puzzle1_FindY_OK()
+        public void Day17_Puzzle1_FindMaxY_OK()
         {
-            var target = PuzzleTarget;
-            Dictionary<int, List<Tuple<int, int, int>>> dictVoT = new Dictionary<int, List<Tuple<int, int, int>>>();
-
-            foreach (var velY in Enumerable.Range(1, 1000))
-            {
-                var sut = new TrickShotProbe(0, velY);
-                int sec = 0;
-                int maxY = 0;
-                do
-                {
-                    sec++;
-                    sut.DoSecondY();
-                    if (sut.Y > maxY)
-                        maxY = sut.Y;
-                    if (target.InsideY(sut.Y))
-                    {
-                        Debug.WriteLine($"velY: {velY}, t: {sec}, Y: {sut.Y},  maxY: {maxY}");
-                        if (!dictVoT.ContainsKey(velY))
-                            dictVoT.Add(velY, new List<Tuple<int, int, int>>());
-
-                        dictVoT[velY].Add(new Tuple<int, int, int>(velY, sec, maxY));
-                    }
-
-                } while (sut.Y >= target.Y1);
-            }
+            var dictVoT = TrickShotProbe.FindValidVelocityYs(PuzzleTarget);
             // Look in the dictionary for highest max value.
             Assert.NotEmpty(dictVoT);
+            int actual = dictVoT.Values.Max(l => l.Max(t => t.Item3));
+            int maxT = dictVoT.Values.Max(l => l.Max(t => t.Item2));
+            Assert.Equal(7381, actual);
+            Assert.Equal(244, maxT);
+        }
+
+        [Fact]
+        public void Day17_Puzzle2_OK()
+        {
+            var dictVelXs = TrickShotProbe.FindValidVelocityXs(PuzzleTarget);
+            Assert.NotEmpty(dictVelXs);
+            var dictVelYs = TrickShotProbe.FindValidVelocityYs(PuzzleTarget);
+            Assert.NotEmpty(dictVelXs);
+
+            Dictionary<Point, int> dictVels = new Dictionary<Point, int>();
+
+            var velXs = new List<Tuple<int, int, int>>();
+            foreach (var list in dictVelXs.Values)
+            {
+                velXs.AddRange(list);
+            }
+            // find VelX that stop in target.
+            var stopVelx = velXs.Where(vx => vx.Item1 == vx.Item2).ToList();
+            Assert.Equal(2, stopVelx.Count);
+            int minTxs = stopVelx.Min(t => t.Item2);
+
+            var velYs = new List<Tuple<int, int, int>>();
+            foreach (var list in dictVelYs.Values)
+            {
+                velYs.AddRange(list);
+            }
+            var velYsOverMaxXTime = velYs.Where(vy => vy.Item2 >= minTxs);
+
+            foreach (var vy in velYsOverMaxXTime)
+            {
+                foreach (var vx in stopVelx)
+                {
+                    var p = new Point(vx.Item1, vy.Item1);
+                    if (!dictVels.ContainsKey(p))
+                        dictVels.Add(p, 1);
+                    else
+                        dictVels[p]++;
+                }
+            }
+
+            foreach (var vx in velXs)
+            {
+                foreach (var vy in velYs.Where(t => t.Item2 == vx.Item2))
+                {
+                    var p = new Point(vx.Item1, vy.Item1);
+                    if (!dictVels.ContainsKey(p))
+                        dictVels.Add(p, 1);
+                    else
+                        dictVels[p]++;
+                }
+            }
+            int actual = dictVels.Count;
+            Assert.Equal(3019, actual);
         }
     }
 }
