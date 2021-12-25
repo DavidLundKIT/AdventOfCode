@@ -1,8 +1,8 @@
-﻿using System.Text;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System;
 using System.Diagnostics;
+using System.Linq;
+using System.Text;
 
 namespace AdventCode2021
 {
@@ -36,11 +36,11 @@ namespace AdventCode2021
         {
             var enhancedImage = new Dictionary<Point, int>();
 
-            int xmin = Image.Keys.Min(p => p.X) - 1;
-            int xmax = Image.Keys.Max(p => p.X) + 1;
-            int ymin = Image.Keys.Min(p => p.Y) - 1;
-            int ymax = Image.Keys.Max(p => p.Y) + 1;
-            AddInfiniteSpace(step, xmin, xmax, ymin, ymax);
+            int xmin = Image.Keys.Min(p => p.X) - 4;
+            int xmax = Image.Keys.Max(p => p.X) + 4;
+            int ymin = Image.Keys.Min(p => p.Y) - 4;
+            int ymax = Image.Keys.Max(p => p.Y) + 4;
+            //AddInfiniteSpace(step, xmin, xmax, ymin, ymax);
             for (int y = ymin; y <= ymax; y++)
             {
                 for (int x = xmin; x <= xmax; x++)
@@ -95,12 +95,12 @@ namespace AdventCode2021
             return ('#' == ImageAlgorithm[val]);
         }
 
-        public int OriginalPixelCount()
+        public int ImagePixelCount(int steps)
         {
             int count = 0;
             foreach (var kvp in Image)
             {
-                if (0 <= kvp.Key.X && kvp.Key.X <= MaxX && 0 <= kvp.Key.Y && kvp.Key.Y <= MaxY)
+                if (-steps <= kvp.Key.X && kvp.Key.X <= MaxX + steps && -steps <= kvp.Key.Y && kvp.Key.Y <= MaxY + steps)
                 {
                     count++;
                 }

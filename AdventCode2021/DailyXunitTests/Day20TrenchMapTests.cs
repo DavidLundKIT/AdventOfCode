@@ -1,8 +1,6 @@
 ﻿using AdventCode2021;
-using Xunit;
-using System;
 using System.Collections.Generic;
-using System.Text;
+using Xunit;
 
 namespace DailyXunitTests
 {
@@ -55,10 +53,40 @@ namespace DailyXunitTests
             sut.DumpImage();
             sut.EnchanceImage(1);
             sut.DumpImage();
-            Assert.Equal(1, sut.OriginalPixelCount());
+            Assert.Equal(5249, sut.ImagePixelCount(2));
+        }
+
+        [Fact]
+        public void ImageEnhancer_Test50Times_OK()
+        {
+            var lines = Utils.ReadLinesFromFile("Day20test.txt");
+            Assert.Equal(7, lines.Length);
+
+            var sut = new ImageEnhancer(lines);
+            Assert.Equal(512, sut.ImageAlgorithm.Length);
+            Assert.Equal(10, sut.Image.Count);
+            for (int i = 0; i < 50; i++)
+            {
+                sut.EnchanceImage(i);
+            }
+            Assert.Equal(3351, sut.Image.Count);
+            Assert.Equal(3351, sut.ImagePixelCount(50));
         }
 
 
-
+        [Fact]
+        public void Day20_Puzzle2_OK()
+        {
+            var lines = Utils.ReadLinesFromFile("Day20.txt");
+            Assert.Equal(102, lines.Length);
+            var sut = new ImageEnhancer(lines);
+            Assert.Equal(512, sut.ImageAlgorithm.Length);
+            Assert.Equal(4974, sut.Image.Count);
+            for (int i = 0; i < 50; i++)
+            {
+                sut.EnchanceImage(i);
+            }
+            Assert.Equal(0, sut.ImagePixelCount(50));
+        }
     }
 }
