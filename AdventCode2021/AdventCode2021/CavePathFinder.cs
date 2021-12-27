@@ -7,14 +7,14 @@ namespace AdventCode2021
     public class CavePathFinder
     {
         public Dictionary<string, List<string>> MapNodes { get; set; }
-        public Dictionary<string, int> UsedNodes { get; set; }
+        public Dictionary<string, HashSet<string>> UsedNodes { get; set; }
         public Stack<string> Path;
         public Dictionary<string, int> Paths;
 
         public CavePathFinder(string[] lines)
         {
             MapNodes = new Dictionary<string, List<string>>();
-            UsedNodes = new Dictionary<string, int>();
+            UsedNodes = new Dictionary<string, HashSet<string>>();
             Paths = new Dictionary<string, int>();
             Path = new Stack<string>();
 
@@ -64,14 +64,6 @@ namespace AdventCode2021
             }
         }
 
-        public void AddUsedNode(string key)
-        {
-            if (UsedNodes.ContainsKey(key))
-                UsedNodes[key]++;
-            else
-                UsedNodes.Add(key, 1);
-        }
-
         public bool FindPath(string node)
         {
             if (node == "end")
@@ -91,16 +83,31 @@ namespace AdventCode2021
             List<string> nextNodes;
             do
             {
-                var meNodes = Path.Where(n => n == node).ToList();
-                if (meNodes.Count >= 1 && onlyOnce)
-                    return false;
-                if (MapNodes[node].Count == meNodes.Count)
+                if (!UsedNodes.ContainsKey(node))
                 {
-                    return false;
+                    // not ever done
+                    Path.Push(node);
+                    UsedNodes.Add(node, new HashSet<string>());
+                    nextNodes = MapNodes[node];
+                    UsedNodes[node].Add(nextNodes[0]);
+                    FindPath(nextNodes[0]);
                 }
-                nextNodes = MapNodes[node].GetRange(meNodes.Count, MapNodes[node].Count - meNodes.Count);
-                Path.Push(node);
-                FindPath(nextNodes[0]);
+                else
+                {
+                    // record in dict here before
+                    var meNodes = Path.Where(n => n == node).ToList();
+                    if (meNodes.Count >= 1 && onlyOnce)
+                        return false;
+                    var myNodes = new HashSet<string>(MapNodes[node]);
+                    myNodes.ExceptWith(UsedNodes[node].ToList());
+                    nextNodes = myNodes.ToList();
+                    if (nextNodes.Count > 0)
+                    {
+                        Path.Push(node);
+                        UsedNodes[node].Add(nextNodes[0]);
+                        FindPath(nextNodes[0]);
+                    }
+                }
             } while (nextNodes.Count > 0);
             return false;
         }
