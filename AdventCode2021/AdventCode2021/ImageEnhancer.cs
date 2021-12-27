@@ -36,17 +36,10 @@ namespace AdventCode2021
         {
             var enhancedImage = new Dictionary<Point, int>();
 
-            int xmin = Image.Keys.Min(p => p.X) - 1;
-            int xmax = Image.Keys.Max(p => p.X) + 1;
-            int ymin = Image.Keys.Min(p => p.Y) - 1;
-            int ymax = Image.Keys.Max(p => p.Y) + 1;
-            if (step == 0)
-            {
-                xmin -= 4;
-                xmax += 4;
-                ymin -= 4;
-                ymax += 4;
-            }
+            int xmin = Image.Keys.Min(p => p.X) - 4;
+            int xmax = Image.Keys.Max(p => p.X) + 4;
+            int ymin = Image.Keys.Min(p => p.Y) - 4;
+            int ymax = Image.Keys.Max(p => p.Y) + 4;
             for (int y = ymin; y <= ymax; y++)
             {
                 for (int x = xmin; x <= xmax; x++)

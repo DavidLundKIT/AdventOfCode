@@ -48,9 +48,7 @@ namespace DailyXunitTests
             var sut = new ImageEnhancer(lines);
             Assert.Equal(512, sut.ImageAlgorithm.Length);
             Assert.Equal(4974, sut.Image.Count);
-            sut.DumpImage();
             sut.EnchanceImage(0);
-            sut.DumpImage();
             sut.EnchanceImage(1);
             sut.DumpImage();
             Assert.Equal(5249, sut.ImagePixelCount(2));
