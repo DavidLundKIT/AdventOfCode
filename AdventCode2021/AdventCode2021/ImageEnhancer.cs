@@ -36,10 +36,17 @@ namespace AdventCode2021
         {
             var enhancedImage = new Dictionary<Point, int>();
 
-            int xmin = Image.Keys.Min(p => p.X) - 4;
-            int xmax = Image.Keys.Max(p => p.X) + 4;
-            int ymin = Image.Keys.Min(p => p.Y) - 4;
-            int ymax = Image.Keys.Max(p => p.Y) + 4;
+            int xmin = Image.Keys.Min(p => p.X) - 1;
+            int xmax = Image.Keys.Max(p => p.X) + 1;
+            int ymin = Image.Keys.Min(p => p.Y) - 1;
+            int ymax = Image.Keys.Max(p => p.Y) + 1;
+            if (step == 0)
+            {
+                xmin -= 4;
+                xmax += 4;
+                ymin -= 4;
+                ymax += 4;
+            }
             //AddInfiniteSpace(step, xmin, xmax, ymin, ymax);
             for (int y = ymin; y <= ymax; y++)
             {
@@ -53,24 +60,6 @@ namespace AdventCode2021
                 }
             }
             Image = enhancedImage;
-        }
-
-        public void AddInfiniteSpace(int step, int xmin, int xmax, int ymin, int ymax)
-        {
-            char ch = (step % 2 == 0) ? ImageAlgorithm[0] : '.';
-            if (ch == '#')
-            {
-                for (int x = xmin; x <= xmax; x++)
-                {
-                    Image.Add(new Point(x, ymin), 1);
-                    Image.Add(new Point(x, ymax), 1);
-                }
-                for (int y = ymin; y <= ymax; y++)
-                {
-                    Image.TryAdd(new Point(xmin, y), 1);
-                    Image.TryAdd(new Point(xmax, y), 1);
-                }
-            }
         }
 
         public bool IsEnhancedPixel(int x, int y, int step)
