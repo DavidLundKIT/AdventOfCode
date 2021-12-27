@@ -70,6 +70,7 @@ namespace DailyXunitTests
                 sut.EnchanceImage(i);
             }
             Assert.Equal(3351, sut.Image.Count);
+            sut.DumpImage();
             Assert.Equal(3351, sut.ImagePixelCount(50));
         }
 
@@ -86,6 +87,7 @@ namespace DailyXunitTests
             {
                 sut.EnchanceImage(i);
             }
+            sut.DumpImage();
             Assert.Equal(0, sut.ImagePixelCount(50));
         }
     }

@@ -47,7 +47,6 @@ namespace AdventCode2021
                 ymin -= 4;
                 ymax += 4;
             }
-            //AddInfiniteSpace(step, xmin, xmax, ymin, ymax);
             for (int y = ymin; y <= ymax; y++)
             {
                 for (int x = xmin; x <= xmax; x++)
@@ -70,13 +69,28 @@ namespace AdventCode2021
                 for (int i = x - 1; i <= x + 1; i++)
                 {
                     var p = new Point(i, j);
-                    if (Image.ContainsKey(p))
+                    if (i < -step || i > (MaxX + step - 1) || j < -step || j > (MaxY + step - 1))
                     {
-                        sb.Append("1");
+                        if (step % 2 == 0)
+                            sb.Append("0");
+                        else
+                        {
+                            if ('#' == ImageAlgorithm[0])
+                                sb.Append("1");
+                            else
+                                sb.Append("0");
+                        }
                     }
                     else
                     {
-                        sb.Append("0");
+                        if (Image.ContainsKey(p))
+                        {
+                            sb.Append("1");
+                        }
+                        else
+                        {
+                            sb.Append("0");
+                        }
                     }
                 }
             }
@@ -89,7 +103,7 @@ namespace AdventCode2021
             int count = 0;
             foreach (var kvp in Image)
             {
-                if (-steps <= kvp.Key.X && kvp.Key.X <= MaxX + steps && -steps <= kvp.Key.Y && kvp.Key.Y <= MaxY + steps)
+                if (-steps <= kvp.Key.X && kvp.Key.X <= (MaxX + steps - 1) && -steps <= kvp.Key.Y && kvp.Key.Y <= (MaxY + steps -1))
                 {
                     count++;
                 }
