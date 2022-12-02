@@ -1,6 +1,3 @@
-using System.Linq;
-using System.Collections.Generic;
-
 namespace AdventCode2022
 {
     public class Day01CalorieCountingTests
