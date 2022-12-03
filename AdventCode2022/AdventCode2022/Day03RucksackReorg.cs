@@ -86,6 +86,17 @@
 
         public char FindItemInRucksack(string rucksack)
         {
+            HashSet<char> side1 = new HashSet<char>(rucksack.Substring(0, rucksack.Length / 2));
+            HashSet<char> side2 = new HashSet<char>(rucksack.Substring(rucksack.Length / 2));
+            //Assert.Equal(rucksack.Length, side1.Count + side2.Count);
+            //Assert.Equal(side1.Count, side2.Count);
+            side1.IntersectWith(side2);
+            return side1.Single();
+        }
+
+        // Used this first
+        public char FindItemInRucksackFirst(string rucksack)
+        {
             string side1 = rucksack.Substring(0, rucksack.Length / 2);
             string side2 = rucksack.Substring(rucksack.Length / 2);
             Assert.Equal(rucksack.Length, side1.Length + side2.Length);
