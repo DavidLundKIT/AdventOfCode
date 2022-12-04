@@ -1,6 +1,6 @@
 ﻿namespace AdventCode2022
 {
-    public class Day03RucksackReorg
+    public class Day03RucksackReorgTests
     {
         [Fact]
         public void ReadInDataFile_OK()
