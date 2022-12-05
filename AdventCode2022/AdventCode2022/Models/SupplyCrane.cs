@@ -32,26 +32,29 @@ namespace AdventCode2022.Models
             }
         }
 
+       
         public void DoCmd(string cmd)
         {
-            var parts = cmd.Split(new char[] { ' ' });
-            int amount= int.Parse(parts[1]);
-            int from = int.Parse(parts[3]);
-            int to = int.Parse(parts[5]);
+            ParseCommand(cmd, out int amount, out int from, out int to);
 
             for (int item = 0; item < amount; item++)
             {
                 var crate = Stacks[from - 1].Pop();
-                Stacks[to-1].Push(crate);
+                Stacks[to - 1].Push(crate);
             }
+        }
+
+        private static void ParseCommand(string cmd, out int amount, out int from, out int to)
+        {
+            var parts = cmd.Split(new char[] { ' ' });
+            amount = int.Parse(parts[1]);
+            from = int.Parse(parts[3]);
+            to = int.Parse(parts[5]);
         }
 
         public void DoCmd9001(string cmd)
         {
-            var parts = cmd.Split(new char[] { ' ' });
-            int amount = int.Parse(parts[1]);
-            int from = int.Parse(parts[3]);
-            int to = int.Parse(parts[5]);
+            ParseCommand(cmd, out int amount, out int from, out int to);
 
             var tempStack = new Stack<char>();
             for (int item = 0; item < amount; item++)
