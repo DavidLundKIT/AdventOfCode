@@ -58,7 +58,7 @@
         }
 
         [Fact]
-        public void OverlappingElfSections_Part1_OK()
+        public void OverlappingElfSections_Part2_OK()
         {
             var elfSections = Utils.ReadLinesFromFile("Day04.txt");
             int expected = 1000;
@@ -74,7 +74,7 @@
                 }
             }
 
-            Assert.Equal(0, count);
+            Assert.Equal(839, count);
         }
 
         private bool OneContainsTheOther(string elfSection)
