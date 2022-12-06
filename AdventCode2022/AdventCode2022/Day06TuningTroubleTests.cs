@@ -17,14 +17,14 @@
         [InlineData("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw", 11)]
         public void FindFirstStartPacket_OK(string input, int expected)
         {
-            int actual = FindFirstStartPacket(input);
+            int actual = FindFirstUniquePacket(input, 4);
             Assert.Equal(expected, actual);
         }
 
         [Fact]
         public void TuningTroubles_Part1_OK()
         {
-            int actual = FindFirstStartPacket(inputData);
+            int actual = FindFirstUniquePacket(inputData, 4);
             Assert.Equal(1598, actual);
         }
 
@@ -36,35 +36,24 @@
         [InlineData("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw", 26)]
         public void FindFirstStartMessage_OK(string input, int expected)
         {
-            int actual = FindFirstStartMessage(input);
+            int actual = FindFirstUniquePacket(input, 14);
             Assert.Equal(expected, actual);
         }
 
         [Fact]
         public void TuningTroubles_Part2_OK()
         {
-            int actual = FindFirstStartMessage(inputData);
+            int actual = FindFirstUniquePacket(inputData, 14);
             Assert.Equal(2414, actual);
         }
 
-        public int FindFirstStartPacket(string input)
+        public int FindFirstUniquePacket(string input, int size)
         {
-            for (int i = 0; i < input.Length - 4; i++)
+            for (int i = 0; i < input.Length - size; i++)
             {
-                var hs = new HashSet<char>(input.Substring(i, 4));
-                if (hs.Count == 4)
-                    return i + 4;
-            }
-            return -1;
-        }
-
-        public int FindFirstStartMessage(string input)
-        {
-            for (int i = 0; i < input.Length - 14; i++)
-            {
-                var hs = new HashSet<char>(input.Substring(i, 14));
-                if (hs.Count == 14)
-                    return i + 14;
+                var hs = new HashSet<char>(input.Substring(i, size));
+                if (hs.Count == size)
+                    return i + size;
             }
             return -1;
         }
