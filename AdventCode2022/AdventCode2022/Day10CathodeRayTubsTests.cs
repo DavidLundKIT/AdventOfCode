@@ -64,7 +64,40 @@ namespace AdventCode2022
                 stepsDone += step;
                 totalSignal += stepsDone * cpu.CycleSignal;
             }
-            Assert.Equal(0, totalSignal);
+            Assert.Equal(12880, totalSignal);
+        }
+
+        [Fact]
+        public void CrtMessage_Test_OK()
+        {
+            var pgm = Utils.ReadLinesFromFile("Day10test.txt");
+            var cpu = new CathodeCpu(pgm);
+            for (int i = 0; i < 240; i++)
+            {
+                long reg = cpu.DoCycle();
+            }
+            cpu.DumpScreen();
+            Assert.Equal('#', cpu.Screen[0,0]);
+            Assert.Equal('#', cpu.Screen[0,1]);
+            Assert.Equal('#', cpu.Screen[0,2]);
+            Assert.Equal('#', cpu.Screen[0,3]);
+            Assert.Equal('#', cpu.Screen[0,4]);
+            Assert.Equal('#', cpu.Screen[0,5]);
+        }
+
+        [Fact]
+        public void CrtMessage_Part2_OK()
+        {
+            var pgm = Utils.ReadLinesFromFile("Day10.txt");
+            var cpu = new CathodeCpu(pgm);
+            for (int i = 0; i < 240; i++)
+            {
+                long reg = cpu.DoCycle();
+            }
+            cpu.DumpScreen();
+            // Answer was FCJAPJRE
+            // Look in the Output Window to tsee the Debug Dump Screen
+            Assert.Equal('#', cpu.Screen[0, 0]);
         }
     }
 }
