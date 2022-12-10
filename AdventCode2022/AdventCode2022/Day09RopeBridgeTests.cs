@@ -59,5 +59,31 @@ namespace AdventCode2022
             actual = sut.TailPlaces.Count;
             Assert.Equal(6406, actual);
         }
+
+        [Fact]
+        public void FindTailPositions_10Knots_Test2_OK()
+        {
+            var motions = Utils.ReadLinesFromFile("Day09test2.txt");
+            int actual = motions.Length;
+            Assert.Equal(8, actual);
+
+            var sut = new RopeMotion(0, 0, 10);
+            sut.ProcessCommands(motions);
+            actual = sut.TailPlaces.Count;
+            Assert.Equal(36, actual);
+        }
+
+        [Fact]
+        public void FindTailPositions_10Knots_Part2_OK()
+        {
+            var motions = Utils.ReadLinesFromFile("Day09.txt");
+            int actual = motions.Length;
+            Assert.Equal(2000, actual);
+
+            var sut = new RopeMotion(0, 0, 10);
+            sut.ProcessCommands(motions);
+            actual = sut.TailPlaces.Count;
+            Assert.Equal(2643, actual);
+        }
     }
 }
