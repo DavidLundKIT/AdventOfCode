@@ -16,14 +16,14 @@ namespace AdventCode2022
         }
 
         [Theory]
-        [InlineData(0, 2, "U", 0, 1)]
-        [InlineData(1, 2, "U", 1, 1)]
-        [InlineData(2, 1, "R", 1, 1)]
-        [InlineData(2, 0, "R", 1, 0)]
-        [InlineData(2, -1, "R", 1, -1)]
-        [InlineData(1, -2, "D", 1, -1)]
-        [InlineData(0, -2, "D", 0, -1)]
-        public void TrailCatchUpTests(int hx, int hy, string cmd, int expectedTailX, int expectedTailY)
+        [InlineData(0, 2, 0, 1)]
+        [InlineData(1, 2, 1, 1)]
+        [InlineData(2, 1, 1, 1)]
+        [InlineData(2, 0, 1, 0)]
+        [InlineData(2, -1, 1, -1)]
+        [InlineData(1, -2, 1, -1)]
+        [InlineData(0, -2, 0, -1)]
+        public void TrailCatchUpTests(int hx, int hy, int expectedTailX, int expectedTailY)
         {
             var sut = new RopeMotion(0, 0, 2);
             sut.HeadX[0] = hx;
