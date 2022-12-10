@@ -3,23 +3,23 @@
     public class RopeMotion
     {
         public Dictionary<string, int> TailPlaces { get; set; }
-        public Dictionary<string, int> HeadPlaces { get; set; }
-        public int HeadX { get; set; }
-        public int HeadY { get; set; }
-        public int TailX { get; set; }
-        public int TailY { get; set; }
+        public List<int> HeadX { get; set; }
+        public List<int> HeadY { get; set; }
+        public int TailIndex { get; set; }
 
-        public RopeMotion(int startX, int startY)
+        public RopeMotion(int startX, int startY, int size)
         {
-            HeadX = startX;
-            HeadY = startY;
-            TailX = startX;
-            TailY = startY;
+            HeadX = new List<int>();
+            HeadY = new List<int>();
+            for (int i = 0; i < size; i++)
+            {
+                HeadX.Add(startX);
+                HeadY.Add(startY);
+            }
+            TailIndex = size - 1;
             TailPlaces = new Dictionary<string, int>();
-            HeadPlaces = new Dictionary<string, int>();
             var key = MakeKey(startX, startY);
             TailPlaces.Add(key, 1);
-            HeadPlaces.Add(key, 1);
         }
 
         public void ProcessCommands(string[] commands)
@@ -40,84 +40,87 @@
                 switch (parts[0])
                 {
                     case "R":
-                        HeadX++;
+                        HeadX[0]++;
                         break;
                     case "L":
-                        HeadX--;
+                        HeadX[0]--;
                         break;
                     case "U":
-                        HeadY++;
+                        HeadY[0]++;
                         break;
                     case "D":
-                        HeadY--;
+                        HeadY[0]--;
                         break;
                     default:
                         break;
                 }
-                AddPosition(HeadPlaces, HeadX, HeadY);
-                if (!IsTailTouchingHead())
+                for (int idx = 1; idx < HeadX.Count; idx++)
                 {
-                    MoveTail(parts[0]);
+                    if (!IsTailTouchingHead(idx))
+                    {
+                        MoveTail(idx);
+                    }
                 }
             }
         }
 
-        public void MoveTail(string cmd)
+        public void MoveTail(int idx)
         {
-            // found Head
-
-            if (TailY == HeadY)
+            if (HeadY[idx - 1] == HeadY[idx])
             {
                 // left or right
-                if (cmd == "R")
+                if (HeadX[idx - 1] - HeadX[idx] > 0)
                 {
-                    TailX++;
+                    HeadX[idx]++;
                 }
                 else
                 {
-                    TailX--;
+                    HeadX[idx]--;
                 }
-                AddPosition(TailPlaces, TailX, TailY);
+                if (idx == TailIndex)
+                    AddPosition(TailPlaces, HeadX[idx], HeadY[idx]);
                 return;
             }
 
-            if (TailX == HeadX)
+            if (HeadX[idx - 1] == HeadX[idx])
             {
                 // up or down
-                if (cmd == "D")
+                if (HeadY[idx - 1] - HeadY[idx] > 0)
                 {
-                    TailY--;
+                    HeadY[idx]++;
                 }
                 else
                 {
-                    TailY++;
+                    HeadY[idx]--;
                 }
-                AddPosition(TailPlaces, TailX, TailY);
+                if (idx == TailIndex)
+                    AddPosition(TailPlaces, HeadX[idx], HeadY[idx]);
                 return;
             }
 
             // diagonals
-            int dx = HeadX - TailX;
-            int dy = HeadY - TailY;
+            int dx = HeadX[idx - 1] - HeadX[idx];
+            int dy = HeadY[idx - 1] - HeadY[idx];
             if (dx > 0)
-                TailX++;
+                HeadX[idx]++;
             else
-                TailX--;
+                HeadX[idx]--;
             if (dy > 0)
-                TailY++;
+                HeadY[idx]++;
             else
-                TailY--;
-            AddPosition(TailPlaces, TailX, TailY);
+                HeadY[idx]--;
+            if (idx == TailIndex)
+                AddPosition(TailPlaces, HeadX[idx], HeadY[idx]);
             return;
         }
 
-        public bool IsTailTouchingHead()
+        public bool IsTailTouchingHead(int idx)
         {
-            for (int x = TailX - 1; x <= TailX + 1; x++)
+            for (int x = HeadX[idx] - 1; x <= HeadX[idx] + 1; x++)
             {
-                for (int y = TailY - 1; y <= TailY + 1; y++)
+                for (int y = HeadY[idx] - 1; y <= HeadY[idx] + 1; y++)
                 {
-                    if (x == HeadX && y == HeadY)
+                    if (x == HeadX[idx - 1] && y == HeadY[idx - 1])
                     {
                         return true;
                     }
@@ -142,6 +145,5 @@
         {
             return $"({xIndex}, {yIndex})";
         }
-
     }
 }

@@ -1,10 +1,4 @@
 ﻿using AdventCode2022.Models;
-using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdventCode2022
 {
@@ -31,11 +25,11 @@ namespace AdventCode2022
         [InlineData(0, -2, "D", 0, -1)]
         public void TrailCatchUpTests(int hx, int hy, string cmd, int expectedTailX, int expectedTailY)
         {
-            var sut = new RopeMotion(0, 0);
-            sut.HeadX = hx;
-            sut.HeadY = hy;
+            var sut = new RopeMotion(0, 0, 2);
+            sut.HeadX[0] = hx;
+            sut.HeadY[0] = hy;
 
-            sut.MoveTail(cmd);
+            sut.MoveTail(1);
             var expectedKey = sut.MakeKey(expectedTailX, expectedTailY);
             Assert.True(sut.TailPlaces.ContainsKey(expectedKey));
         }
@@ -47,7 +41,7 @@ namespace AdventCode2022
             int actual = motions.Length;
             Assert.Equal(8, actual);
 
-            var sut = new RopeMotion(0, 0);
+            var sut = new RopeMotion(0, 0, 2);
             sut.ProcessCommands(motions);
             actual = sut.TailPlaces.Count;
             Assert.Equal(13, actual);
@@ -60,7 +54,7 @@ namespace AdventCode2022
             int actual = motions.Length;
             Assert.Equal(2000, actual);
 
-            var sut = new RopeMotion(0, 0);
+            var sut = new RopeMotion(0, 0, 2);
             sut.ProcessCommands(motions);
             actual = sut.TailPlaces.Count;
             Assert.Equal(6406, actual);
