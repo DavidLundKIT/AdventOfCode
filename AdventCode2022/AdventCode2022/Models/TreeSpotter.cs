@@ -57,13 +57,9 @@
             for (int i = xIndex - 1; i >= 0; i--)
             {
                 int treeNow = Trees[yIndex][i];
-                if (treeNow < thisTree)
+                treesSeen++;
+                if (treeNow >= thisTree)
                 {
-                    treesSeen++;
-                }
-                else if (treeNow >= thisTree)
-                {
-                    treesSeen++;
                     break;
                 }
             }
@@ -71,16 +67,12 @@
 
             // Right
             treesSeen = 0;
-            for (int i = xIndex +1; i < Trees[yIndex].Count; i++)
+            for (int i = xIndex + 1; i < Trees[yIndex].Count; i++)
             {
                 int treeNow = Trees[yIndex][i];
-                if (treeNow < thisTree)
+                treesSeen++;
+                if (treeNow >= thisTree)
                 {
-                    treesSeen++;
-                }
-                else if (treeNow >= thisTree)
-                {
-                    treesSeen++;
                     break;
                 }
             }
@@ -91,13 +83,9 @@
             for (int i = yIndex - 1; i >= 0; i--)
             {
                 int treeNow = Trees[i][xIndex];
-                if (treeNow < thisTree)
+                treesSeen++;
+                if (treeNow >= thisTree)
                 {
-                    treesSeen++;
-                }
-                else if (treeNow >= thisTree)
-                {
-                    treesSeen++;
                     break;
                 }
             }
@@ -108,13 +96,9 @@
             for (int i = yIndex + 1; i < Trees.Count; i++)
             {
                 int treeNow = Trees[i][xIndex];
-                if (treeNow < thisTree)
+                treesSeen++;
+                if (treeNow >= thisTree)
                 {
-                    treesSeen++;
-                }
-                else if (treeNow >= thisTree)
-                {
-                    treesSeen++;
                     break;
                 }
             }
