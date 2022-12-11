@@ -51,7 +51,8 @@ namespace AdventCode2022.Models
                     worryLevel *= item;
 
                 // monkey bored
-                worryLevel = (int) worryLevel /3;
+                //worryLevel = (int) Math.Floor(worryLevel/3.0);
+                worryLevel = (long) worryLevel/3;
 
                 if (worryLevel % TestFactor == 0)
                 {

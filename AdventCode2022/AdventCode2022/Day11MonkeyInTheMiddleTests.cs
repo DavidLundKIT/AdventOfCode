@@ -1,9 +1,4 @@
 ﻿using AdventCode2022.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdventCode2022
 {
@@ -34,8 +29,9 @@ namespace AdventCode2022
                 Monkey.DoRound();
             }
             long actual = Monkey.MonkeyBusiness();
-            // wrong is 99540
-            Assert.Equal(0, actual);
+            // wrong: 99540
+            // wrong: 99225 - added Math.floor() when / 3
+            Assert.Equal(99852, actual);
         }
     }
 }
