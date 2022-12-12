@@ -30,7 +30,7 @@ namespace AdventCode2022.Models
             Start.SetDistance(Finish.X, Finish.Y);
         }
 
-        public int FindFewestSteps() 
+        public int FindFewestSteps()
         {
             var activeTiles = new List<Tile>();
             activeTiles.Add(Start);
@@ -105,7 +105,7 @@ namespace AdventCode2022.Models
             var possibleTiles = new List<Tile>()
             {
                 new Tile { X = currentTile.X, Y = currentTile.Y - 1, Parent = currentTile, Cost = currentTile.Cost + 1 },
-                new Tile { X = currentTile.X, Y = currentTile.Y + 1, Parent = currentTile, Cost = currentTile.Cost + 1},
+                new Tile { X = currentTile.X, Y = currentTile.Y + 1, Parent = currentTile, Cost = currentTile.Cost + 1 },
                 new Tile { X = currentTile.X - 1, Y = currentTile.Y, Parent = currentTile, Cost = currentTile.Cost + 1 },
                 new Tile { X = currentTile.X + 1, Y = currentTile.Y, Parent = currentTile, Cost = currentTile.Cost + 1 },
             };
@@ -118,8 +118,15 @@ namespace AdventCode2022.Models
             return possibleTiles
                     .Where(tile => tile.X >= 0 && tile.X <= maxX)
                     .Where(tile => tile.Y >= 0 && tile.Y <= maxY)
-                    .Where(tile => map[tile.Y][tile.X] == ' ' || map[tile.Y][tile.X] == 'B')
+                    .Where(tile => IsWalkable(map, currentTile, tile) || map[tile.Y][tile.X] == FinishStr[0])
                     .ToList();
+        }
+
+        public bool IsWalkable(List<string> map, Tile currentTile, Tile targetTile)
+        {
+            char current = map[currentTile.Y][currentTile.X];
+            char target = map[targetTile.Y][targetTile.X];
+            return (char.IsLower(current) && char.IsLower(target) && Math.Abs(current - target) == 1);
         }
     }
 

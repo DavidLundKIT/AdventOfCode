@@ -21,5 +21,17 @@ namespace AdventCode2022
             int actual = algo.FindFewestSteps();
             Assert.Equal(15, actual);
         }
+
+        [Fact]
+        public void FindSteps_Test_ok()
+        {
+            var lines = Utils.ReadLinesFromFile("Day12test.txt");
+            int actual = lines.Length;
+            Assert.Equal(5, actual);
+
+            var algo = new HillClimbingAlogrithm(lines, "S", "E");
+            actual = algo.FindFewestSteps();
+            Assert.Equal(31, actual);
+        }
     }
 }
