@@ -30,6 +30,19 @@ namespace AdventCode2022.Models
             Start.SetDistance(Finish.X, Finish.Y);
         }
 
+        public HillClimbingAlogrithm(string[] lines, Tile start, string finish)
+        {
+            Map = new List<string>(lines);
+            StartStr = "S";
+            Start = start;
+            FinishStr = finish;
+            Finish = new Tile();
+            Finish.Y = Map.FindIndex(x => x.Contains(FinishStr));
+            Finish.X = Map[Finish.Y].IndexOf(FinishStr);
+
+            Start.SetDistance(Finish.X, Finish.Y);
+        }
+
         public int FindFewestSteps()
         {
             var activeTiles = new List<Tile>();
@@ -98,7 +111,7 @@ namespace AdventCode2022.Models
             }
 
             Debug.WriteLine("No Path Found!");
-            return 0;
+            return int.MaxValue;
         }
         public List<Tile> GetWalkableTiles(List<string> map, Tile currentTile, Tile targetTile)
         {
@@ -118,15 +131,24 @@ namespace AdventCode2022.Models
             return possibleTiles
                     .Where(tile => tile.X >= 0 && tile.X <= maxX)
                     .Where(tile => tile.Y >= 0 && tile.Y <= maxY)
-                    .Where(tile => IsWalkable(map, currentTile, tile) || map[tile.Y][tile.X] == FinishStr[0])
+                    .Where(tile => IsWalkable(map, currentTile, tile))
                     .ToList();
         }
 
         public bool IsWalkable(List<string> map, Tile currentTile, Tile targetTile)
         {
             char current = map[currentTile.Y][currentTile.X];
+            if (current == StartStr[0])
+            {
+                return true;
+            }
             char target = map[targetTile.Y][targetTile.X];
-            return (char.IsLower(current) && char.IsLower(target) && Math.Abs(current - target) == 1);
+            if (target != FinishStr[0])
+            {
+                return (char.IsLower(target) && (target - current) <= 1);
+            }
+            // Target is the Finish - current must be a z since we are at the highest
+            return (current == 'z');
         }
     }
 
