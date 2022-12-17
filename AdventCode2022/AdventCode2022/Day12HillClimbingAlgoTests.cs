@@ -78,7 +78,7 @@ namespace AdventCode2022
             Assert.Equal(29, fewest);
         }
 
-        [Fact]
+        [Fact(Skip ="took 5.1 min")]
         public void FindStepsOfAll_a_Part2_ok()
         {
             var lines = Utils.ReadLinesFromFile("Day12.txt");
