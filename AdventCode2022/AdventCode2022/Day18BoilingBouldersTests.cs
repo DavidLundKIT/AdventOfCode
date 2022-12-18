@@ -1,9 +1,4 @@
 ﻿using AdventCode2022.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdventCode2022
 {
@@ -100,7 +95,7 @@ namespace AdventCode2022
 
             actual = sut.SurfaceAreaExternalOnly();
             // 4218 is wrong
-            Assert.Equal(0, actual);
+            Assert.Equal(2588, actual);
         }
     }
 }
