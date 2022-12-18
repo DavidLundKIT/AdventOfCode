@@ -167,7 +167,51 @@ namespace AdventCode2022.Models
             // nowhere to go,
             return pt;
         }
+
+        public int DropSandTillBlockedSpout()
+        {
+            int count = 0;
+
+            while (DropSandUnitUntilBlockedSpout())
+            {
+                count++;
+            }
+            return count;
+        }
+
+        public void AddInfiniteFloor()
+        {
+            InitBorders();
+            Ymax += 2;
+            for (int x = Xmin - Ymax; x <= Xmax + Ymax; x++)
+            {
+                Map.Add(new Tuple<int, int>(x, Ymax), "#");
+            }
+        }
+
+        public bool DropSandUnitUntilBlockedSpout()
+        {
+            var pt = new Tuple<int, int>(500, 0);
+            var ptNext = Blocked(pt);
+            if (ptNext == pt)
+            {
+                // blocked
+                Map[pt] = "*";
+                return false;
+            }
+
+            while (OnMap(pt))
+            {
+                ptNext = Blocked(pt);
+                if (ptNext == pt)
+                {
+                    // blocked
+                    Map.Add(pt, "o");
+                    break;
+                }
+                pt = ptNext;
+            }
+            return OnMap(pt);
+        }
     }
-
-
 }
