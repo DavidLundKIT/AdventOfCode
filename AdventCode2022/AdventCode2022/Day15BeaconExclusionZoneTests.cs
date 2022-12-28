@@ -1,9 +1,4 @@
 ﻿using AdventCode2022.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdventCode2022
 {
@@ -61,6 +56,36 @@ namespace AdventCode2022
             // 3291350 too low
             // 4930721 too low
             // 4930720 too low
+            Assert.Equal(4985193, actual);
+        }
+
+        [Fact]
+        public void BeaconFindFrequency_Test_OK()
+        {
+            var lines = Utils.ReadLinesFromFile("Day15test.txt");
+            long actual = lines.Length;
+            Assert.Equal(14, actual);
+            var sut = new BeaconSensorCalculator(lines);
+            actual = sut.SensorBeaconDict.Count;
+            Assert.Equal(14, actual);
+
+            actual = sut.FindFrequency(0, 20);
+
+            Assert.Equal(56000011, actual);
+        }
+
+        [Fact]
+        public void BeaconFindFrequency_Part2_OK()
+        {
+            var lines = Utils.ReadLinesFromFile("Day15.txt");
+            long actual = lines.Length;
+            Assert.Equal(27, actual);
+            var sut = new BeaconSensorCalculator(lines);
+            actual = sut.SensorBeaconDict.Count;
+            Assert.Equal(27, actual);
+
+            actual = sut.FindFrequency(0, 4000000);
+
             Assert.Equal(0, actual);
         }
     }

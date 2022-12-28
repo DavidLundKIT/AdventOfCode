@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 
 namespace AdventCode2022.Models
 {
@@ -35,13 +31,14 @@ namespace AdventCode2022.Models
         {
             SensedPoints.Clear();
 
-            foreach (var sensor in SensorBeaconDict.Keys)
+            foreach (var kvp in SensorBeaconDict)
             {
-                var beacon = SensorBeaconDict[sensor];
+                var sensor = kvp.Key;
+                var beacon = kvp.Value;
                 long manhattenBeacon = ManhattenDistance(sensor, beacon);
                 // sensing range reaches the row
                 long xDistance = (1 + manhattenBeacon) * 2;
-                for (long x = sensor.Item1 - xDistance; x < sensor.Item2 + xDistance; x++)
+                for (long x = sensor.Item1 - xDistance; x < sensor.Item1 + xDistance; x++)
                 {
                     var tNow = new Tuple<long, long>(x, row);
                     long dist = ManhattenDistance(sensor, tNow);
@@ -57,7 +54,7 @@ namespace AdventCode2022.Models
 
             foreach (var beacon in SensorBeaconDict.Values)
             {
-                if(SensedPoints.ContainsKey(beacon))
+                if (SensedPoints.ContainsKey(beacon))
                 {
                     SensedPoints.Remove(beacon);
                 }
@@ -68,6 +65,86 @@ namespace AdventCode2022.Models
         public long ManhattenDistance(Tuple<long, long> sensor, Tuple<long, long> beacon)
         {
             return Math.Abs(sensor.Item1 - beacon.Item1) + Math.Abs(sensor.Item2 - beacon.Item2);
+        }
+
+        public long FindFrequency(int vMin, int vMax)
+        {
+            bool sensed = false;
+            for (int x = vMin; x <= vMax; x++)
+            {
+                for (int y = vMin; y <= vMax; y++)
+                {
+                    var tNow = new Tuple<long, long>(x, y);
+                    sensed = false;
+                    foreach (var kvp in SensorBeaconDict)
+                    {
+                        var sensor = kvp.Key;
+                        var beacon = kvp.Value;
+                        long manhattenBeacon = ManhattenDistance(sensor, beacon);
+                        long dist = ManhattenDistance(sensor, tNow);
+                        if (dist <= manhattenBeacon)
+                        {
+                            sensed= true;
+                            break;
+                        }
+                    }
+                    if (!sensed)
+                    {
+                        long freq = x * 4000000 + y;
+                        return freq;
+                    }
+                }
+            }
+            return 0;
+        }
+
+        public long FindFrequencyFirstTry(long vMin, long vMax)
+        {
+            PrepSearchSquare(vMin, vMax);
+
+            foreach (var kvp in SensorBeaconDict)
+            {
+                var sensor = kvp.Key;
+                var beacon = kvp.Value;
+                long manhattenBeacon = ManhattenDistance(sensor, beacon);
+                long xMin = (sensor.Item1 - manhattenBeacon) < vMin ? vMin : sensor.Item1 - manhattenBeacon;
+                long xMax = (sensor.Item1 + manhattenBeacon) > vMax ? vMax : sensor.Item1 + manhattenBeacon;
+                long yMin = (sensor.Item2 - manhattenBeacon) < vMin ? vMin : sensor.Item2 - manhattenBeacon;
+                long yMax = (sensor.Item2 + manhattenBeacon) > vMax ? vMax : sensor.Item2 + manhattenBeacon;
+                for (long x = xMin; x <= xMax; x++)
+                {
+                    for (long y = yMin; y <= yMax; y++)
+                    {
+                        var tNow = new Tuple<long, long>(x, y);
+                        long dist = ManhattenDistance(sensor, tNow);
+                        if (dist <= manhattenBeacon)
+                        {
+                            SensedPoints[tNow] += 1;
+                        }
+                    }
+                }
+            }
+            var notSensed = SensedPoints.Where(k => k.Value == 0);
+            if (notSensed.Any())
+            {
+                var tFirst = notSensed.SingleOrDefault();
+                long freq = tFirst.Key.Item1 * 4000000 + tFirst.Key.Item2;
+                return freq;
+            }
+            return 0;
+        }
+
+        public void PrepSearchSquare(long vMin, long vMax)
+        {
+            SensedPoints.Clear();
+            for (long x = vMin; x <= vMax; x++)
+            {
+                for (long y = vMin; y <= vMax; y++)
+                {
+                    var tNow = new Tuple<long, long>(x, y);
+                    SensedPoints.Add(tNow, 0);
+                }
+            }
         }
     }
 }
