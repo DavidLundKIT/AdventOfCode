@@ -74,7 +74,7 @@ namespace AdventCode2022
             Assert.Equal(56000011, actual);
         }
 
-        [Fact]
+        [Fact(Skip ="Too long")]
         public void BeaconFindFrequency_Part2_OK()
         {
             var lines = Utils.ReadLinesFromFile("Day15.txt");
