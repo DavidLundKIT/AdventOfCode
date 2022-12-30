@@ -1,12 +1,4 @@
-﻿using AdventCode2022.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AdventCode2022
+﻿namespace AdventCode2022
 {
     public class Day25FullOfHotAirTests
     {
