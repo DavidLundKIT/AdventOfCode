@@ -4,41 +4,45 @@ namespace AdventCode2022.Models
 {
     public class GrovePositioningSystem
     {
-        public List<int> OriginalOrder { get; set; }
-        public LinkedList<Tuple<int, int>> OrderList { get; set; }
+        public List<long> OriginalOrder { get; set; }
+        public LinkedList<Tuple<long, long>> OrderList { get; set; }
+        public long DecryptionKey { get; set; }
 
-        public GrovePositioningSystem(List<int> originalOrder)
+        public GrovePositioningSystem(List<long> originalOrder, long decryptionKey = 1)
         {
-            OriginalOrder = originalOrder;
-            OrderList = new LinkedList<Tuple<int, int>>();
+            OriginalOrder = new List<long>();
+            OrderList = new LinkedList<Tuple<long, long>>();
+            DecryptionKey = decryptionKey;
 
             for (int i = 0; i < originalOrder.Count; i++)
             {
-                OrderList.AddLast(new Tuple<int, int>(i, originalOrder[i]));
+                OriginalOrder.Add(originalOrder[i]);
+                OrderList.AddLast(new Tuple<long, long>(i, OriginalOrder[i] * DecryptionKey));
             }
         }
 
         public void DoMove(int step)
         {
 
-            var tNow = new Tuple<int, int>(step, OriginalOrder[step]);
+            var tNow = new Tuple<long, long>(step, OriginalOrder[step] * DecryptionKey);
             var nodeNow = OrderList.Find(tNow);
-            if (nodeNow.Value.Item2 < 0)
+            long steps = nodeNow.Value.Item2 % (OrderList.Count - 1);
+            if (steps < 0)
             {
-                LinkedListNode<Tuple<int, int>> nodeNew = nodeNow.Previous ?? nodeNow.List.Last;
+                LinkedListNode<Tuple<long, long>> nodeNew = nodeNow.Previous ?? nodeNow.List.Last;
                 OrderList.Remove(nodeNow);
-                for (int i = 0; i > nodeNow.Value.Item2; i--)
+                for (long i = 0; i > steps; i--)
                 {
                     nodeNew = nodeNew.Previous ?? nodeNew.List.Last;
                 }
 
                 OrderList.AddAfter(nodeNew, tNow);
             }
-            else if (nodeNow.Value.Item2 > 0)
+            else if (steps > 0)
             {
-                LinkedListNode<Tuple<int, int>> nodeNew = nodeNow.Next ?? nodeNow.List.First;
+                LinkedListNode<Tuple<long, long>> nodeNew = nodeNow.Next ?? nodeNow.List.First;
                 OrderList.Remove(nodeNow);
-                for (int i = 0; i < nodeNow.Value.Item2; i++)
+                for (long i = 0; i < steps; i++)
                 {
                     nodeNew = nodeNew.Next ?? nodeNew.List.First;
                 }
@@ -50,18 +54,18 @@ namespace AdventCode2022.Models
             }
         }
 
-        public int FindNthValueAfterZero(int nth)
+        public long FindNthValueAfterZero(long nth)
         {
             // zero is unique
             var index = OriginalOrder.IndexOf(0);
 
-            var tZero = new Tuple<int, int>(index, OriginalOrder[index]);
+            var tZero = new Tuple<long, long>(index, OriginalOrder[index]);
             var nodeNew = OrderList.Find(tZero);
             if (nodeNew.Value.Item2 != 0)
             {
                 throw new Exception("Did not find node 0!");
             }
-            for (int i = 0; i < nth; i++)
+            for (long i = 0; i < nth; i++)
             {
                 nodeNew = nodeNew.Next ?? nodeNew.List.First;
             }
