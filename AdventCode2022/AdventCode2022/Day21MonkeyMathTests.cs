@@ -1,9 +1,4 @@
 ﻿using AdventCode2022.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdventCode2022
 {
@@ -84,6 +79,22 @@ namespace AdventCode2022
         }
 
         [Fact]
+        public void SolveMonkeyRiddle_SolveHuman_Test_OK()
+        {
+            var lines = Utils.ReadLinesFromFile("Day21test.txt");
+            long actual = lines.Length;
+            Assert.Equal(15, actual);
+
+            var mrs = new MonkeyRiddleSolver(lines);
+            Assert.Equal(15, mrs.ProgramDict.Count);
+
+            mrs.ProgramDict["root"].Operand = '=';
+
+            actual = mrs.SolveForValue("humn", false);
+            Assert.Equal(301, actual);
+        }
+
+        [Fact]
         public void SolveMonkeyRiddle_Human_Part2_OK()
         {
             var lines = Utils.ReadLinesFromFile("Day21.txt");
@@ -101,7 +112,10 @@ namespace AdventCode2022
             // 52282191702834
             long rightValue = mrs.Solve(mt.RightKey);
 
+
             Assert.Equal(leftValue, rightValue);
+
+
         }
 
     }
