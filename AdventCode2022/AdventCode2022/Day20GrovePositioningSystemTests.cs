@@ -1,9 +1,4 @@
 ﻿using AdventCode2022.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdventCode2022
 {
@@ -40,7 +35,7 @@ namespace AdventCode2022
 
             List<int> expected = new List<int>() { 1, 2, -3, 4, 0, 3, -2 };
             var actual = gps.OrderList.Select(n => n.Item2).ToList();
-            var results = expected.Zip(actual).Select(p => p.First== p.Second);
+            var results = expected.Zip(actual).Select(p => p.First == p.Second);
             foreach (var result in results)
             {
                 Assert.True(result);
@@ -92,7 +87,7 @@ namespace AdventCode2022
 
             // -11641 is wrong
             // -5753
-            Assert.Equal(int.MinValue, value1k + value2k + value3k);
+            Assert.Equal(3473, value1k + value2k + value3k);
         }
 
         [Fact]
