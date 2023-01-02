@@ -60,7 +60,7 @@ namespace AdventCode2022.Models
         }
 
 
-        public long SolveForValue(string key, bool isLeftKey)
+        public long SolveForValue(string key)
         {
             long leftValue = 0;
             long rightValue = 0;
@@ -75,51 +75,42 @@ namespace AdventCode2022.Models
                 }
                 // left key
                 rightValue = Solve(mt.RightKey);
-                leftValue = SolveForValue(mt.Key, true);
-                switch (mt.Operand)
+                leftValue = SolveForValue(mt.Key);
+            }
+            else
+            {
+                mt = ProgramDict.Values.Where(mt => mt.RightKey == key).SingleOrDefault();
+                if (mt == null)
                 {
-                    case '+':
-                        result = rightValue - leftValue;
-                        break;
-                    case '-':
-                        result = rightValue + leftValue;
-                        break;
-                    case '*':
-                        result = rightValue / leftValue;
-                        break;
-                    case '/':
-                        result = rightValue * leftValue;
-                        break;
-                    default:
-                        Debug.WriteLine($"Operand: {mt.Operand}");
-                        break;
+                    throw new ArgumentNullException(nameof(mt));
                 }
-                return result;
-            }
-            mt = ProgramDict.Values.Where(mt => mt.RightKey == key).SingleOrDefault();
-            if (mt == null)
-            {
-                throw new ArgumentNullException(nameof(mt));
-            }
-            if (mt.Key == "root")
-            {
+                if (mt.Key == "root")
+                {
+                    leftValue = Solve(mt.LeftKey);
+                    return leftValue;
+                }
+                // right key
                 leftValue = Solve(mt.LeftKey);
-                return leftValue;
+                rightValue = SolveForValue(mt.Key);
             }
-            // right key
-            leftValue = Solve(mt.LeftKey);
-            rightValue = SolveForValue(mt.Key, false);
 
             switch (mt.Operand)
             {
                 case '+':
-                    result = rightValue - leftValue;
+                    result = key == mt.LeftKey ? (leftValue - rightValue) : (rightValue - leftValue);
+                    //result = key == mt.LeftKey ? (rightValue - leftValue) : (leftValue - rightValue);
+                    //result = leftValue - rightValue;
+                    //result = rightValue - leftValue;
                     break;
                 case '-':
                     result = rightValue + leftValue;
                     break;
                 case '*':
-                    result = leftValue / rightValue;
+                    //result = isLeftKey ? (leftValue / rightValue) : (rightValue / leftValue);
+                    //result = key == mt.LeftKey ? (leftValue / rightValue) : (rightValue / leftValue);
+                    result = leftValue > rightValue ? (leftValue / rightValue) : (rightValue / leftValue);
+                    //result = leftValue / rightValue;
+                    //result = rightValue / leftValue;
                     break;
                 case '/':
                     result = rightValue * leftValue;

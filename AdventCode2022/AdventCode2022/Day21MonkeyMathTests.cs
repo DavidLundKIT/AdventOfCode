@@ -90,7 +90,7 @@ namespace AdventCode2022
 
             mrs.ProgramDict["root"].Operand = '=';
 
-            actual = mrs.SolveForValue("humn", false);
+            actual = mrs.SolveForValue("humn");
             Assert.Equal(301, actual);
         }
 
@@ -109,9 +109,36 @@ namespace AdventCode2022
             // left 107992431115158
             // right 52282191702834
 
-            actual = mrs.SolveForValue("humn", false);
+
+            // wrong 8882214318977
+            // wrong 8882214319976
+            actual = mrs.SolveForValue("humn");
             Assert.Equal(0, actual);
         }
 
+        [Fact]
+        public void SolveMonkeyRiddle_LeftPart_Part2_OK()
+        {
+            var lines = Utils.ReadLinesFromFile("Day21.txt");
+            long actual = lines.Length;
+            Assert.Equal(1933, actual);
+
+            var mrs = new MonkeyRiddleSolver(lines);
+            Assert.Equal(1933, mrs.ProgramDict.Count);
+
+            var mt = mrs.ProgramDict["root"];
+            //mrs.ProgramDict["humn"].Value = 8882214318977;
+
+            // left 107992431115158
+            long leftValue = mrs.Solve(mt.LeftKey);
+            // right 52282191702834
+            long rightValue = mrs.Solve(mt.RightKey);
+
+            //Assert.Equal(rightValue, leftValue);
+
+            // wrong 8882214318977
+            actual = mrs.SolveForValue("humn");
+            Assert.Equal(52282191702834, actual);
+        }
     }
 }
