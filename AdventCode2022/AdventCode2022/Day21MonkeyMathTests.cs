@@ -104,18 +104,13 @@ namespace AdventCode2022
             var mrs = new MonkeyRiddleSolver(lines);
             Assert.Equal(1933, mrs.ProgramDict.Count);
 
-            var mt = mrs.ProgramDict["root"];
+            mrs.ProgramDict["root"].Operand = '=';
 
-            // 107992431115158
-            long leftValue = mrs.Solve(mt.LeftKey);
+            // left 107992431115158
+            // right 52282191702834
 
-            // 52282191702834
-            long rightValue = mrs.Solve(mt.RightKey);
-
-
-            Assert.Equal(leftValue, rightValue);
-
-
+            actual = mrs.SolveForValue("humn", false);
+            Assert.Equal(0, actual);
         }
 
     }

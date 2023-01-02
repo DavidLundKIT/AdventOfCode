@@ -65,42 +65,30 @@ namespace AdventCode2022.Models
             long leftValue = 0;
             long rightValue = 0;
             long result = 0;
-            if (key == "root")
-            {
-                var root = ProgramDict["root"];
-                if (isLeftKey)
-                {
-                    rightValue = Solve(root.RightKey);
-                    return rightValue;
-                }
-                else
-                {
-                    leftValue = Solve(root.LeftKey);
-                    return leftValue;
-                }
-            }
             var mt = ProgramDict.Values.Where(mt => mt.LeftKey == key).SingleOrDefault();
             if (mt != null)
             {
+                if (mt.Key == "root")
+                {
+                    rightValue = Solve(mt.RightKey);
+                    return rightValue;
+                }
                 // left key
                 rightValue = Solve(mt.RightKey);
                 leftValue = SolveForValue(mt.Key, true);
                 switch (mt.Operand)
                 {
                     case '+':
-                        result = leftValue - rightValue;
+                        result = rightValue - leftValue;
                         break;
                     case '-':
-                        result = leftValue + rightValue;
+                        result = rightValue + leftValue;
                         break;
                     case '*':
-                        result = leftValue / rightValue;
+                        result = rightValue / leftValue;
                         break;
                     case '/':
-                        result = leftValue * rightValue;
-                        break;
-                    case '=':
-                        result = rightValue;
+                        result = rightValue * leftValue;
                         break;
                     default:
                         Debug.WriteLine($"Operand: {mt.Operand}");
@@ -113,26 +101,28 @@ namespace AdventCode2022.Models
             {
                 throw new ArgumentNullException(nameof(mt));
             }
+            if (mt.Key == "root")
+            {
+                leftValue = Solve(mt.LeftKey);
+                return leftValue;
+            }
             // right key
-            rightValue = SolveForValue(mt.Key, false);
             leftValue = Solve(mt.LeftKey);
+            rightValue = SolveForValue(mt.Key, false);
 
             switch (mt.Operand)
             {
                 case '+':
-                    result = leftValue - rightValue;
+                    result = rightValue - leftValue;
                     break;
                 case '-':
-                    result = leftValue + rightValue;
+                    result = rightValue + leftValue;
                     break;
                 case '*':
                     result = leftValue / rightValue;
                     break;
                 case '/':
-                    result = leftValue * rightValue;
-                    break;
-                case '=':
-                    result = leftValue;
+                    result = rightValue * leftValue;
                     break;
                 default:
                     Debug.WriteLine($"Operand: {mt.Operand}");
