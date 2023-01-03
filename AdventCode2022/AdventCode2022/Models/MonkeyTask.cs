@@ -9,7 +9,7 @@
         public char Operand { get; set; }
         public int TimesCalled { get; set; }
 
-        public MonkeyTask(string line) 
+        public MonkeyTask(string line)
         {
             var parts = line.Split(new char[] { ' ', ':' }, StringSplitOptions.RemoveEmptyEntries);
             if (parts.Length == 2)
@@ -20,7 +20,7 @@
                 LeftKey = string.Empty;
                 RightKey = string.Empty;
             }
-            else if (parts.Length == 4) 
+            else if (parts.Length == 4)
             {
                 Key = parts[0];
                 Value = 0;

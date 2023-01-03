@@ -104,6 +104,7 @@ namespace AdventCode2022.Models
                 rightValue = SolveForValue(mt.Key);
             }
 
+            // needed help sorting out special for "-" and "/" - my stuff to simple
             switch (mt.Operand)
             {
                 case '+':
@@ -113,7 +114,7 @@ namespace AdventCode2022.Models
                     //result = rightValue - leftValue;
                     break;
                 case '-':
-                    result = rightValue + leftValue;
+                    result = key == mt.LeftKey ? rightValue + leftValue : leftValue - rightValue;
                     break;
                 case '*':
                     //result = isLeftKey ? (leftValue / rightValue) : (rightValue / leftValue);
@@ -126,7 +127,7 @@ namespace AdventCode2022.Models
                     //result = rightValue / leftValue;
                     break;
                 case '/':
-                    result = rightValue * leftValue;
+                    result = key == mt.LeftKey ? rightValue * leftValue : leftValue / rightValue;
                     break;
                 default:
                     Debug.WriteLine($"Operand: {mt.Operand}");

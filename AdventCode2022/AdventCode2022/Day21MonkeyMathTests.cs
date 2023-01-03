@@ -113,7 +113,7 @@ namespace AdventCode2022
             // wrong 8882214318977
             // wrong 8,882,214,319,976
             actual = mrs.SolveForValue("humn");
-            Assert.Equal(0, actual);
+            Assert.Equal(3087390115721, actual);
         }
 
         [Fact]
@@ -138,10 +138,10 @@ namespace AdventCode2022
 
             // wrong 8882214318977
             actual = mrs.SolveForValue("humn");
-            Assert.Equal(52282191702834, actual);
+            Assert.Equal(3087390115721, actual);
         }
 
-        [Fact(Skip ="Doesnt find a solution in hours")]
+        [Fact(Skip = "Doesnt find a solution in hours")]
         public void GrindOutTheAnswer_part2_Ok()
         {
             long match = 52282191702834;
