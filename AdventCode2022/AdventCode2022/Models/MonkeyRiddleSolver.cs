@@ -5,6 +5,7 @@ namespace AdventCode2022.Models
     public class MonkeyRiddleSolver
     {
         public Dictionary<string, MonkeyTask> ProgramDict { get; set; }
+        public string Equation { get; set; } = string.Empty;
 
         public MonkeyRiddleSolver(string[] lines)
         {
@@ -48,6 +49,11 @@ namespace AdventCode2022.Models
                     break;
                 case '/':
                     result = leftValue / rightValue;
+                    long remainder = leftValue % rightValue;
+                    if (remainder != 0)
+                    {
+                        Debug.WriteLine($"Remainder = {remainder}");
+                    }
                     break;
                 case '=':
                     result = leftValue / rightValue;
@@ -75,6 +81,8 @@ namespace AdventCode2022.Models
                 }
                 // left key
                 rightValue = Solve(mt.RightKey);
+                Equation = $"({Equation}) {mt.Operand} {rightValue}";
+                Debug.WriteLine(Equation);
                 leftValue = SolveForValue(mt.Key);
             }
             else
@@ -91,6 +99,8 @@ namespace AdventCode2022.Models
                 }
                 // right key
                 leftValue = Solve(mt.LeftKey);
+                Equation = $"{leftValue} {mt.Operand} ({Equation})";
+                Debug.WriteLine(Equation);
                 rightValue = SolveForValue(mt.Key);
             }
 
@@ -107,8 +117,11 @@ namespace AdventCode2022.Models
                     break;
                 case '*':
                     //result = isLeftKey ? (leftValue / rightValue) : (rightValue / leftValue);
-                    //result = key == mt.LeftKey ? (leftValue / rightValue) : (rightValue / leftValue);
-                    result = leftValue > rightValue ? (leftValue / rightValue) : (rightValue / leftValue);
+                    result = key == mt.LeftKey ? (leftValue / rightValue) : (rightValue / leftValue);
+                    long remainder = key == mt.LeftKey ? (leftValue % rightValue) : (rightValue % leftValue);
+                    if (remainder != 0)
+                        Debug.WriteLine($"Remainder: {remainder}");
+                    //result = leftValue > rightValue ? (leftValue / rightValue) : (rightValue / leftValue);
                     //result = leftValue / rightValue;
                     //result = rightValue / leftValue;
                     break;
