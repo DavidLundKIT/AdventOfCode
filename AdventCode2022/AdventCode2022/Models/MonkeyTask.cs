@@ -2,9 +2,9 @@
 {
     public class MonkeyTask
     {
-        public string Key { get; set; }
-        public string LeftKey { get; set; }
-        public string RightKey { get; set; }
+        public string Key { get; set; } = string.Empty;
+        public string LeftKey { get; set; } = string.Empty;
+        public string RightKey { get; set; } = string.Empty;
         public long Value { get; set; }
         public char Operand { get; set; }
         public int TimesCalled { get; set; }

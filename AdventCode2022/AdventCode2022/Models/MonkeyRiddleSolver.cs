@@ -109,9 +109,6 @@ namespace AdventCode2022.Models
             {
                 case '+':
                     result = key == mt.LeftKey ? (leftValue - rightValue) : (rightValue - leftValue);
-                    //result = key == mt.LeftKey ? (rightValue - leftValue) : (leftValue - rightValue);
-                    //result = leftValue - rightValue;
-                    //result = rightValue - leftValue;
                     break;
                 case '-':
                     result = key == mt.LeftKey ? rightValue + leftValue : leftValue - rightValue;
@@ -122,9 +119,6 @@ namespace AdventCode2022.Models
                     long remainder = key == mt.LeftKey ? (leftValue % rightValue) : (rightValue % leftValue);
                     if (remainder != 0)
                         Debug.WriteLine($"Remainder: {remainder}");
-                    //result = leftValue > rightValue ? (leftValue / rightValue) : (rightValue / leftValue);
-                    //result = leftValue / rightValue;
-                    //result = rightValue / leftValue;
                     break;
                 case '/':
                     result = key == mt.LeftKey ? rightValue * leftValue : leftValue / rightValue;

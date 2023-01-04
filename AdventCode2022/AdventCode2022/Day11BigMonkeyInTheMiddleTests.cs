@@ -5,7 +5,7 @@ namespace AdventCode2022
 {
     public class Day11BigMonkeyInTheMiddleTests
     {
-        [Theory(Skip="Big Monkey is going slow")]
+        [Theory(Skip ="Takes too long")]
         [InlineData(1, 6, 4)]
         [InlineData(20, 99, 103)]
         [InlineData(100, 0, 0)]
@@ -17,7 +17,7 @@ namespace AdventCode2022
         [InlineData(700, 0, 0)] // 3,4 sec
         [InlineData(800, 0, 0)] // 22.1 sec
         [InlineData(900, 0, 0)] // 2.9 minutes
-        //[InlineData(1000, 5204, 5194)]
+        [InlineData(1000, 5204, 5192)] // 20.5
         //[InlineData(2000, 10419, 10391)]
         //[InlineData(3000, 15638, 15593)]
         public void Big_Monkey_Business_Test_Ok(int steps, long monk1, long monk2)

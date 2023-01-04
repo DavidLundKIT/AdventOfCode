@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AdventCode2022.Models
+﻿namespace AdventCode2022.Models
 {
     public class Monkey
     {
@@ -36,7 +30,7 @@ namespace AdventCode2022.Models
             Inspections = 0;
         }
 
-        public void DoTurn()
+        public void DoTurn(long worryLevelDivisor, long allTestFactors)
         {
             while (Items.Count > 0)
             {
@@ -51,9 +45,14 @@ namespace AdventCode2022.Models
                     worryLevel *= item;
 
                 // monkey bored
-                //worryLevel = (int) Math.Floor(worryLevel/3.0);
-                worryLevel = (long) worryLevel/3;
-
+                if (worryLevelDivisor == 1)
+                {
+                    worryLevel = worryLevel % allTestFactors;
+                }
+                else
+                {
+                    worryLevel = worryLevel / worryLevelDivisor;
+                }
                 if (worryLevel % TestFactor == 0)
                 {
                     // true
@@ -67,11 +66,12 @@ namespace AdventCode2022.Models
             }
         }
 
-        public static void DoRound()
+        public static void DoRound(long worryLevelDivisor)
         {
+            long allTestFactors = Monkey.Monkeys.Values.Select(m => m.TestFactor).Aggregate((a, b) => a * b);
             foreach (var kvp in Monkey.Monkeys)
             {
-                kvp.Value.DoTurn();
+                kvp.Value.DoTurn(worryLevelDivisor, allTestFactors);
             }
         }
 
