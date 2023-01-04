@@ -53,6 +53,20 @@ namespace AdventCode2022
             Assert.Equal(expected, actual);
         }
 
+        [Theory()]
+        [InlineData(23, 0)]
+        [InlineData(19, 0)]
+        [InlineData(17, 0)]
+        [InlineData(13, 0)]
+        public void Monkey_ModPrime_Test(long prime, long expected)
+        {
+            long value = 25 * 23 * 19 * 17 * 13;
+            long allTestFactors = 23 * 19 * 17 * 13;
+            long worryLevel = value % allTestFactors;
+            long actual = worryLevel % prime;
+            Assert.Equal(expected, actual);
+        }
+
         [Fact]
         public void MonkeyBusiness_Part2_Ok()
         {
