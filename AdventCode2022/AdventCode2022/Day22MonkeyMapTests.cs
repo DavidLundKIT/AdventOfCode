@@ -19,7 +19,7 @@ namespace AdventCode2022
             var mmp = new MonkeyMapPassword(lines.ToList());
 
             actual = mmp.Map.Count();
-            Assert.Equal(0, actual);
+            Assert.Equal(15000, actual);
         }
 
         [Fact]
@@ -32,7 +32,7 @@ namespace AdventCode2022
             var mmp = new MonkeyMapPassword(lines.ToList());
 
             actual = mmp.Map.Count();
-            Assert.Equal(0, actual);
+            Assert.Equal(96, actual);
         }
 
 
