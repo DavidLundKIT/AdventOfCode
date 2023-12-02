@@ -118,7 +118,65 @@ namespace AdventCode2023
             return int.Parse(temp);
         }
 
+        /// <summary>
+        /// Rewrote after seeing a python solution using find and reverse find.
+        /// This saved 17 ms from all tests for the dayn 27 ms to 10 ms.
+        /// </summary>
+        /// <param name="line"></param>
+        /// <returns></returns>
         public int LineValueText(string line)
+        {
+            SortedList<int, int> digitValues = new SortedList<int, int>();
+            for (int ii = 0; ii < line.Length; ii++)
+            {
+                if (char.IsDigit(line[ii]))
+                {
+                    digitValues.Add(ii, ((int)line[ii] - (int)'0'));
+                }
+            }
+
+            // now search for word digits
+            List<string> digitWords = new List<string>()
+            {
+                "zero",
+                "one",
+                "two",
+                "three",
+                "four",
+                "five",
+                "six",
+                "seven",
+                "eight",
+                "nine"
+            };
+
+            for (int num = 0; num < digitWords.Count; ++num)
+            {
+                int idx = line.IndexOf(digitWords[num]);
+                if (idx >= 0)
+                {
+                    if (!digitValues.ContainsKey(idx))
+                        digitValues.Add(idx, num);
+                }
+                idx = line.LastIndexOf(digitWords[num]);
+                if (idx >= 0)
+                {
+                    if (!digitValues.ContainsKey(idx))
+                        digitValues.Add(idx, num);
+                }
+            }
+
+            var first = digitValues.First();
+            var last = digitValues.Last();
+            return first.Value * 10 + last.Value;
+        }
+
+        /// <summary>
+        /// This for the star
+        /// </summary>
+        /// <param name="line"></param>
+        /// <returns></returns>
+        public int LineValueText_org(string line)
         {
             SortedList<int, int> digitValues = new SortedList<int, int>();
             for (int ii = 0; ii < line.Length; ii++)
