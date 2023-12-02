@@ -1,10 +1,4 @@
-﻿using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities.ObjectModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
 
 namespace AdventCode2023.Models
 {
@@ -28,12 +22,20 @@ namespace AdventCode2023.Models
 
         public bool PossibleGame(int redCubes, int blueCubes, int greenCubes)
         {
-            foreach (var hand in Hands) 
+            foreach (var hand in Hands)
             {
                 if (!hand.Possible(redCubes, blueCubes, greenCubes))
                     return false;
             }
             return true;
+        }
+
+        public int MinimumPowerCalculation()
+        {
+            int minBlueNeeded = Hands.Select(h => h.Blue).Max();
+            int minGreenNeeded = Hands.Select(h => h.Green).Max();
+            int minRedNeeded = Hands.Select(h => h.Red).Max();
+            return minBlueNeeded * minGreenNeeded * minRedNeeded;
         }
     }
 
@@ -60,7 +62,8 @@ namespace AdventCode2023.Models
                 else if (c.Contains("red"))
                 {
                     Red = count;
-                } else
+                }
+                else
                 {
                     throw new Exception("Huh?");
                 }

@@ -64,7 +64,7 @@ namespace AdventCode2023
         }
 
         [Fact]
-        public void Trebuchet_Part1_OK()
+        public void Day01_Part1_Trebuchet_OK()
         {
             var coords = Utils.ReadLinesFromFile("Day01.txt");
             int expected = 1000;
@@ -79,7 +79,7 @@ namespace AdventCode2023
         }
 
         [Fact]
-        public void Trebuchet_Part2_OK()
+        public void Day01_Part2_Trebuchet_OK()
         {
             var coords = Utils.ReadLinesFromFile("Day01.txt");
             int expected = 1000;
