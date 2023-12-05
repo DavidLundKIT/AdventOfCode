@@ -26,6 +26,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Models\SeedFertilizerMapper.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="Data\Day01.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
