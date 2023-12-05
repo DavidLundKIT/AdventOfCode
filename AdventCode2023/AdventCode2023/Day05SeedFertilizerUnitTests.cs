@@ -97,7 +97,7 @@ namespace AdventCode2023
             Assert.Equal(174137457, location);
         }
 
-        [Fact(Skip ="Took 99.6 minutes")]
+        [Fact(Skip = "Took 99.6 minutes")]
         public void Day05_Part2_SeedFertilizer_OK()
         {
             var lines = Utils.ReadLinesFromFile("Day05.txt");
