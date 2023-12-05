@@ -113,7 +113,10 @@
         {
             foreach (var map in maps)
             {
-
+                if (source < map.Key)
+                {
+                    return source;
+                }
                 if (map.Key <= source && source <= map.Key + map.Value.Range - 1)
                 {
                     // in the range
@@ -144,6 +147,22 @@
             {
                 long location = FromSeedToLocation(seed);
                 nearest = location < nearest ? location : nearest;
+            }
+            return nearest;
+        }
+
+        public long FindNearestSeedRangesLocation()
+        {
+            long nearest = long.MaxValue;
+
+            //foreach (var seed in Seeds)
+            for (int i = 0; i < Seeds.Count; i+=2)
+            {
+                for (long seed = Seeds[i]; seed < Seeds[i] +Seeds[i + 1]; ++seed)
+                {
+                    long location = FromSeedToLocation(seed);
+                    nearest = location < nearest ? location : nearest;
+                }
             }
             return nearest;
         }

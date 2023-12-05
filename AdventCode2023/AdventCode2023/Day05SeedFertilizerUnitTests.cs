@@ -39,6 +39,9 @@ namespace AdventCode2023
 
             long location = sut.FindNearestSeedLocation();
             Assert.Equal(35, location);
+
+            location = sut.FindNearestSeedRangesLocation();
+            Assert.Equal(46, location);
         }
 
         [Theory]
@@ -94,5 +97,21 @@ namespace AdventCode2023
             Assert.Equal(174137457, location);
         }
 
+        [Fact(Skip ="Took 99.6 minutes")]
+        public void Day05_Part2_SeedFertilizer_OK()
+        {
+            var lines = Utils.ReadLinesFromFile("Day05.txt");
+            int expected = 254;
+            int actual = lines.Length;
+            Assert.Equal(expected, actual);
+
+            var sut = new SeedFertilizerMapper();
+            sut.ParseData(lines);
+            Assert.Equal(20, sut.Seeds.Count);
+            Assert.Equal(42, sut.HumidityLocation.Count);
+
+            long location = sut.FindNearestSeedRangesLocation();
+            Assert.Equal(1493866, location);
+        }
     }
 }
