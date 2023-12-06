@@ -156,9 +156,9 @@
             long nearest = long.MaxValue;
 
             //foreach (var seed in Seeds)
-            for (int i = 0; i < Seeds.Count; i+=2)
+            for (int i = 0; i < Seeds.Count; i += 2)
             {
-                for (long seed = Seeds[i]; seed < Seeds[i] +Seeds[i + 1]; ++seed)
+                for (long seed = Seeds[i]; seed < Seeds[i] + Seeds[i + 1]; ++seed)
                 {
                     long location = FromSeedToLocation(seed);
                     nearest = location < nearest ? location : nearest;
