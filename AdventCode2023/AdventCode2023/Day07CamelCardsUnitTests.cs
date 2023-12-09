@@ -2,7 +2,7 @@
 
 namespace AdventCode2023
 {
-    public class DayO7CamelCardsUnitTests
+    public class Day07CamelCardsUnitTests
     {
         [Fact]
         public void ReadInDataFile_OK()
