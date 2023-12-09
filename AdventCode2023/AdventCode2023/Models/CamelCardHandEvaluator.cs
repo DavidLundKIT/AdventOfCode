@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AdventCode2023.Models
+﻿namespace AdventCode2023.Models
 {
     public enum CamelCardHandType
     {
@@ -21,13 +14,16 @@ namespace AdventCode2023.Models
     public class CamelCardHandEvaluator
     {
         public List<CamelCardHand> Hands { get; set; }
+        public bool UseJokers { get; set; }
 
-        public CamelCardHandEvaluator(string[] lines)
+        public CamelCardHandEvaluator(string[] lines, bool useJokers)
         {
             Hands = new List<CamelCardHand>();
+            UseJokers = useJokers;
+
             foreach (string line in lines)
             {
-                Hands.Add(new CamelCardHand(line));
+                Hands.Add(new CamelCardHand(line, useJokers));
             }
         }
 
@@ -50,9 +46,11 @@ namespace AdventCode2023.Models
         public long Bid { get; set; }
         public CamelCardHandType HandType { get; set; }
         public Dictionary<char, int> Cards { get; set; }
+        public bool UseJokers { get; set; }
 
-        public CamelCardHand(string line)
+        public CamelCardHand(string line, bool useJokers)
         {
+            UseJokers = useJokers;
             var temp = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
             Hand = temp[0];
             Bid = long.Parse(temp[1]);
@@ -80,6 +78,14 @@ namespace AdventCode2023.Models
 
         public CamelCardHandType EvaluateHand()
         {
+            if (!UseJokers)
+                return EvaluateHandNoJokers();
+            // with jokers
+            return EvaluateHandWithJokers();
+        }
+
+        public CamelCardHandType EvaluateHandNoJokers()
+        {
             int cc2;
             switch (Cards.Count)
             {
@@ -89,12 +95,55 @@ namespace AdventCode2023.Models
                     cc2 = Cards.Values.First();
                     if (cc2 == 1 || cc2 == 4)
                         return CamelCardHandType.FourOfAKind;
-                    else 
+                    else
                         //(cc2== 2 || cc2==3)
                         return CamelCardHandType.FullHouse;
                     throw new Exception("On card count of 2");
                 case 3:
                     cc2 = Cards.Values.Where(c => c == 2).ToList().Count;
+                    if (cc2 == 2)
+                        return CamelCardHandType.TwoPair;
+                    return CamelCardHandType.ThreeOfAKind;
+                case 4:
+                    return CamelCardHandType.OnePair;
+                case 5:
+                    return CamelCardHandType.HighCard;
+                default:
+                    break;
+            }
+            throw new Exception("Hand type not matched");
+        }
+
+        public CamelCardHandType EvaluateHandWithJokers()
+        {
+            int cc2;
+            Dictionary<char, int> JokerCards = new Dictionary<char, int>(Cards);
+            if (JokerCards.ContainsKey('J'))
+            {
+                int jokers = JokerCards['J'];
+                if (jokers < 5)
+                {
+                    JokerCards.Remove('J');
+                    // add to biggest group
+                    var keypair = JokerCards.First(kp => kp.Value == JokerCards.Values.Max());
+                    JokerCards[keypair.Key] = keypair.Value + jokers;
+                }
+            }
+
+            switch (JokerCards.Count)
+            {
+                case 1:
+                    return CamelCardHandType.FiveOfAKind;
+                case 2:
+                    cc2 = JokerCards.Values.First();
+                    if (cc2 == 1 || cc2 == 4)
+                        return CamelCardHandType.FourOfAKind;
+                    else
+                        //(cc2== 2 || cc2==3)
+                        return CamelCardHandType.FullHouse;
+                    throw new Exception("On card count of 2");
+                case 3:
+                    cc2 = JokerCards.Values.Where(c => c == 2).ToList().Count;
                     if (cc2 == 2)
                         return CamelCardHandType.TwoPair;
                     return CamelCardHandType.ThreeOfAKind;
@@ -115,33 +164,33 @@ namespace AdventCode2023.Models
         /// <returns></returns>
         public int CardValue(char ch)
         {
-            switch(ch)
+            switch (ch)
             {
-                case 'A': 
+                case 'A':
                     return 14;
                 case 'K':
                     return 13;
                 case 'Q':
                     return 12;
                 case 'J':
-                    return 11;
+                    return UseJokers ? 1 : 11;
                 case 'T':
                     return 10;
-                default: 
-                    return (int) ch - (int)'0';
+                default:
+                    return (int)ch - (int)'0';
             }
         }
 
         public int CompareTo(CamelCardHand? other)
         {
-            if (other == null) 
+            if (other == null)
                 return 1;
 
             int cmp = ((int)HandType).CompareTo((int)other.HandType);
-            if (cmp != 0) 
+            if (cmp != 0)
                 return cmp;
             // high card compare
-            for (int i = 0; i < Hand.Length; ++ i)
+            for (int i = 0; i < Hand.Length; ++i)
             {
                 cmp = CardValue(Hand[i]).CompareTo(CardValue(other.Hand[i]));
                 if (cmp != 0)
