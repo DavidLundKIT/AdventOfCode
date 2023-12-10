@@ -66,5 +66,20 @@ namespace AdventCode2023
             actual = sut.StepsToEnd("AAA", "ZZZ");
             Assert.Equal(21251, actual);
         }
+
+        [Fact(Skip = "Doesn't end")]
+        public void Day08_Part2_HauntedWastelands_OK()
+        {
+            var lines = Utils.ReadLinesFromFile("Day08.txt");
+            int expectedLineCount = 732;
+            int actual = lines.Length;
+            Assert.Equal(expectedLineCount, actual);
+
+            var sut = new HauntedWastelandMapper(lines);
+            Assert.Equal(expectedLineCount - 2, sut.Mapper.Count);
+
+            actual = sut.SimultaneousStepsToEnd();
+            Assert.Equal(0, actual);
+        }
     }
 }

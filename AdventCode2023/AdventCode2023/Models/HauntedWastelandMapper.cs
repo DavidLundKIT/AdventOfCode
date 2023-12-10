@@ -1,4 +1,6 @@
-﻿namespace AdventCode2023.Models
+﻿using System.Security.Cryptography;
+
+namespace AdventCode2023.Models
 {
     public class HauntedWastelandMapper
     {
@@ -46,8 +48,32 @@
         public int SimultaneousStepsToEnd()
         {
             int steps = 0;
+            List<string> keys = Mapper.Keys.Where(k => k.EndsWith("A")).ToList();
+            int allAs = keys.Count;
 
-            return 0;
+            do
+            {
+                foreach (char ch in Instructions)
+                {
+                    steps++;
+                    for (int i = 0; i < allAs; i++)
+                    {
+                        if (ch == 'R')
+                        {
+                            keys[i] = Mapper[keys[i]].Item2;
+                        }
+                        else
+                        {
+                            keys[i] = Mapper[keys[i]].Item1;
+                        }
+                    }
+                    int allZs = keys.Where(k=> k.EndsWith("Z")).ToList().Count;
+                    if (allZs == allAs)
+                    {
+                        return steps;
+                    }
+                }
+            } while (true);
         }
     }
 
