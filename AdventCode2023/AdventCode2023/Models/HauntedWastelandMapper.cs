@@ -1,6 +1,4 @@
-﻿using System.Security.Cryptography;
-
-namespace AdventCode2023.Models
+﻿namespace AdventCode2023.Models
 {
     public class HauntedWastelandMapper
     {
@@ -91,6 +89,10 @@ namespace AdventCode2023.Models
             } while (true);
         }
 
+        /// <summary>
+        /// Didn't work within several hours on the actual data.
+        /// </summary>
+        /// <returns></returns>
         public int SimultaneousStepsToEnd()
         {
             int steps = 0;
@@ -113,7 +115,7 @@ namespace AdventCode2023.Models
                             keys[i] = Mapper[keys[i]].Item1;
                         }
                     }
-                    int allZs = keys.Where(k=> k.EndsWith("Z")).ToList().Count;
+                    int allZs = keys.Where(k => k.EndsWith("Z")).ToList().Count;
                     if (allZs == allAs)
                     {
                         return steps;
@@ -150,6 +152,4 @@ namespace AdventCode2023.Models
             return (a / GCF(a, b)) * b;
         }
     }
-
-
 }
