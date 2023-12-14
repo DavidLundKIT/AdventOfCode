@@ -68,7 +68,7 @@ namespace AdventCode2023
         }
 
         [Fact(Skip = "Doesn't end")]
-        public void Day08_Part2_HauntedWastelands_OK()
+        public void Day08_Part2_HauntedWastelands_Not_OK()
         {
             var lines = Utils.ReadLinesFromFile("Day08.txt");
             int expectedLineCount = 732;
@@ -80,6 +80,37 @@ namespace AdventCode2023
 
             actual = sut.SimultaneousStepsToEnd();
             Assert.Equal(0, actual);
+        }
+
+        [Theory]
+        [InlineData("Day08test3.txt", 10, 6)]
+        public void ReadInDataFile_Test3EndsWithZ_OK(string testFile, int expectedLineCount, long expectedSteps)
+        {
+            var lines = Utils.ReadLinesFromFile(testFile);
+            int actual = lines.Length;
+            Assert.Equal(expectedLineCount, actual);
+
+            var sut = new HauntedWastelandMapper(lines);
+            Assert.Equal(expectedLineCount - 2, sut.Mapper.Count);
+
+
+            long lactual = sut.StepsToAllEndWithZ();
+            Assert.Equal(expectedSteps, lactual);
+        }
+
+        [Fact]
+        public void Day08_Part2_HauntedWastelands_OK()
+        {
+            var lines = Utils.ReadLinesFromFile("Day08.txt");
+            int expectedLineCount = 732;
+            int actual = lines.Length;
+            Assert.Equal(expectedLineCount, actual);
+
+            var sut = new HauntedWastelandMapper(lines);
+            Assert.Equal(expectedLineCount - 2, sut.Mapper.Count);
+
+            long lactual = sut.StepsToAllEndWithZ();
+            Assert.Equal(11678319315857, lactual);
         }
     }
 }
