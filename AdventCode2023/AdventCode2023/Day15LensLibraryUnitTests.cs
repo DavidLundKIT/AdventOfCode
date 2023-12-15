@@ -48,7 +48,7 @@ namespace AdventCode2023
             var sut = new LensLibraryProcessor(lines[0]);
 
             actual = sut.HashAllLines();
-            Assert.Equal(0, actual);
+            Assert.Equal(498538, actual);
         }
     }
 }
