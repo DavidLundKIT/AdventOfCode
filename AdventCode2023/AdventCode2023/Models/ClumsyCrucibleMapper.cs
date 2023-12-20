@@ -88,7 +88,7 @@ namespace AdventCode2023.Models
 
                 visitedTiles.Add(checkTile);
                 activeTiles.Remove(checkTile);
-
+                 
                 var walkableTiles = GetWalkableTiles(Map, checkTile, Finish);
 
                 foreach (var walkableTile in walkableTiles)
@@ -152,12 +152,17 @@ namespace AdventCode2023.Models
 
         public bool IsWalkable(List<string> map, Tile currentTile, Tile targetTile)
         {
+            if (currentTile.Parent != null && targetTile.X == currentTile.Parent.X && targetTile.Y == currentTile.Parent.Y)
+            {
+                // can't turn around only forward, left or right
+                return false; 
+            }
             if (LessThan3X(targetTile) && LessThan3Y(targetTile))
             {
                 // 3 in a row either X or Y so must turn
-                return false;
+                return true;
             }
-            return true;
+            return false;
         }
 
         public bool LessThan3X(Tile targetTile)
