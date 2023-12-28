@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 
 namespace AdventCode2023.Models
 {
@@ -16,6 +11,8 @@ namespace AdventCode2023.Models
 
         public Tile Start { get; set; }
         public Tile Finish { get; set; }
+        public Tile FinalTile { get; set; }
+        public int Steps { get; set; }
 
         /// <summary>
         /// Start: top left
@@ -25,14 +22,12 @@ namespace AdventCode2023.Models
         public ClumsyCrucibleMapper(string[] lines)
         {
             Map = new List<string>(lines);
-            Start = new Tile();
-            Start.Y = 0;
-            Start.X = 0;
+            Start = new Tile(0, 0, null);
 
-            Finish = new Tile();
+            Finish = new Tile(Map[0].Length - 1, Map.Count - 1, null);
             Finish.Y = Map.Count - 1;
             Finish.X = Map[0].Length - 1;
-
+            FinalTile = Finish;
             Start.SetDistance(Finish.X, Finish.Y);
         }
 
@@ -64,16 +59,17 @@ namespace AdventCode2023.Models
                     //We found the destination and we can be sure (Because the OrderBy above)
                     //That it's the most low cost option. 
                     var tile = checkTile;
+                    FinalTile = tile;
                     Debug.WriteLine("Retracing steps backwards...");
-                    int steps = 0;
+                    Steps = 0;
                     int heatloss = 0;
                     while (true)
                     {
                         Debug.WriteLine($"{tile.X} : {tile.Y}");
-                        heatloss += (int)Map[tile.Y][tile.X]- '0';
-                            var newMapRow = Map[tile.Y].ToCharArray();
-                            newMapRow[tile.X] = '*';
-                            Map[tile.Y] = new string(newMapRow);
+                        heatloss += (int)Map[tile.Y][tile.X] - '0';
+                        var newMapRow = Map[tile.Y].ToCharArray();
+                        newMapRow[tile.X] = '*';
+                        Map[tile.Y] = new string(newMapRow);
                         tile = tile.Parent;
                         if (tile == null)
                         {
@@ -82,13 +78,13 @@ namespace AdventCode2023.Models
                             Debug.WriteLine("Done!");
                             return heatloss;
                         }
-                        steps++;
+                        Steps++;
                     }
                 }
 
                 visitedTiles.Add(checkTile);
                 activeTiles.Remove(checkTile);
-                 
+
                 var walkableTiles = GetWalkableTiles(Map, checkTile, Finish);
 
                 foreach (var walkableTile in walkableTiles)
@@ -125,10 +121,10 @@ namespace AdventCode2023.Models
             {
 
                 // map[currentTile.Y][currentTile.X]
-                new Tile { X = currentTile.X, Y = currentTile.Y - 1, Parent = currentTile }, // Cost = (int)(map[currentTile.Y-1][currentTile.X]-'0') },
-                new Tile { X = currentTile.X, Y = currentTile.Y + 1, Parent = currentTile }, // Cost = (int)(map[currentTile.Y+1][currentTile.X]-'0') },
-                new Tile { X = currentTile.X - 1, Y = currentTile.Y, Parent = currentTile }, // Cost = (int)(map[currentTile.Y][currentTile.X - 1] - '0') },
-                new Tile { X = currentTile.X + 1, Y = currentTile.Y, Parent = currentTile } // Cost = (int)(map[currentTile.Y][currentTile.X+1]-'0') },
+                new Tile (currentTile.X, currentTile.Y - 1, currentTile),
+                new Tile (currentTile.X, currentTile.Y + 1, currentTile),
+                new Tile (currentTile.X - 1, currentTile.Y, currentTile),
+                new Tile (currentTile.X + 1, currentTile.Y, currentTile)
             };
 
             var maxX = map.First().Length - 1;
@@ -155,7 +151,7 @@ namespace AdventCode2023.Models
             if (currentTile.Parent != null && targetTile.X == currentTile.Parent.X && targetTile.Y == currentTile.Parent.Y)
             {
                 // can't turn around only forward, left or right
-                return false; 
+                return false;
             }
             if (LessThan3X(targetTile) && LessThan3Y(targetTile))
             {
@@ -205,7 +201,14 @@ namespace AdventCode2023.Models
         public int Cost { get; set; }
         public int Distance { get; set; }
         public int CostDistance => Cost + Distance;
-        public Tile Parent { get; set; }
+        public Tile? Parent { get; set; }
+
+        public Tile(int x, int y, Tile? parent)
+        {
+            X = x;
+            Y = y;
+            Parent = parent;
+        }
 
         //The distance is essentially the estimated distance, ignoring walls to our target. 
         //So how many tiles left and right, up and down, ignoring walls, to get there. 

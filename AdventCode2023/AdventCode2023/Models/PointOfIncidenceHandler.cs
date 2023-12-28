@@ -1,4 +1,4 @@
-﻿using System.Text;
+﻿using System.Diagnostics;
 
 namespace AdventCode2023.Models
 {
@@ -38,112 +38,124 @@ namespace AdventCode2023.Models
 
         public int FindSymmetryValue(List<string> mirrorPattern)
         {
+            DumpMirror("original", mirrorPattern);
             var hval = FindHorizontalSymmetryValue(mirrorPattern);
             var vval = FindVerticalSymmetryValue(mirrorPattern);
-            if (hval.Item2 > vval.Item2)
+            if (hval.Item2 >= vval.Item2)
+            {
                 return hval.Item1 * 100;
+            }
             return vval.Item1;
         }
 
         public Tuple<int, int> FindVerticalSymmetryValue(List<string> mirrorPattern)
         {
+            List<string> columnMirrorPattern =FlipMirror(mirrorPattern);
+            return FindHorizontalSymmetryValue(columnMirrorPattern);
+        }
+
+        public List<string> FlipMirror(List<string> mirrorPattern)
+        {
+            DumpMirror("Original", mirrorPattern);
+
+            List<List<char>> tempMirror = new List<List<char>>();
+            foreach (var mirror in mirrorPattern)
+            {
+                tempMirror.Add(new List<char>(mirror.ToCharArray()));
+            }
+            var transposed = Transpose(tempMirror);
+
             List<string> columnMirrorPattern = new List<string>();
 
-            for (int i = 0; i < mirrorPattern[0].Length; i++)
+            foreach (List<char> charList in transposed)
             {
-                var sb = new StringBuilder();
-                for (int j = 0; j < mirrorPattern.Count; j++)
-                    sb.Append(mirrorPattern[j][i]);
-
-                string column = sb.ToString();
-                columnMirrorPattern.Add(column);
+                columnMirrorPattern.Add(new string(charList.ToArray()));
             }
+            DumpMirror("Transformed", columnMirrorPattern);
+            return columnMirrorPattern;
+        }
 
-            return FindHorizontalSymmetryValue(columnMirrorPattern);
+        public List<List<char>> Transpose(List<List<char>> lists)
+        {
+            var longest = lists.Any() ? lists.Max(l => l.Count) : 0;
+            List<List<char>> outer = new List<List<char>>(longest);
+            for (int i = 0; i < longest; i++)
+                outer.Add(new List<char>(lists.Count));
+            for (int j = 0; j < lists.Count; j++)
+                for (int i = 0; i < longest; i++)
+                    outer[i].Add(lists[j].Count > i ? lists[j][i] : default(char));
+            return outer;
         }
 
         public Tuple<int, int> FindHorizontalSymmetryValue(List<string> mirrorPattern)
         {
-            Dictionary<string, List<int>> dict = new Dictionary<string, List<int>>();
-            dict.Clear();
-
-            for (int i = 0; i < mirrorPattern.Count; i++)
-            {
-                if (dict.ContainsKey(mirrorPattern[i]))
-                {
-                    // add match
-                    dict[mirrorPattern[i]].Add(i);
-                }
-                else
-                {
-                    List<int> list = new List<int>();
-                    list.Add(i);
-                    dict.Add(mirrorPattern[i], list);
-                }
-            }
-
-            Stack<int> stack = new Stack<int>();
-            var pairs = dict.Values.Where(l => l.Count >= 2).ToList();
-
-            List<int> order = new List<int>();
-            foreach (var pair in pairs)
-                order.AddRange(pair);
-            order.Sort();
-
-            foreach (var lm in pairs)
-            {
-                for (int i = 0; i < lm.Count - 1; i += 2)
-                {
-
-                    if (lm[i] + 1 == lm[i + 1])
-                    {
-                        // point of symmetry
-                        stack.Push(lm[i]);
-                    }
-                }
-            }
-
             int match = -1;
-            if (stack.Count == 0)
+            int maxRows = -1;
+
+            for (int i = 0; i < mirrorPattern.Count - 1; i++)
             {
-                // no symmetry match
-                return new Tuple<int, int>(0, 0);
+                // find 2 rows that match
+                if (string.Equals(mirrorPattern[i], mirrorPattern[i + 1]))
+                {
+                    int rows = CheckMirrorSymmetry(mirrorPattern, i);
+                    if (rows >= 0)
+                    {
+                        if (maxRows == -1)
+                        {
+                            // first match
+                            match = i;
+                            maxRows = rows;
+                        }
+                        else if (maxRows < rows)
+                        {
+                            match = i;
+                            maxRows = rows;
+                        }
+                        // else leave alone
+                    }
+                }
             }
-            // find the best choice - most rows
-            int maxRows = 2;
-            int bestMatch = -1;
 
-            do
-            {
-                // its a symmetry match
-                int rows = 2;
-                match = stack.Pop();
-                int idxMatch = order.IndexOf(match);
-                int idxLow = idxMatch - 1;
-                int idxHigh = idxMatch + 2;
-                while (idxLow >= 0 && idxHigh < order.Count)
-                {
-                    if ((order[idxLow] + 1 == order[idxLow + 1])
-                        && (order[idxHigh] - 1 == order[idxHigh - 1]))
-                    {
-                        rows += 2;
-                    }
-                    else
-                    {
-                        break;
-                    }
-                    idxLow--;
-                    idxHigh++;
-                }
-                if (rows > maxRows)
-                {
-                    maxRows = rows;
-                    bestMatch = match;
-                }
-            } while (stack.Count != 0);
-
-            match = bestMatch >= 0 ? bestMatch : match;
             return new Tuple<int, int>(match + 1, maxRows);
+        }
+
+        public int CheckMirrorSymmetry(List<string> mirrorPattern, int i)
+        {
+            int rowOffset = 0;
+
+            while ((i + 1 + rowOffset < mirrorPattern.Count) && ((i - rowOffset) >= 0))
+            {
+                DumpTestBlock((i - rowOffset), (i + 1 + rowOffset), mirrorPattern);
+                if (!string.Equals(mirrorPattern[i - rowOffset], mirrorPattern[i + 1 + rowOffset]))
+                {
+                    return -1;
+                }
+                rowOffset++;
+            }
+            // got here, no mismatches
+            return rowOffset * 2;
+        }
+
+        public void DumpMirror(string type, List<string> mirror)
+        {
+            Debug.WriteLine($"======={type}=========");
+            foreach (string mirrorPattern in mirror)
+            {
+                Debug.WriteLine(mirrorPattern);
+            }
+            Debug.WriteLine("==========================");
+            Debug.WriteLine("");
+        }
+
+        public void DumpTestBlock(int low, int high, List<string> mirror)
+        {
+            Debug.WriteLine($"=== Low: {low}, High: {high} ===");
+            for (int i = low; i <= high; ++i)
+            {
+                Debug.WriteLine(mirror[i]);
+            }
+            Debug.WriteLine("==========================");
+            Debug.WriteLine("");
         }
     }
 }

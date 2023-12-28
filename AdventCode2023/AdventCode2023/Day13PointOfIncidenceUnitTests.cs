@@ -31,6 +31,9 @@ namespace AdventCode2023
             actual = sut.MirrorPatterns.Count;
             Assert.Equal(2, actual);
 
+            var colMirror = sut.FlipMirror(sut.MirrorPatterns[0]);
+            var colMirror2 = sut.FlipMirror(sut.MirrorPatterns[1]);
+
             actual = sut.FindSymmetrySum();
 
             Assert.Equal(405, actual);
@@ -55,7 +58,7 @@ namespace AdventCode2023
             // 33269 too low
             // 33270 too low
             // 31510 way too low
-            Assert.Equal(0, actual);
+            Assert.Equal(34918, actual);
         }
     }
 }

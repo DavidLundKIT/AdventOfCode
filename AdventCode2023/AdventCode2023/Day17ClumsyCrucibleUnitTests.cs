@@ -1,9 +1,4 @@
 ﻿using AdventCode2023.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdventCode2023
 {
@@ -32,5 +27,18 @@ namespace AdventCode2023
             Assert.Equal(102, actual);
         }
 
+        [Fact]
+        public void Day17_Part1_ClumsyCrucible_OK()
+        {
+            var lines = Utils.ReadLinesFromFile("Day17.txt");
+            int expected = 141;
+            int actual = lines.Length;
+            Assert.Equal(expected, actual);
+
+            var sut = new ClumsyCrucibleMapper(lines);
+
+            actual = sut.FindFewestSteps();
+            Assert.Equal(0, actual);
+        }
     }
 }
