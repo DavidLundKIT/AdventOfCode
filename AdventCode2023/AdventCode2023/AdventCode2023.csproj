@@ -104,6 +104,9 @@
     <None Update="Data\Day14.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Data\Day14cycles.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Data\Day14test.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
