@@ -50,7 +50,7 @@ namespace AdventCode2023
 
             sut.SortParts();
             actual = sut.AcceptedRatingSum();
-            Assert.Equal(0, actual);
+            Assert.Equal(397061, actual);
         }
     }
 }
