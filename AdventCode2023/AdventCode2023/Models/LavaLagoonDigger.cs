@@ -7,14 +7,14 @@ namespace AdventCode2023.Models
         public List<DigInstruction> DigInstructions { get; set; }
         public Dictionary<Tuple<long, long>, Point> Points { get; set; }
 
-        public LavaLagoonDigger(string[] lines)
+        public LavaLagoonDigger(string[] lines, bool fromColor = false)
         {
             DigInstructions = new List<DigInstruction>();
             Points = new Dictionary<Tuple<long, long>, Point>();
 
             foreach (var line in lines)
             {
-                DigInstructions.Add(new DigInstruction(line));
+                DigInstructions.Add(new DigInstruction(line, fromColor));
             }
         }
 
@@ -159,12 +159,42 @@ namespace AdventCode2023.Models
         public long Length { get; set; }
         public string Color { get; set; }
 
-        public DigInstruction(string line)
+
+        public DigInstruction(string line, bool fromColor = false)
         {
-            var temp = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-            Direction = temp[0];
-            Length = long.Parse(temp[1]);
-            Color = temp[2];
+            if (fromColor)
+            {
+                var temp = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                Color = temp[2];
+                var hexTemp = temp[2].Split(new char[] { '(', ')', '#' }, StringSplitOptions.RemoveEmptyEntries);
+                string hex = hexTemp[0].Substring(0, 5);
+                int dir = (int)hexTemp[0][5] - '0';
+                Length = Convert.ToInt64(hex, 16);
+                switch (dir)
+                {
+                    case 0:
+                        Direction = "R";
+                        break;
+                    case 1:
+                        Direction = "D";
+                        break;
+                    case 2:
+                        Direction = "L";
+                        break;
+                    case 3:
+                        Direction = "U";
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(dir));
+                }
+            }
+            else
+            {
+                var temp = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                Direction = temp[0];
+                Length = long.Parse(temp[1]);
+                Color = temp[2];
+            }
         }
     }
 }

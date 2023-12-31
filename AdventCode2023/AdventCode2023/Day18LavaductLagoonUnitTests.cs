@@ -30,7 +30,6 @@ namespace AdventCode2023
             Assert.Equal(62, actual);
         }
 
-
         [Fact]
         public void Day18_Part1_LavaductLagoon_OK()
         {
@@ -47,5 +46,37 @@ namespace AdventCode2023
             actual = sut.Points.Count;
             Assert.Equal(46334, actual);
         }
+
+        [Fact]
+        public void ReadInData_As_Color_Test_OK()
+        {
+            var lines = Utils.ReadLinesFromFile("Day18test.txt");
+            int expected = 14;
+            int actual = lines.Length;
+            Assert.Equal(expected, actual);
+
+            var sut = new LavaLagoonDigger(lines, true);
+            sut.MakePerimeter();
+            //sut.DumpLagoon();
+            //sut.FloodFillLagoon(new Point(1, 1));
+            //sut.DumpLagoon();
+            actual = sut.Points.Count;
+            Assert.Equal(62, actual);
+        }
+
+        [Fact]
+        public void Day18_Part2_LavaductLagoon_OK()
+        {
+            var lines = Utils.ReadLinesFromFile("Day18.txt");
+            int expected = 766;
+            int actual = lines.Length;
+            Assert.Equal(expected, actual);
+
+            var sut = new LavaLagoonDigger(lines, true);
+            sut.MakePerimeter();
+            actual = sut.Points.Count;
+            Assert.Equal(46334, actual);
+        }
+
     }
 }
