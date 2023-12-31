@@ -1,14 +1,17 @@
-﻿namespace AdventCode2023.Models
+﻿using System.Diagnostics;
+
+namespace AdventCode2023.Models
 {
     public class LavaLagoonDigger
     {
         public List<DigInstruction> DigInstructions { get; set; }
-        public List<Point> Points { get; set; }
+        public Dictionary<Tuple<long, long>, Point> Points { get; set; }
 
         public LavaLagoonDigger(string[] lines)
         {
             DigInstructions = new List<DigInstruction>();
-            Points = new List<Point>();             
+            Points = new Dictionary<Tuple<long, long>, Point>();
+
             foreach (var line in lines)
             {
                 DigInstructions.Add(new DigInstruction(line));
@@ -19,80 +22,148 @@
         {
             Points.Clear();
 
-            
+
             Point prev = new Point(0, 0);
 
-            Points.Add(prev);
+            Points.Add(prev.Key, prev);
             foreach (var cmd in DigInstructions)
             {
-                var now = new Point(prev, cmd);
-                Points.Add(now);
-                prev = now;
+                var newPts = Point.DoDiggInstruction(prev, cmd);
+                if (newPts.Any())
+                {
+                    foreach (var now in newPts)
+                    {
+                        if (!Points.ContainsKey(now.Key))
+                        {
+                            Points.Add(now.Key, now);
+                        }
+                        prev = now;
+                    }
+                }
             }
         }
 
-
-        public int CalculateLagoon()
+        public void DumpLagoon()
         {
-            int size = 0;
+            long minX = Points.Keys.Min(tp => tp.Item1);
+            long maxX = Points.Keys.Max(tp => tp.Item1);
+            long minY = Points.Keys.Min(tp => tp.Item2);
+            long maxY = Points.Keys.Max(tp => tp.Item2);
 
-            var points = Points;
+            Debug.WriteLine("================================");
+            for (long y = minY; y <= maxY; y++)
+            {
+                for (long x = minX; x <= maxX; x++)
+                {
+                    var tp = new Point(x, y);
+                    if (Points.ContainsKey(tp.Key))
+                    {
+                        Debug.Write("#");
+                    }
+                    else
+                    {
+                        Debug.Write('.');
+                    }
+                }
+                Debug.WriteLine("");
+            }
+            Debug.WriteLine("================================");
+        }
 
-            //points.Add(points[0]);
-            // Not going to work every thing is 0
-            //var area = Math.Abs(points.Take(points.Count - 1)
-            //   .Select((p, i) => (points[i + 1].X - p.X) * (points[i + 1].Y + p.Y))
-            //   .Sum() / 2);
-            return size;
+
+        public void FloodFillLagoon(Point start)
+        {
+            if (Points.ContainsKey(start.Key))
+            {
+                throw new ArgumentException("Should not already be in Points!");
+            }
+
+            Stack<Point> stack = new Stack<Point>();
+            stack.Push(start);
+
+            while (stack.Count > 0)
+            {
+                Point p = stack.Pop();
+                if (!Points.ContainsKey(p.Key))
+                {
+                    Points.Add(p.Key, p);
+                    stack.Push(new Point(p.X - 1, p.Y));
+                    stack.Push(new Point(p.X + 1, p.Y));
+                    stack.Push(new Point(p.X, p.Y + 1));
+                    stack.Push(new Point(p.X, p.Y - 1));
+                }
+            }
+
         }
     }
 
     public class Point
     {
-        public int X { get; set; }
-        public int Y { get; set; }
+        public long X { get; set; }
+        public long Y { get; set; }
 
-        public Point(int x, int y)
+        public Point(long x, long y)
         {
             X = x;
             Y = y;
         }
 
-        public Point(Point last, DigInstruction cmd)
+        public Tuple<long, long> Key
         {
-            X = last.X;
-            Y = last.Y;
+            get
+            {
+                return new Tuple<long, long>(X, Y);
+            }
+        }
+
+        public static List<Point> DoDiggInstruction(Point last, DigInstruction cmd)
+        {
+            List<Point> points = new List<Point>();
+
             switch (cmd.Direction)
             {
                 case "U":
-                    Y += cmd.Length;
+                    for (long i = 1; i <= cmd.Length; i++)
+                    {
+                        points.Add(new Point(last.X, last.Y - i));
+                    }
                     break;
                 case "D":
-                    Y -= cmd.Length;
+                    for (long i = 1; i <= cmd.Length; i++)
+                    {
+                        points.Add(new Point(last.X, last.Y + i));
+                    }
                     break;
                 case "L":
-                    X -= cmd.Length;
+                    for (long i = 1; i <= cmd.Length; i++)
+                    {
+                        points.Add(new Point(last.X - i, last.Y));
+                    }
                     break;
                 case "R":
-                    X += cmd.Length;
+                    for (long i = 1; i <= cmd.Length; i++)
+                    {
+                        points.Add(new Point(last.X + i, last.Y));
+                    }
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(cmd));
             }
+            return points;
         }
     }
 
     public class DigInstruction
     {
         public string Direction { get; set; }
-        public int Length { get; set; }
+        public long Length { get; set; }
         public string Color { get; set; }
 
         public DigInstruction(string line)
         {
             var temp = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
             Direction = temp[0];
-            Length = int.Parse(temp[1]);
+            Length = long.Parse(temp[1]);
             Color = temp[2];
         }
     }

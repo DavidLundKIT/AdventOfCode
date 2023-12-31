@@ -23,8 +23,29 @@ namespace AdventCode2023
 
             var sut = new LavaLagoonDigger(lines);
             sut.MakePerimeter();
-            actual = sut.CalculateLagoon();
+            sut.DumpLagoon();
+            sut.FloodFillLagoon(new Point(1, 1));
+            sut.DumpLagoon();
+            actual = sut.Points.Count;
             Assert.Equal(62, actual);
+        }
+
+
+        [Fact]
+        public void Day18_Part1_LavaductLagoon_OK()
+        {
+            var lines = Utils.ReadLinesFromFile("Day18.txt");
+            int expected = 766;
+            int actual = lines.Length;
+            Assert.Equal(expected, actual);
+
+            var sut = new LavaLagoonDigger(lines);
+            sut.MakePerimeter();
+            sut.DumpLagoon();
+            sut.FloodFillLagoon(new Point(1, 1));
+            sut.DumpLagoon();
+            actual = sut.Points.Count;
+            Assert.Equal(46334, actual);
         }
     }
 }
