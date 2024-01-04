@@ -18,7 +18,7 @@ namespace AdventCode2023.Models
             }
         }
 
-        public void MakePerimeter()
+        public void MakePerimeter(bool useOrg = true)
         {
             Points.Clear();
 
@@ -28,17 +28,30 @@ namespace AdventCode2023.Models
             Points.Add(prev.Key, prev);
             foreach (var cmd in DigInstructions)
             {
-                var newPts = Point.DoDiggInstruction(prev, cmd);
-                if (newPts.Any())
+                List<Point> newPts;
+                if (useOrg)
                 {
-                    foreach (var now in newPts)
+                    newPts = Point.DoDiggInstructionOrg(prev, cmd);
+                    if (newPts.Any())
                     {
-                        if (!Points.ContainsKey(now.Key))
+                        foreach (var now in newPts)
                         {
-                            Points.Add(now.Key, now);
+                            if (!Points.ContainsKey(now.Key))
+                            {
+                                Points.Add(now.Key, now);
+                            }
+                            prev = now;
                         }
-                        prev = now;
                     }
+                }
+                else
+                {
+                    var now = Point.DoDiggInstruction(prev, cmd);
+                    if (!Points.ContainsKey(now.Key))
+                    {
+                        Points.Add(now.Key, now);
+                    }
+                    prev = now;
                 }
             }
         }
@@ -93,7 +106,22 @@ namespace AdventCode2023.Models
                     stack.Push(new Point(p.X, p.Y - 1));
                 }
             }
+        }
 
+        public long CalculateLagoonArea()
+        {
+            long x1ty2 = 0;
+            long y1tx2 = 0;
+            var pts = Points.Values.ToList();
+            for (int i = 0; i < pts.Count; i++)
+            {
+                int iNext = (i < pts.Count - 1) ? i + 1 : 0;
+                x1ty2 += pts[i].X * pts[iNext].Y;
+                y1tx2 += pts[i].Y * pts[iNext].X;
+            }
+            long area = x1ty2 - y1tx2;
+
+            return area / 2;
         }
     }
 
@@ -116,7 +144,24 @@ namespace AdventCode2023.Models
             }
         }
 
-        public static List<Point> DoDiggInstruction(Point last, DigInstruction cmd)
+        public static Point DoDiggInstruction(Point last, DigInstruction cmd)
+        {
+            switch (cmd.Direction)
+            {
+                case "U":
+                    return new Point(last.X, last.Y - cmd.Length);
+                case "D":
+                    return new Point(last.X, last.Y + cmd.Length);
+                case "L":
+                    return new Point(last.X - cmd.Length, last.Y);
+                case "R":
+                    return new Point(last.X + cmd.Length, last.Y);
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(cmd));
+            }
+        }
+
+        public static List<Point> DoDiggInstructionOrg(Point last, DigInstruction cmd)
         {
             List<Point> points = new List<Point>();
 
