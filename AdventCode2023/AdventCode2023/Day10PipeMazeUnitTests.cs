@@ -27,6 +27,7 @@ namespace AdventCode2023
             Assert.Equal(expectedY, sut.Start.Item2);
 
             actual = sut.WalkPipeMaze();
+            sut.DumpMaze();
             Assert.Equal(actual, steps);
         }
 
@@ -41,6 +42,7 @@ namespace AdventCode2023
             var sut = new PipeMazeWalker(lines);
 
             actual = sut.WalkPipeMaze();
+            sut.DumpMaze();
             Assert.Equal(6842, actual);
         }
 

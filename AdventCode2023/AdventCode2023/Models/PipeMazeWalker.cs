@@ -1,4 +1,6 @@
-﻿namespace AdventCode2023.Models
+﻿using System.Diagnostics;
+
+namespace AdventCode2023.Models
 {
     public class PipeMazeWalker
     {
@@ -10,10 +12,13 @@
         public Dictionary<char, string> RightChoices { get; set; }
         public Dictionary<char, string> UpChoices { get; set; }
         public Dictionary<char, string> DownChoices { get; set; }
+        public Dictionary<Tuple<int, int>, char> MazePath { get; set; }
 
         public PipeMazeWalker(string[] lines)
         {
             PipeMaze = new List<char[]>();
+            MazePath = new Dictionary<Tuple<int, int>, char>();
+
             int idx = 0;
             int sX = -1;
             int sY = -1;
@@ -50,11 +55,15 @@
 
         public int WalkPipeMaze()
         {
+            MazePath.Clear();
             var now = Start;
+            MazePath.Add(now, PipeMaze[now.Item2][now.Item1]);
             int steps = 0;
             do
             {
                 now = FindNextStep(now);
+                if (!MazePath.ContainsKey(now))
+                    MazePath.Add(now, PipeMaze[now.Item2][now.Item1]);
                 steps++;
             } while (!Start.Equals(now));
             return steps / 2;
@@ -138,6 +147,28 @@
             }
 
             throw new ArgumentOutOfRangeException(nameof(next));
+        }
+
+        public void DumpMaze()
+        {
+            Debug.WriteLine("=====================================");
+            for (int y = 0; y < PipeMaze.Count();  y++)
+            {
+                for (int x = 0; x < PipeMaze[y].Length; x++)
+                {
+                    var tp = new Tuple<int, int>(x, y);
+                    if (MazePath.ContainsKey(tp))
+                    {
+                        Debug.Write(MazePath[tp]);
+                    }
+                    else
+                    {
+                        Debug.Write('.');
+                    }
+                }
+                Debug.WriteLine("");
+            }
+            Debug.WriteLine("=====================================");
         }
     }
 }
