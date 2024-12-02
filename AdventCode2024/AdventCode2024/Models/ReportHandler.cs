@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AdventCode2024.Models;
+﻿namespace AdventCode2024.Models;
 
 public class ReportHandler
 {
@@ -16,6 +10,33 @@ public class ReportHandler
     {
         var list = ParseRow(row);
         var differences = LevelDifferences(list);
+        return IsSafe(differences);
+    }
+
+    public bool IsSafeWithTolerance(string row)
+    {
+        var list = ParseRow(row);
+        var differences = LevelDifferences(list);
+        if (IsSafe(differences))
+            return true;
+
+        // try removing one
+        for (int i = 0; i < list.Count; i++)
+        {
+            int[] tempArr = new int[list.Count];
+            list.CopyTo(tempArr);
+            var tempList = new List<int>(tempArr);
+            tempList.RemoveAt(i);
+            differences = LevelDifferences(tempList);
+            if (IsSafe(differences))
+                return true;
+        }
+
+        return false;
+    }
+
+    public bool IsSafe(List<int> differences)
+    {
         bool isIncreasing = false;
         bool isDecreasing = false;
 

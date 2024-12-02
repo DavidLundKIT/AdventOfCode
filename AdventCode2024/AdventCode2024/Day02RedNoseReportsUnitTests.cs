@@ -1,9 +1,4 @@
 ﻿using AdventCode2024.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdventCode2024;
 
@@ -27,11 +22,10 @@ public class Day02RedNoseReportsUnitTests
                 safeCount++;
             }
         }
-        Assert.Equal(1000, safeCount);
+        Assert.Equal(383, safeCount);
     }
 
     [Theory]
-
     [InlineData("7 6 4 2 1", true)]
     [InlineData("1 2 7 8 9", false)]
     [InlineData("9 7 6 2 1", false)]
@@ -44,5 +38,41 @@ public class Day02RedNoseReportsUnitTests
         var actual = sut.IsSafe(line);
 
         Assert.Equal(isSafe, actual);
+    }
+
+    [Theory]
+    [InlineData("7 6 4 2 1", true)]
+    [InlineData("1 2 7 8 9", false)]
+    [InlineData("9 7 6 2 1", false)]
+    [InlineData("1 3 2 4 5", true)]
+    [InlineData("8 6 4 4 1", true)]
+    [InlineData("1 3 6 7 9", true)]
+    public void CheckIfRowIsSafe_WithTolerance_OK(string line, bool isSafe)
+    {
+        var sut = new ReportHandler();
+        var actual = sut.IsSafeWithTolerance(line);
+
+        Assert.Equal(isSafe, actual);
+    }
+
+    [Fact]
+    public void Day02_Step2_SafeReportsWithTolerance_OK()
+    {
+        var lines = Utils.ReadLinesFromFile("Day02.txt");
+        int count = 1000;
+        Assert.Equal(count, lines.Length);
+
+        int safeCount = 0;
+        bool isSafe = false;
+        var sut = new ReportHandler();
+        foreach (var line in lines)
+        {
+            isSafe = sut.IsSafeWithTolerance(line);
+            if (isSafe)
+            {
+                safeCount++;
+            }
+        }
+        Assert.Equal(383, safeCount);
     }
 }
