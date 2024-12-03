@@ -63,16 +63,14 @@ public class Day02RedNoseReportsUnitTests
         Assert.Equal(count, lines.Length);
 
         int safeCount = 0;
-        bool isSafe = false;
         var sut = new ReportHandler();
         foreach (var line in lines)
         {
-            isSafe = sut.IsSafeWithTolerance(line);
-            if (isSafe)
+            if (sut.IsSafeWithTolerance(line))
             {
                 safeCount++;
             }
         }
-        Assert.Equal(383, safeCount);
+        Assert.Equal(436, safeCount);
     }
 }
