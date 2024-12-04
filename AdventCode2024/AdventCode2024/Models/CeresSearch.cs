@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AdventCode2024.Models;
+﻿namespace AdventCode2024.Models;
 
 public class CeresSearch
 {
@@ -67,7 +61,7 @@ public class CeresSearch
         // down left
         count += IsXmas(new Point(ptX.X - 1, ptX.Y + 1), new Point(ptX.X - 2, ptX.Y + 2), new Point(ptX.X - 3, ptX.Y + 3));
         // up right
-        count += IsXmas(new Point(ptX.X - 1, ptX.Y - 1), new Point(ptX.X - 2, ptX.Y - 2), new Point(ptX.X +- 3, ptX.Y - 3));
+        count += IsXmas(new Point(ptX.X - 1, ptX.Y - 1), new Point(ptX.X - 2, ptX.Y - 2), new Point(ptX.X + -3, ptX.Y - 3));
 
         return count;
     }
@@ -82,6 +76,41 @@ public class CeresSearch
                 return 1;
             }
         }
+        return 0;
+    }
+
+    public int FindAllX_Mas()
+    {
+        int count = 0;
+
+        for (int y = 0; y < MaxY; y++)
+        {
+            for (int x = 0; x < MaxX; x++)
+            {
+                var ptNow = new Point(x, y);
+                if (Puzzle[ptNow] == 'A')
+                {
+                    // look for MAS
+                    int found = FindX_MasForPoint(ptNow);
+                    count += found;
+                }
+            }
+        }
+
+        return count;
+    }
+
+    public int FindX_MasForPoint(Point ptA)
+    {
+        int count = 0;
+
+        count += IsXmas(new Point(ptA.X + 1, ptA.Y + 1), ptA, new Point(ptA.X - 1, ptA.Y - 1));
+        count += IsXmas(new Point(ptA.X - 1, ptA.Y - 1), ptA, new Point(ptA.X + 1, ptA.Y + 1));
+        count += IsXmas(new Point(ptA.X + 1, ptA.Y - 1), ptA, new Point(ptA.X - 1, ptA.Y + 1));
+        count += IsXmas(new Point(ptA.X - 1, ptA.Y + 1), ptA, new Point(ptA.X + 1, ptA.Y - 1));
+
+        if (count == 2)
+            return 1;
         return 0;
     }
 }

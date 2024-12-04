@@ -30,4 +30,29 @@ public class Day04CeresSearchUnitTests
         Assert.Equal(2514, actual);
     }
 
+    [Fact]
+    public void CeresSearchX_Mas_OK()
+    {
+        var lines = Utils.ReadLinesFromFile("Day04test.txt");
+        int count = 10;
+        Assert.Equal(count, lines.Length);
+
+        var search = new CeresSearch(lines);
+        var actual = search.FindAllX_Mas();
+
+        Assert.Equal(9, actual);
+    }
+
+    [Fact]
+    public void Day04_Step2_CeresSearchX_Mas_OK()
+    {
+        var lines = Utils.ReadLinesFromFile("Day04.txt");
+        int count = 140;
+        Assert.Equal(count, lines.Length);
+
+        var search = new CeresSearch(lines);
+        var actual = search.FindAllX_Mas();
+
+        Assert.Equal(1888, actual);
+    }
 }
