@@ -5,7 +5,7 @@ namespace AdventCode2024;
 public class Day05PrintQueueUnitTests
 {
     [Fact]
-    public void ReadInData_OK()
+    public void ReadInData_FindOrdered_OK()
     {
         var lines = Utils.ReadLinesFromFile("Day05test.txt");
         Assert.Equal(28, lines.Length);
@@ -30,5 +30,33 @@ public class Day05PrintQueueUnitTests
 
         int actual = checker.CheckPageOrderOfManuals();
         Assert.Equal(5639, actual);
+    }
+
+    [Fact]
+    public void ReadInData_FindBadAndReOrder_OK()
+    {
+        var lines = Utils.ReadLinesFromFile("Day05test.txt");
+        Assert.Equal(28, lines.Length);
+
+        var checker = new PageQueueOrderChecker(lines);
+        Assert.Equal(21, checker.Rules.Count);
+        Assert.Equal(6, checker.Manuals.Count);
+
+        int actual = checker.ReOrderPagesOfBadManuals();
+        Assert.Equal(123, actual);
+    }
+
+    [Fact]
+    public void Day05_Step2_PrintQueue_OK()
+    {
+        var lines = Utils.ReadLinesFromFile("Day05.txt");
+        Assert.Equal(1375, lines.Length);
+
+        var checker = new PageQueueOrderChecker(lines);
+        Assert.Equal(1176, checker.Rules.Count);
+        Assert.Equal(198, checker.Manuals.Count);
+
+        int actual = checker.ReOrderPagesOfBadManuals();
+        Assert.Equal(5273, actual);
     }
 }
