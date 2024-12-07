@@ -2,15 +2,26 @@
 
 public class Spot
 {
-    public int Count { get; set; }
     public char Type { get; set; }
+    public Dictionary<Direction, int> Steps { get; set; }
 
-    public Spot(char type, int count)
+    public Spot(char type)
     {
         Type = type;
-        Count = count;
+        Steps = new Dictionary<Direction, int>();
+    }
+
+    public bool Step(Direction direction)
+    {
+        bool found = Steps.ContainsKey(direction);
+        if (!found)
+        {
+        Steps.Add(direction, 1);
+        }
+        return found;
     }
 }
+
 public class GuardGallivanter
 {
     public Dictionary<Point, Spot> Puzzle { get; set; }
@@ -31,7 +42,7 @@ public class GuardGallivanter
             for (int x = 0; x < MaxX; x++)
             {
                 var ptNow = new Point(x, y);
-                Puzzle.Add(ptNow, new Spot(chArr[x], 0));
+                Puzzle.Add(ptNow, new Spot(chArr[x]));
                 if (chArr[x] == '^')
                 {
                     Start = ptNow;
@@ -41,10 +52,10 @@ public class GuardGallivanter
         Guard = new Position(Start, Direction.Up);
     }
 
-    public void WalkTheRoom()
+    public Direction WalkTheRoom()
     {
         Puzzle[Guard.Now()].Type = 'X';
-        Puzzle[Guard.Now()].Count++;
+        Puzzle[Guard.Now()].Step(Direction.Up);
 
         while (Guard.Direction != Direction.Done)
         {
@@ -59,7 +70,12 @@ public class GuardGallivanter
                 {
                     Guard.MoveForward();
                     Puzzle[Guard.Now()].Type = 'X';
-                    Puzzle[Guard.Now()].Count++;
+                    bool loop = Puzzle[Guard.Now()].Step(Guard.Direction);
+                    if (loop)
+                    {
+                        Guard.Direction = Direction.Loop;
+                        break;
+                    }
                 }
             }
             else
@@ -67,8 +83,7 @@ public class GuardGallivanter
                 Guard.Direction = Direction.Done;
             }
         }
-
-        Position now = new Position(Guard);
+        return Guard.Direction;
     }
 
     public int HowManyXs()

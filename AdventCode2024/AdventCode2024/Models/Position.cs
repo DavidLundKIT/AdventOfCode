@@ -6,7 +6,8 @@ public enum Direction
     Down,
     Left,
     Right,
-    Done
+    Done,
+    Loop
 }
 
 public class Position
