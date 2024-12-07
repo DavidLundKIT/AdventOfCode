@@ -1,9 +1,4 @@
 ﻿using AdventCode2024.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdventCode2024;
 
@@ -17,8 +12,13 @@ public class Day06GuardGallivantUnitTests
         Assert.Equal(count, lines.Length);
 
         var gg = new GuardGallivanter(lines);
-        Assert.Equal(4, gg.GuardStart.X);
-        Assert.Equal(6, gg.GuardStart.Y);
+        Assert.Equal(4, gg.Guard.X);
+        Assert.Equal(6, gg.Guard.Y);
+        Assert.Equal(Direction.Up, gg.Guard.Direction);
+
+        gg.WalkTheRoom();
+        count = gg.HowManyXs();
+        Assert.Equal(41, count);
     }
 
     [Fact]
@@ -29,7 +29,12 @@ public class Day06GuardGallivantUnitTests
         Assert.Equal(count, lines.Length);
 
         var gg = new GuardGallivanter(lines);
-        Assert.Equal(36, gg.GuardStart.X);
-        Assert.Equal(52, gg.GuardStart.Y);
+        Assert.Equal(36, gg.Guard.X);
+        Assert.Equal(52, gg.Guard.Y);
+        Assert.Equal(Direction.Up, gg.Guard.Direction);
+
+        gg.WalkTheRoom();
+        count = gg.HowManyXs();
+        Assert.Equal(4988, count);
     }
 }
