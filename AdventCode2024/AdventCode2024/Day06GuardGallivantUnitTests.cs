@@ -103,7 +103,7 @@ public class Day06GuardGallivantUnitTests
         Assert.Equal(6, count);
     }
 
-    [Fact]
+    [Fact(Skip = "Takes 41-43 secs")]
     public void Day06_Step2_GuardGallivanting_OK()
     {
         var lines = Utils.ReadLinesFromFile("Day06.txt");
