@@ -1,9 +1,4 @@
 ﻿using AdventCode2024.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdventCode2024;
 
@@ -19,6 +14,9 @@ public class Day08ResonantCollinearityUnitTests
         var rc = new ResonantColinearityMapper(lines);
         Assert.Equal(12, rc.MaxX);
         Assert.Equal(12, rc.MaxY);
+
+        rc.MapAntiNodes();
+        Assert.Equal(14, rc.Antinodes.Count);
     }
 
     [Fact]
@@ -31,5 +29,8 @@ public class Day08ResonantCollinearityUnitTests
         var rc = new ResonantColinearityMapper(lines);
         Assert.Equal(50, rc.MaxX);
         Assert.Equal(50, rc.MaxY);
+
+        rc.MapAntiNodes();
+        Assert.Equal(413, rc.Antinodes.Count);
     }
 }
