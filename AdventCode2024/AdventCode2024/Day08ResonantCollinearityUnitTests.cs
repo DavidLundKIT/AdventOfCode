@@ -33,4 +33,34 @@ public class Day08ResonantCollinearityUnitTests
         rc.MapAntiNodes();
         Assert.Equal(413, rc.Antinodes.Count);
     }
+
+    [Fact]
+    public void ResonantCollinearity_WithHarmonics_OK()
+    {
+        var lines = Utils.ReadLinesFromFile("Day08test.txt");
+        int count = 12;
+        Assert.Equal(count, lines.Length);
+
+        var rc = new ResonantColinearityMapper(lines);
+        Assert.Equal(12, rc.MaxX);
+        Assert.Equal(12, rc.MaxY);
+
+        rc.MapAntiNodesWithHarmonics();
+        Assert.Equal(34, rc.Antinodes.Count);
+    }
+
+    [Fact]
+    public void Day08_Part2_ResonantCollinearity_OK()
+    {
+        var lines = Utils.ReadLinesFromFile("Day08.txt");
+        int count = 50;
+        Assert.Equal(count, lines.Length);
+
+        var rc = new ResonantColinearityMapper(lines);
+        Assert.Equal(50, rc.MaxX);
+        Assert.Equal(50, rc.MaxY);
+
+        rc.MapAntiNodesWithHarmonics();
+        Assert.Equal(1417, rc.Antinodes.Count);
+    }
 }

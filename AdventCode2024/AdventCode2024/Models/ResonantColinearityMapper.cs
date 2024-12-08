@@ -41,17 +41,14 @@ public class ResonantColinearityMapper
             {
                 for (int j = i + 1; j < antennas.Count; j++)
                 {
-                    PlaceAntiNodes(antennas[i], antennas[j]);
+                    PlaceAntiNodes(antennas[i].Key, antennas[j].Key);
                 }
             }
         }
     }
 
-    public void PlaceAntiNodes(KeyValuePair<Point, char> ant1, KeyValuePair<Point, char> ant2)
+    public void PlaceAntiNodes(Point pt1, Point pt2)
     {
-        Point pt1 = ant1.Key;
-        Point pt2 = ant2.Key;
-
         int diffX = Math.Abs(pt1.X - pt2.X);
         int diffY = Math.Abs(pt1.Y - pt2.Y);
         int doubleDist = 2 * NycDistance(pt1, pt2);
@@ -69,11 +66,7 @@ public class ResonantColinearityMapper
 
     public void ValidateAntiNode(Point ptNew, Point ptCompare, int doubleDist)
     {
-        if (ptNew.X < 0 || MaxX <= ptNew.X)
-        {
-            return;
-        }
-        if (ptNew.Y < 0 || MaxY <= ptNew.Y)
+        if (!IsAntiNodeOnMap(ptNew))
         {
             return;
         }
@@ -82,6 +75,11 @@ public class ResonantColinearityMapper
         {
             return;
         }
+        AddAntinode(ptNew);
+    }
+
+    public void AddAntinode(Point ptNew)
+    {
         if (Antinodes.ContainsKey(ptNew))
         {
             Antinodes[ptNew]++;
@@ -95,5 +93,59 @@ public class ResonantColinearityMapper
     public int NycDistance(Point ptA, Point ptB)
     {
         return Math.Abs(ptA.X - ptB.X) + Math.Abs(ptA.Y - ptB.Y);
+    }
+
+    public void MapAntiNodesWithHarmonics()
+    {
+        Antinodes.Clear();
+        var antennaTypes = Antennas.Values.Distinct().ToList();
+
+        foreach (var antType in antennaTypes)
+        {
+            var antennas = Antennas.Where(a => a.Value == antType).ToList();
+            for (int i = 0; i < antennas.Count - 1; i++)
+            {
+                for (int j = i + 1; j < antennas.Count; j++)
+                {
+                    PlaceHarmonicAntiNodes(antennas[i].Key, antennas[j].Key);
+                }
+            }
+        }
+    }
+
+    public void PlaceHarmonicAntiNodes(Point pt1, Point pt2)
+    {
+        // two points - add to the nodes
+        AddAntinode(pt1);
+        AddAntinode(pt2);
+
+        int diffX = pt1.X - pt2.X;
+        int diffY = pt1.Y - pt2.Y;
+
+        Point newPt = new Point(pt1.X + diffX, pt1.Y + diffY);
+        while (IsAntiNodeOnMap(newPt))
+        {
+            AddAntinode(newPt);
+            newPt = new Point(newPt.X + diffX, newPt.Y + diffY);
+        }
+        newPt = new Point(pt2.X - diffX, pt2.Y - diffY);
+        while (IsAntiNodeOnMap(newPt))
+        {
+            AddAntinode(newPt);
+            newPt = new Point(newPt.X - diffX, newPt.Y - diffY);
+        }
+    }
+
+    public bool IsAntiNodeOnMap(Point ptNew)
+    {
+        if (ptNew.X < 0 || MaxX <= ptNew.X)
+        {
+            return false;
+        }
+        if (ptNew.Y < 0 || MaxY <= ptNew.Y)
+        {
+            return false;
+        }
+        return true;
     }
 }
