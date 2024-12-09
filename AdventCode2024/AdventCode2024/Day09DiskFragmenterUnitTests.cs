@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace AdventCode2024;
 
@@ -60,6 +61,21 @@ public class Day09DiskFragmenterUnitTests
 
         long actual = df.ChecksumTheDisk();
         Assert.Equal(6367087064415, actual);
+    }
+
+    [Fact]
+    public void Part2_testdata2_checksum_OK()
+    {
+        string testChecksum = "00992111777.44.333....5555.6666.....8888..";
+        var temp = testChecksum.Replace(".", "0");
+        var tempArr = temp.ToCharArray().Select(c => int.Parse(Convert.ToString(c))).ToArray();
+
+        long sum = 0;
+        for (int i = 0; i < tempArr.Length; i++)
+        {
+            sum += Convert.ToInt64(tempArr[i] * i);
+        }
+        Assert.Equal(2858, sum);
     }
 }
 
