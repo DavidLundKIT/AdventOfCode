@@ -104,7 +104,7 @@ public class Day09DiskFragmenterUnitTests
         Assert.Equal(0, df.TheDisk[df.TheDisk.Count() - 1]);
 
         long actual = df.ChecksumTheDisk();
-        Assert.Equal(0, actual);
+        Assert.Equal(6390781891880, actual);
     }
 }
 
