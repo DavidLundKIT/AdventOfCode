@@ -64,12 +64,47 @@ public class Day09DiskFragmenterUnitTests
         var temp = testChecksum.Replace(".", "0");
         var tempArr = temp.ToCharArray().Select(c => int.Parse(Convert.ToString(c))).ToArray();
 
-        long sum = 0;
-        for (int i = 0; i < tempArr.Length; i++)
-        {
-            sum += Convert.ToInt64(tempArr[i] * i);
-        }
+        var df = new DiskFragmenter(TestData2);
+        Assert.NotNull(df);
+        Assert.Equal(42, df.TotalBlocks);
+        Assert.Equal(19, df.BlockGroups.Count());
+        df.TheDisk = tempArr;
+        long sum = df.ChecksumTheDisk();
         Assert.Equal(2858, sum);
+    }
+
+    [Fact]
+    public void DiskFragmenterV2_TestData2_OK()
+    {
+        var df = new DiskFragmenter(TestData2);
+        Assert.NotNull(df);
+        Assert.Equal(42, df.TotalBlocks);
+        Assert.Equal(19, df.BlockGroups.Count());
+
+        df.FillTheDisk();
+        Assert.Equal(9, df.TheDisk[df.TheDisk.Count() - 1]);
+        df.DeFragmentTheDisk();
+        Assert.Equal(0, df.TheDisk[df.TheDisk.Count() - 1]);
+
+        long actual = df.ChecksumTheDisk();
+        Assert.Equal(2858, actual);
+    }
+
+    [Fact]
+    public void Day09_Part2_DiskFragmenter_V2_OK()
+    {
+        var df = new DiskFragmenter(InData);
+        Assert.NotNull(df);
+        Assert.Equal(95288, df.TotalBlocks);
+        Assert.Equal(19999, df.BlockGroups.Count());
+
+        df.FillTheDisk();
+        Assert.Equal(9999, df.TheDisk[df.TheDisk.Count() - 1]);
+        df.DeFragmentTheDisk();
+        Assert.Equal(0, df.TheDisk[df.TheDisk.Count() - 1]);
+
+        long actual = df.ChecksumTheDisk();
+        Assert.Equal(0, actual);
     }
 }
 
