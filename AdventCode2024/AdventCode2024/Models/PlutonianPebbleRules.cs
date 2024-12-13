@@ -1,5 +1,12 @@
 ﻿namespace AdventCode2024.Models;
 
+/// <summary>
+/// First shot at doing Day 11.
+/// Chose not to use a List<T> because usually dies on Part 2s.
+/// Chose LinkedList<T> very fast but memory still killed me on Part 2.
+/// Machine was using all ram and swapping to disk.
+/// Abandoned this and went to work on PlutoninaPebblesRecursive.
+/// </summary>
 public class PlutonianPebbleRules
 {
     public LinkedList<long> Stones { get; set; }

@@ -89,7 +89,10 @@ public class Day11PlutonianPebblesUnitTests
         Assert.Equal(199753, ppr.Stones.Count);
     }
 
-    [Fact]
+    /// <summary>
+    /// Took for ever for 75 steps
+    /// </summary>
+    [Fact(Skip = "Took for ever for 75 steps")]
     public void Day11_Part2_OnlyOne_PlutonianPebbles_OK()
     {
         var oneAtATime = Data.Split(' ', StringSplitOptions.RemoveEmptyEntries);
@@ -120,7 +123,7 @@ public class Day11PlutonianPebblesUnitTests
     [InlineData(5, 13)]
     [InlineData(6, 22)]
     [InlineData(25, 55312)]
-    public void PlutonianPebblesRecursive_TestData2_Blink25_OK(int blinks, long expected)
+    public void PlutonianPebblesRecursive_TestData2_BlinkNN_OK(int blinks, long expected)
     {
         var ppr = new PlutonianPebblesRecursive(TestData2);
         Assert.NotNull(ppr);
@@ -132,6 +135,7 @@ public class Day11PlutonianPebblesUnitTests
     }
 
     [Fact]
+
     public void Day11_Part1_PlutonianPebblesRecursive_OK()
     {
         var ppr = new PlutonianPebblesRecursive(Data);
@@ -152,6 +156,6 @@ public class Day11PlutonianPebblesUnitTests
 
         long actual = ppr.DoBlinks(75);
 
-        Assert.Equal(0, actual);
+        Assert.Equal(239413123020116, actual);
     }
 }
