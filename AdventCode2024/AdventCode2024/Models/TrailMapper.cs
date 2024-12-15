@@ -69,7 +69,7 @@ public class TrailMapper
         if (valNow == 9)
         {
             // Trail!
-            var trail = new Trail(HeadNow, now);
+            var trail = new Trail(HeadNow ?? throw new ArgumentNullException("head"), now);
             if (Trails.ContainsKey(trail))
             {
                 Trails[trail]++;
