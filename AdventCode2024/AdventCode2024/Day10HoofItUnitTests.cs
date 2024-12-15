@@ -31,4 +31,18 @@ public class Day10HoofItUnitTests
         int actual = mapper.Trails.Count();
         Assert.Equal(468, actual);
     }
+
+    [Fact]
+    public void Day10_Part2_HoofIt_OK()
+    {
+        var lines = Utils.ReadLinesFromFile("Day10.txt");
+        int count = 40;
+        Assert.Equal(count, lines.Length);
+
+        var mapper = new TrailMapper(lines);
+        count = mapper.FindAllTrails();
+        int actual = mapper.Trails.Count();
+        Assert.Equal(468, actual);
+        Assert.Equal(966, count);
+    }
 }
