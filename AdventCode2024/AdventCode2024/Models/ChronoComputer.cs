@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AdventCode2024.Models;
+﻿namespace AdventCode2024.Models;
 
 public record InitialComputerState(long RegisterA, long RegisterB, long RegisterC, string Program);
 
@@ -78,7 +72,7 @@ public class ChronoComputer
                 if (RegA != 0)
                 {
                     // jump
-                    InstPtr = (int) LiteralOperand(operand);
+                    InstPtr = (int)LiteralOperand(operand);
                     return InstPtr;
                 }
                 break;
@@ -138,6 +132,6 @@ public class ChronoComputer
     {
         if (Output.Count == 0)
             return string.Empty;
-        return string.Join(",", Output.Select(l=> l.ToString()).ToArray());
+        return string.Join(",", Output.Select(l => l.ToString()).ToArray());
     }
 }
