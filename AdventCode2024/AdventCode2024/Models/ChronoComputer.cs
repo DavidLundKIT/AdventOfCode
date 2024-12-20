@@ -12,6 +12,7 @@ public class ChronoComputer
 
     public int InstPtr { get; set; }
     public List<long> Output { get; set; }
+    public bool CheckOutput { get; set; }
 
     public ChronoComputer(long regA, long regB, long regC, string program)
     {
@@ -22,6 +23,7 @@ public class ChronoComputer
         TheProgram = ProgramCode.Split(",", StringSplitOptions.RemoveEmptyEntries).Select(s => long.Parse(s)).ToList();
         InstPtr = 0;
         Output = new List<long>();
+        CheckOutput = false;
     }
 
     public ChronoComputer(InitialComputerState data)
@@ -33,6 +35,7 @@ public class ChronoComputer
         TheProgram = ProgramCode.Split(",", StringSplitOptions.RemoveEmptyEntries).Select(s => long.Parse(s)).ToList();
         InstPtr = 0;
         Output = new List<long>();
+        CheckOutput = false;
     }
 
     public void Run()
@@ -44,6 +47,31 @@ public class ChronoComputer
         {
             long result = DoInstruction(TheProgram[InstPtr], TheProgram[InstPtr + 1]);
         }
+    }
+
+    public long FindCopyOfSelf()
+    {
+        long regA = 0;
+        while (regA <= long.MaxValue)
+        {
+            Output.Clear();
+            InstPtr = 0;
+            RegA = regA;
+            RegB = 0;
+            RegC = 0;
+
+
+            while (0 <= InstPtr && InstPtr < TheProgram.Count)
+            {
+                long result = DoInstruction(TheProgram[InstPtr], TheProgram[InstPtr + 1]);
+            }
+            if (string.Equals(ProgramCode, ShowOutput()))
+            {
+                return regA;
+            }
+            regA++;
+        }
+        return -1;
     }
 
     public long DoInstruction(long instruction, long operand)
@@ -85,6 +113,15 @@ public class ChronoComputer
                 // out 
                 result = ComboOperand(operand) % 8;
                 Output.Add(result);
+                // if the output isn't the same as the program, quit early
+                if (CheckOutput)
+                {
+                    int idx = Output.Count - 1;
+                    if (idx >= TheProgram.Count() || TheProgram[idx] != Output[idx])
+                    {
+                        InstPtr = 666;
+                    }
+                }
                 break;
             case 6:
                 // bdv 

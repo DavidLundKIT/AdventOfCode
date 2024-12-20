@@ -87,4 +87,23 @@ public class Day17ChronospatialComputerUnitTests
         cc.Run();
         Assert.Equal("2,1,0,1,7,2,5,0,3", cc.ShowOutput());
     }
+
+    [Fact]
+    public void Instruction_test_Find_Copy_OK()
+    {
+        // If register B contains 2024 and register C contains 43690, the program 4,0 would set register B to 44354.
+        var cc = new ChronoComputer(729, 0, 0, "0,3,5,4,3,0");
+        Assert.NotNull(cc);
+        long actual = cc.FindCopyOfSelf();
+        Assert.Equal(117440, actual);
+    }
+
+    [Fact(Skip ="Not ending")]
+    public void Day17_Part2_ChronospatialComputer_OK()
+    {
+        var cc = new ChronoComputer(InData);
+        Assert.NotNull(cc);
+        long actual = cc.FindCopyOfSelf();
+        Assert.Equal(0, actual);
+    }
 }
