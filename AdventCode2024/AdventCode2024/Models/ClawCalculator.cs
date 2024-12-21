@@ -58,6 +58,30 @@ public class ClawCalculator
         return tokens;
     }
 
+    public long FindTokenPrizeCalcCost()
+    {
+        List<ClawResult> results = new List<ClawResult>();
+        long tokens = 0;
+
+        foreach (var cs in ClawStates)
+        {
+            var cr = TokensForPrizeCalc(cs);
+            if (cr != null)
+            {
+                results.Add(cr);
+                tokens += cr.Tokens;
+            }
+        }
+
+        return tokens;
+    }
+
+    /// <summary>
+    /// Previous version (not saved) had one not so smart loop.
+    /// Both die on Part 2
+    /// </summary>
+    /// <param name="cs"></param>
+    /// <returns></returns>
     public ClawResult? TokensForPrize(ClawState cs)
     {
         List<ClawResult> results = new List<ClawResult>();
@@ -90,6 +114,37 @@ public class ClawCalculator
         if (results.Any())
         {
             return results.FirstOrDefault(cr => cr.Tokens == results.Min(cr => cr.Tokens));
+        }
+        return null;
+    }
+
+    /// <summary>
+    /// works on the idea that:
+    /// n*Ax + m*Bx = Px
+    /// n*Ay + m*By = Py
+    /// n = (Px - m*Bx)/ Ax
+    /// etc.
+    /// </summary>
+    /// <param name="cs"></param>
+    /// <returns></returns>
+    public ClawResult? TokensForPrizeCalc(ClawState cs)
+    {
+        long bottom = (cs.B.Y * cs.A.X - cs.B.X * cs.A.Y);
+        if (bottom == 0)
+        {
+            return null;
+        }
+        long m = (cs.Prize.Y * cs.A.X - cs.Prize.X * cs.A.Y) / bottom;
+        if (cs.A.X == 0)
+            return null;
+
+        long n = (cs.Prize.X - m * cs.B.X) / cs.A.X;
+
+        // long misses, check this way
+        if ((n * cs.A.X + m * cs.B.X == cs.Prize.X)
+            && (n * cs.A.Y + m * cs.B.Y == cs.Prize.Y))
+        {
+            return new ClawResult(n, m, n * 3 + m);
         }
         return null;
     }

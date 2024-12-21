@@ -18,6 +18,8 @@ public class Day13ClawContraptionUnitTests
 
         long actual = cc.FindTokenPrizeCost();
         Assert.Equal(480, actual);
+        actual = cc.FindTokenPrizeCalcCost();
+        Assert.Equal(480, actual);
     }
 
     [Fact]
@@ -33,9 +35,12 @@ public class Day13ClawContraptionUnitTests
 
         long actual = cc.FindTokenPrizeCost();
         Assert.Equal(29522, actual);
+
+        actual = cc.FindTokenPrizeCalcCost();
+        Assert.Equal(29522, actual);
     }
 
-    [Fact(Skip = "Not working")]
+    [Fact]
     public void ClawContraption_Test_Offset_OK()
     {
         var lines = Utils.ReadLinesFromFile("Day13test.txt");
@@ -46,11 +51,11 @@ public class Day13ClawContraptionUnitTests
         Assert.NotNull(cc);
         Assert.Equal(4, cc.ClawStates.Count());
 
-        long actual = cc.FindTokenPrizeCost();
-        Assert.Equal(0, actual);
+        long actual = cc.FindTokenPrizeCalcCost();
+        Assert.Equal(875318608908, actual);
     }
 
-    [Fact(Skip = "Not working")]
+    [Fact]
     public void Day13_Part2_ClawContraption_OK()
     {
         var lines = Utils.ReadLinesFromFile("Day13.txt");
@@ -61,7 +66,7 @@ public class Day13ClawContraptionUnitTests
         Assert.NotNull(cc);
         Assert.Equal(320, cc.ClawStates.Count());
 
-        long actual = cc.FindTokenPrizeCost();
-        Assert.Equal(29522, actual);
+        long actual = cc.FindTokenPrizeCalcCost();
+        Assert.Equal(101214869433312, actual);
     }
 }
