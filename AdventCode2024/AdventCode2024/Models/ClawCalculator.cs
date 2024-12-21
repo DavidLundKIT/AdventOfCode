@@ -78,7 +78,7 @@ public class ClawCalculator
 
     /// <summary>
     /// Previous version (not saved) had one not so smart loop.
-    /// Both die on Part 2
+    /// The previous version and this version die on Part 2 (too long).
     /// </summary>
     /// <param name="cs"></param>
     /// <returns></returns>
@@ -136,11 +136,13 @@ public class ClawCalculator
         }
         long m = (cs.Prize.Y * cs.A.X - cs.Prize.X * cs.A.Y) / bottom;
         if (cs.A.X == 0)
+        {
             return null;
+        }
 
         long n = (cs.Prize.X - m * cs.B.X) / cs.A.X;
 
-        // long misses, check this way
+        // long div is truncated, check the calculations this way
         if ((n * cs.A.X + m * cs.B.X == cs.Prize.X)
             && (n * cs.A.Y + m * cs.B.Y == cs.Prize.Y))
         {
