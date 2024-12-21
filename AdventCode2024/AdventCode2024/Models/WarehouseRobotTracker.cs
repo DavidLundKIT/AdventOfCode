@@ -10,11 +10,11 @@ public class WarehouseRobotTracker
     public int MaxY { get; set; }
     public List<char> Commands { get; set; }
 
-    public WarehouseRobotTracker(string[] lines)
+    public WarehouseRobotTracker(string[] lines, bool isWide = false)
     {
         Warehouse = new Dictionary<Point, char>();
         Commands = new List<char>();
-        MaxX = lines[0].Length;
+        MaxX = isWide ? lines[0].Length * 2: lines[0].Length;
 
         bool map = true;
         for (int y = 0; y < lines.Length; y++)
@@ -30,7 +30,29 @@ public class WarehouseRobotTracker
                 var chArr = lines[y].ToCharArray();
                 for (int x = 0; x < chArr.Length; x++)
                 {
-                    Warehouse.Add(new Point(x, y), chArr[x]);
+                    if (isWide)
+                    {
+                        int dx = x * 2;
+                        if (chArr[x] == '@')
+                        {
+                            Warehouse.Add(new Point(dx, y), chArr[x]);
+                            Warehouse.Add(new Point(dx + 1, y), '.');
+                        }
+                        else if (chArr[x] == 'O')
+                        {
+                            Warehouse.Add(new Point(dx, y), '[');
+                            Warehouse.Add(new Point(dx + 1, y), ']');
+                        }
+                        else
+                        {
+                            Warehouse.Add(new Point(dx, y), chArr[x]);
+                            Warehouse.Add(new Point(dx + 1, y), chArr[x]);
+                        }
+                    }
+                    else
+                    {
+                        Warehouse.Add(new Point(x, y), chArr[x]);
+                    }
                 }
             }
             else
@@ -88,7 +110,6 @@ public class WarehouseRobotTracker
         if (val == '.')
         {
             Warehouse[pt] = prevVal;
-            //Warehouse[prevPt] = '.';
             return true;
         }
         if (val == '#')

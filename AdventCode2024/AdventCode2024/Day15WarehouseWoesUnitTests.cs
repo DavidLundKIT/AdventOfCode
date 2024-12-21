@@ -51,4 +51,53 @@ public class Day15WarehouseWoesUnitTests
         wm.ShowWarehouse();
         Assert.Equal(1516281, actual);
     }
+
+    [Fact]
+    public void TestData2_GetWareHouse_2_OK()
+    {
+        var lines = Utils.ReadLinesFromFile("Day15test2.txt");
+        Assert.NotEmpty(lines);
+        Assert.Equal(10, lines.Count());
+
+        var wm = new WarehouseRobotTracker(lines, true);
+        Assert.NotNull(wm);
+        wm.ShowWarehouse();
+        //wm.DoCommands();
+        //wm.ShowWarehouse();
+        //long actual = wm.GpsSum();
+        //Assert.Equal(2028, actual);
+    }
+
+    [Fact]
+    public void TestData1_GetWareHouse_2_OK()
+    {
+        var lines = Utils.ReadLinesFromFile("Day15test1.txt");
+        Assert.NotEmpty(lines);
+        Assert.Equal(21, lines.Count());
+
+        var wm = new WarehouseRobotTracker(lines, true);
+        Assert.NotNull(wm);
+        wm.ShowWarehouse();
+        //wm.DoCommands();
+        //wm.ShowWarehouse();
+        //long actual = wm.GpsSum();
+        //Assert.Equal(10092, actual);
+    }
+
+    [Fact]
+    public void Day15_Part2_WareHouseWoes_OK()
+    {
+        var lines = Utils.ReadLinesFromFile("Day15.txt");
+        Assert.NotEmpty(lines);
+        Assert.Equal(71, lines.Count());
+
+        var wm = new WarehouseRobotTracker(lines, true);
+        Assert.NotNull(wm);
+        wm.ShowWarehouse();
+        //wm.DoCommands();
+        //long actual = wm.GpsSum();
+        //wm.ShowWarehouse();
+        //Assert.Equal(1516281, actual);
+    }
+
 }
