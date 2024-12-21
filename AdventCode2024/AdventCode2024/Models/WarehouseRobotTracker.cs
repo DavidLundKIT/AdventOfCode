@@ -14,7 +14,7 @@ public class WarehouseRobotTracker
     {
         Warehouse = new Dictionary<Point, char>();
         Commands = new List<char>();
-        MaxX = isWide ? lines[0].Length * 2: lines[0].Length;
+        MaxX = isWide ? lines[0].Length * 2 : lines[0].Length;
 
         bool map = true;
         for (int y = 0; y < lines.Length; y++)
@@ -80,8 +80,7 @@ public class WarehouseRobotTracker
         Point nextPt = PointToMoveTo(robot, cmd);
         if (MayMoveToPoint(nextPt, cmd))
         {
-            Warehouse[nextPt] = Warehouse[robot];
-            Warehouse[robot] = '.';
+            PushToPoint(robot, nextPt, cmd);
             return nextPt;
         }
 
@@ -90,36 +89,130 @@ public class WarehouseRobotTracker
 
     private bool MayMoveToPoint(Point pt, char cmd)
     {
+        Point? pushPt;
+        Point? pt2;
+
         char val = Warehouse[pt];
         if (val == '.')
             return true;
         if (val == '#')
             return false;
 
-        if (val != 'O')
-            throw new ArgumentOutOfRangeException(nameof(val));
-
-        Point pushPt = PointToMoveTo(pt, cmd);
-        return MayPushToPoint(pt, pushPt, cmd);
+        if (val == 'O')
+        {
+            pushPt = PointToMoveTo(pt, cmd);
+            return MayMoveToPoint(pushPt, cmd);
+        }
+        if (val == '[')
+        {
+            pushPt = PointToMoveTo(pt, cmd);
+            if (cmd == '>' || cmd == '<')
+            {
+                return MayMoveToPoint(pushPt, cmd);
+            }
+            if (!MayMoveToPoint(pushPt, cmd))
+                return false;
+            pt2 = new Point(pt.X + 1, pt.Y);
+            pushPt = PointToMoveTo(pt2, cmd);
+            return MayMoveToPoint(pushPt, cmd);
+        }
+        if (val == ']')
+        {
+            pushPt = PointToMoveTo(pt, cmd);
+            if (cmd == '>' || cmd == '<')
+            {
+                return MayMoveToPoint(pushPt, cmd);
+            }
+            if (!MayMoveToPoint(pushPt, cmd))
+                return false;
+            pt2 = new Point(pt.X - 1, pt.Y);
+            pushPt = PointToMoveTo(pt2, cmd);
+            return MayMoveToPoint(pushPt, cmd);
+        }
+        throw new ArgumentOutOfRangeException(nameof(val));
     }
 
-    private bool MayPushToPoint(Point prevPt, Point pt, char cmd)
+    private void PushToPoint(Point prevPt, Point pt, char cmd)
     {
         char val = Warehouse[pt];
         char prevVal = Warehouse[prevPt];
+        char val2;
+        char prevVal2;
+        Point pt2;
         if (val == '.')
         {
             Warehouse[pt] = prevVal;
-            return true;
+            Warehouse[prevPt] = '.';
+            return;
         }
         if (val == '#')
-            return false;
-
-        if (val != 'O')
-            throw new ArgumentOutOfRangeException(nameof(val));
-
-        Point pushPt = PointToMoveTo(pt, cmd);
-        return MayPushToPoint(pt, pushPt, cmd);
+        {
+            return;
+        }
+        if (val == 'O')
+        {
+            PushToPoint(pt, PointToMoveTo(pt, cmd), cmd);
+            val = Warehouse[pt];
+            if (val == '.')
+            {
+                Warehouse[pt] = prevVal;
+                Warehouse[prevPt] = '.';
+                return;
+            }
+        }
+        if (val == '[')
+        {
+            if (cmd == '>' || cmd == '<')
+            {
+                PushToPoint(pt, PointToMoveTo(pt, cmd), cmd);
+                val = Warehouse[pt];
+                if (val == '.')
+                {
+                    Warehouse[pt] = prevVal;
+                    Warehouse[prevPt] = '.';
+                    return;
+                }
+            }
+            PushToPoint(pt, PointToMoveTo(pt, cmd), cmd);
+            val = Warehouse[pt];
+            pt2 = new Point(pt.X + 1, pt.Y);
+            PushToPoint(pt2, PointToMoveTo(pt2, cmd), cmd);
+            val2 = Warehouse[pt2];
+            if (val == '.' && val2 == '.')
+            {
+                Warehouse[pt] = prevVal;
+                Warehouse[prevPt] = '.';
+                return;
+            }
+            return;
+        }
+        if (val == ']')
+        {
+            if (cmd == '>' || cmd == '<')
+            {
+                PushToPoint(pt, PointToMoveTo(pt, cmd), cmd);
+                val = Warehouse[pt];
+                if (val == '.')
+                {
+                    Warehouse[pt] = prevVal;
+                    Warehouse[prevPt] = '.';
+                    return;
+                }
+            }
+            PushToPoint(pt, PointToMoveTo(pt, cmd), cmd);
+            val = Warehouse[pt];
+            pt2 = new Point(pt.X - 1, pt.Y);
+            PushToPoint(pt2, PointToMoveTo(pt2, cmd), cmd);
+            val2 = Warehouse[pt2];
+            if (val == '.' && val2 == '.')
+            {
+                Warehouse[pt] = prevVal;
+                Warehouse[prevPt] = '.';
+                return;
+            }
+            return;
+        }
+        throw new ArgumentOutOfRangeException(nameof(val));
     }
 
     public Point PointToMoveTo(Point pt, char cmd)
@@ -127,9 +220,6 @@ public class WarehouseRobotTracker
         Point newPt;
         switch (cmd)
         {
-            case '^':
-                newPt = new Point(pt.X, pt.Y - 1);
-                break;
             case '>':
                 newPt = new Point(pt.X + 1, pt.Y);
                 break;
@@ -139,15 +229,18 @@ public class WarehouseRobotTracker
             case 'v':
                 newPt = new Point(pt.X, pt.Y + 1);
                 break;
+            case '^':
+                newPt = new Point(pt.X, pt.Y - 1);
+                break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(cmd));
         }
         return newPt;
     }
 
-    public long GpsSum()
+    public long GpsSum(char boxCH = 'O')
     {
-        long sum = Warehouse.Where(kv => kv.Value == 'O').Select(kv => Convert.ToInt64(100 * kv.Key.Y + kv.Key.X)).Sum();
+        long sum = Warehouse.Where(kv => kv.Value == boxCH).Select(kv => Convert.ToInt64(100 * kv.Key.Y + kv.Key.X)).Sum();
         return sum;
     }
 
@@ -166,5 +259,4 @@ public class WarehouseRobotTracker
         sb.AppendLine("-----");
         Debug.WriteLine(sb.ToString());
     }
-
 }

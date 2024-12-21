@@ -78,10 +78,10 @@ public class Day15WarehouseWoesUnitTests
         var wm = new WarehouseRobotTracker(lines, true);
         Assert.NotNull(wm);
         wm.ShowWarehouse();
-        //wm.DoCommands();
-        //wm.ShowWarehouse();
-        //long actual = wm.GpsSum();
-        //Assert.Equal(10092, actual);
+        wm.DoCommands();
+        wm.ShowWarehouse();
+        long actual = wm.GpsSum('[');
+        Assert.Equal(9021, actual);
     }
 
     [Fact]
@@ -94,10 +94,10 @@ public class Day15WarehouseWoesUnitTests
         var wm = new WarehouseRobotTracker(lines, true);
         Assert.NotNull(wm);
         wm.ShowWarehouse();
-        //wm.DoCommands();
-        //long actual = wm.GpsSum();
-        //wm.ShowWarehouse();
-        //Assert.Equal(1516281, actual);
+        wm.DoCommands();
+        long actual = wm.GpsSum('[');
+        wm.ShowWarehouse();
+        Assert.Equal(1527969, actual);
     }
 
 }
