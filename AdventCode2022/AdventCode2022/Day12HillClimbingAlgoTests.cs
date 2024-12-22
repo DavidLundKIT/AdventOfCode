@@ -4,7 +4,8 @@ namespace AdventCode2022
 {
     public class Day12HillClimbingAlgoTests
     {
-        [Fact(Skip = "Got algo working")]
+        //[Fact(Skip = "Got algo working")]
+        [Fact]
         public void Astar_code_ok()
         {
             List<string> map = new List<string>
