@@ -137,6 +137,7 @@ public class RamRunMapper
         }
         Debug.WriteLine("----------------------");
     }
+
     public List<Tile> GetWalkableTiles(List<string> map, Tile currentTile, Tile targetTile)
     {
         var possibleTiles = new List<Tile>()
