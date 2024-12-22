@@ -72,4 +72,46 @@ public class Day22MonkeyMarketUnitTest
 
         Assert.Equal(20215960478, total);
     }
+
+    [Fact]
+    public void SecretSalesPriceComboMax_OK()
+    {
+        List<long> secrets = new List<long>() { 1, 2, 3, 2024 };
+
+        long total = 0;
+        Dictionary<MonkeyChange, long> AllChanges = new Dictionary<MonkeyChange, long>();
+
+        foreach (var startSecret in secrets)
+        {
+            var msg = new MonkeySecretGenerator(startSecret);
+            msg.GenerateSecrets(2000);
+            total += msg.Secrets[1999];
+            msg.MergeChanges(AllChanges);
+        }
+        long actual = AllChanges.Values.Max();
+        Assert.Equal(23, actual);
+    }
+
+    [Fact]
+    public void Day22_Part2_MonkeyMarket_OK()
+    {
+        var secrets = Utils.ReadLongsFromFile("Day22.txt");
+        Assert.NotEmpty(secrets);
+        Assert.Equal(2406, secrets.Count);
+
+        long total = 0;
+        Dictionary<MonkeyChange, long> AllChanges = new Dictionary<MonkeyChange, long>();
+
+        foreach (var startSecret in secrets)
+        {
+            var msg = new MonkeySecretGenerator(startSecret);
+            msg.GenerateSecrets(2000);
+            total += msg.Secrets[1999];
+            msg.MergeChanges(AllChanges);
+        }
+
+        Assert.Equal(20215960478, total);
+        long actual = AllChanges.Values.Max();
+        Assert.Equal(2221, actual);
+    }
 }

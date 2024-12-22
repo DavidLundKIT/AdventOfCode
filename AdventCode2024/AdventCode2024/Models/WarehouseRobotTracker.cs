@@ -137,7 +137,6 @@ public class WarehouseRobotTracker
         char val = Warehouse[pt];
         char prevVal = Warehouse[prevPt];
         char val2;
-        char prevVal2;
         Point pt2;
         if (val == '.')
         {
