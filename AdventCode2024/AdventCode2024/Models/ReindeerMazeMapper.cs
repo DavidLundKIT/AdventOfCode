@@ -2,46 +2,25 @@
 
 namespace AdventCode2024.Models;
 
-public class RamRunMapper
+public enum Compass
+{
+    North,
+    East,
+    South,
+    West
+}
+
+public class ReindeerMazeMapper
 {
     public List<string> Map { get; set; }
-    public List<Point> ByteBombs { get; set; }
-    public RamRunMapper(string[] lines, int maxX, int maxY)
-    {
-        Map = new List<string>();
-        ByteBombs = new List<Point>();
-        for (int i = 0; i < maxY; i++)
-        {
-            var row = new string(' ', maxX);
-            Map.Add(row);
-        }
-        AddToMapAt('S', 0, 0);
-        AddToMapAt('E', maxX - 1, maxY - 1);
+    public int Cost { get; set; }
 
-        foreach (var line in lines)
-        {
-            var parts = line.Split(',', StringSplitOptions.RemoveEmptyEntries);
-            ByteBombs.Add(new Point(int.Parse(parts[0]), int.Parse(parts[1])));
-        }
+    public ReindeerMazeMapper(string[] lines)
+    {
+        Map = new List<string>(lines);
     }
 
-    public void DropBytes(int start, int end)
-    {
-        for (int i = start; i < end; i++)
-        {
-            var pt = ByteBombs[i];
-            AddToMapAt('#', pt.X, pt.Y);
-        }
-    }
-
-    public void AddToMapAt(char ch, int x, int y)
-    {
-        var chArr = Map[y].ToCharArray();
-        chArr[x] = ch;
-        Map[y] = new string(chArr);
-    }
-
-    public int MapWalk()
+    public int WalkMaze()
     {
         return AstarMapWalk(Map);
     }
@@ -51,7 +30,7 @@ public class RamRunMapper
         var start = new Tile();
         start.Y = map.FindIndex(x => x.Contains("S"));
         start.X = map[start.Y].IndexOf("S");
-
+        start.Direction = Compass.East;
 
         var finish = new Tile();
         finish.Y = map.FindIndex(x => x.Contains("E"));
@@ -77,7 +56,7 @@ public class RamRunMapper
                 while (true)
                 {
                     Debug.WriteLine($"{tile.X} : {tile.Y}");
-                    if (map[tile.Y][tile.X] == ' ')
+                    if (map[tile.Y][tile.X] == '.')
                     {
                         var newMapRow = map[tile.Y].ToCharArray();
                         newMapRow[tile.X] = 'O';
@@ -89,6 +68,7 @@ public class RamRunMapper
                         Debug.WriteLine("Map looks like :");
                         map.ForEach(x => Debug.WriteLine(x));
                         Debug.WriteLine("Done!");
+                        Cost = checkTile.Cost;
                         return count;
                     }
                     count++;
@@ -142,13 +122,13 @@ public class RamRunMapper
     {
         var possibleTiles = new List<Tile>()
         {
-            new Tile { X = currentTile.X, Y = currentTile.Y - 1, Parent = currentTile, Cost = currentTile.Cost + 1 },
-            new Tile { X = currentTile.X, Y = currentTile.Y + 1, Parent = currentTile, Cost = currentTile.Cost + 1 },
-            new Tile { X = currentTile.X - 1, Y = currentTile.Y, Parent = currentTile, Cost = currentTile.Cost + 1 },
-            new Tile { X = currentTile.X + 1, Y = currentTile.Y, Parent = currentTile, Cost = currentTile.Cost + 1 },
+            new Tile { X = currentTile.X, Y = currentTile.Y - 1, Parent = currentTile },
+            new Tile { X = currentTile.X, Y = currentTile.Y + 1, Parent = currentTile },
+            new Tile { X = currentTile.X - 1, Y = currentTile.Y, Parent = currentTile },
+            new Tile { X = currentTile.X + 1, Y = currentTile.Y, Parent = currentTile },
         };
 
-        possibleTiles.ForEach(tile => tile.SetDistance(targetTile.X, targetTile.Y));
+        possibleTiles.ForEach(tile => tile.SetDistanceAndCost(targetTile.X, targetTile.Y));
 
         var maxX = map.First().Length - 1;
         var maxY = map.Count - 1;
@@ -156,7 +136,7 @@ public class RamRunMapper
         return possibleTiles
                 .Where(tile => tile.X >= 0 && tile.X <= maxX)
                 .Where(tile => tile.Y >= 0 && tile.Y <= maxY)
-                .Where(tile => map[tile.Y][tile.X] == ' ' || map[tile.Y][tile.X] == 'E')
+                .Where(tile => map[tile.Y][tile.X] == '.' || map[tile.Y][tile.X] == 'E')
                 .ToList();
     }
 }
