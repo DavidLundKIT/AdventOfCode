@@ -10,6 +10,16 @@ public enum Compass
     West
 }
 
+/// <summary>
+/// This code works for Part 1 finding only 1 solution.
+/// It doesn't work for Part 2 finding all squares in any of the multiple 
+/// best score solutions. 
+/// I tried to modify the Astar walk to record the correct version and keep going,
+/// but my efforts failed. Not keeping the failed code.
+/// 
+/// I am considering a depth first algorithm to get all solutions that equal the
+/// best score found in part 1.
+/// </summary>
 public class ReindeerMazeMapper
 {
     public List<string> Map { get; set; }
