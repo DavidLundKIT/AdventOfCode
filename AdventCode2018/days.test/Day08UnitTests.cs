@@ -5,7 +5,7 @@ namespace days.test
 {
     public class Day08UnitTests
     {
-        [Fact(Skip="Answers Day 8")]
+        [Fact]
         public void Day08_ParseData_OK()
         {
             string datapath = "day08.txt";
@@ -19,7 +19,7 @@ namespace days.test
             Assert.Equal(25752, rootNodeSum);
         }
 
-        [Theory(Skip = "Done")]
+        [Theory]
         [InlineData("2 3 0 3 10 11 12 1 1 0 1 99 2 1 1 2", 138, 66)]
         public void Day08_ParseTestData(string row, int expected, int expectedNodeSum)
         {
