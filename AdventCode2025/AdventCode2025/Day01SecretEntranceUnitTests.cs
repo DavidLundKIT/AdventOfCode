@@ -6,7 +6,7 @@ public class Day01SecretEntranceUnitTests
 {
     [Fact]
     public void SecretEntrance_TestData_OK()
-    {             
+    {
         var lines = Utils.ReadLinesFromFile("Day01test.txt");
         Assert.NotNull(lines);
         Assert.NotEmpty(lines);
@@ -60,6 +60,6 @@ public class Day01SecretEntranceUnitTests
         // 7214 wrong, too high
         // 6880 wrong too high
         // 6354 too low
-        Assert.Equal(1147, actual);
+        Assert.Equal(6789, actual);
     }
 }

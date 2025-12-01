@@ -34,12 +34,17 @@ public class SecretEntranceMapper
         return zeroed;
     }
 
+    /// <summary>
+    /// Gave up on a clever way to do this, just brute force it
+    /// Should be able to do this with modulus arithmetic but answers are off.
+    /// </summary>
+    /// <param name="startPos"></param>
+    /// <returns></returns>
     public int TimesPassingStoppingOnZero(int startPos)
     {
         int zeroed = 0;
         int prevPos = startPos;
         int nowPos;
-        int mod100;
 
         foreach (var instruction in Instructions)
         {
@@ -48,21 +53,22 @@ public class SecretEntranceMapper
             bool isLeft = operation == 'L';
             var dist = int.Parse(instruction[1..]);
             if (isLeft)
+            {
                 nowPos = prevPos - dist;
-            else
-                nowPos = prevPos + dist;
-
-            // look for passing zero
-            if (dist < 100)
-            {
-                if ((prevPos > 0 && nowPos >=100) || (prevPos >= 0 && nowPos < 0))
-                    zeroed++;
+                for (int i = prevPos - 1; i >= nowPos; i--)
+                {
+                    if ((i % 100) == 0)
+                        zeroed++;
+                }
             }
-            else 
+            else
             {
-                mod100 = Math.Abs(dist / 100);
-                if (mod100 > 0)
-                    zeroed += mod100;
+                nowPos = prevPos + dist;
+                for (int i = prevPos + 1; i <= nowPos; i++)
+                {
+                    if ((i % 100) == 0)
+                        zeroed++;
+                }
             }
             prevPos = nowPos % 100;
             if (prevPos < 0)
@@ -70,5 +76,4 @@ public class SecretEntranceMapper
         }
         return zeroed;
     }
-
 }
