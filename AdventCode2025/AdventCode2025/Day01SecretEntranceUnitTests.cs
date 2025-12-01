@@ -59,6 +59,7 @@ public class Day01SecretEntranceUnitTests
 
         // 7214 wrong, too high
         // 6880 wrong too high
+        // 6354 too low
         Assert.Equal(1147, actual);
     }
 }

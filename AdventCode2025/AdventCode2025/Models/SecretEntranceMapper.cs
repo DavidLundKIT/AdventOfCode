@@ -53,34 +53,22 @@ public class SecretEntranceMapper
                 nowPos = prevPos + dist;
 
             // look for passing zero
-            if (prevPos == 0)
+            if (dist < 100)
             {
-                
-                if (dist >= 100)
-                {
-                    mod100 = Math.Abs(dist / 100);
-                    if (mod100 > 0)
-                        zeroed += mod100;
-                }
-                prevPos = nowPos % 100;
-                if (prevPos < 0)
-                    prevPos += 100;
-            }
-            else
-            {
-                if (dist >= 100)
-                {
-                    mod100 = Math.Abs(dist / 100);
-                    if (mod100 > 0)
-                        zeroed += mod100;
-                }
-                prevPos = nowPos % 100;
-                if ((prevPos <= 0 && nowPos > 0) || (prevPos >= 0 && nowPos < 0))
+                if ((prevPos > 0 && nowPos >=100) || (prevPos >= 0 && nowPos < 0))
                     zeroed++;
-                if (prevPos < 0)
-                    prevPos += 100;
             }
+            else 
+            {
+                mod100 = Math.Abs(dist / 100);
+                if (mod100 > 0)
+                    zeroed += mod100;
+            }
+            prevPos = nowPos % 100;
+            if (prevPos < 0)
+                prevPos += 100;
         }
         return zeroed;
     }
+
 }
