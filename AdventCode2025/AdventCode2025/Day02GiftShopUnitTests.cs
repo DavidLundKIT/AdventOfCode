@@ -65,4 +65,62 @@ public class Day02GiftShopUnitTests
         var totalInvalidIds = allInvalidIds.Sum();
         Assert.Equal(20223751480, totalInvalidIds);
     }
+
+    [Theory]
+    [InlineData(11, 22, 2)]
+    [InlineData(95, 115, 2)]
+    [InlineData(998, 1012, 2)]
+    [InlineData(1188511880, 1188511890, 1)]
+    [InlineData(222220, 222224, 1)]
+    [InlineData(1698522, 1698528, 0)]
+    [InlineData(446443, 446449, 1)]
+    [InlineData(38593856, 38593862, 1)]
+    [InlineData(565653, 565659, 1)]
+    [InlineData(824824821, 824824827, 1)]
+    [InlineData(2121212118, 2121212124, 1)]
+    public void InvalidExtraSequenceIds_TestData_OK(long startId, long endId, int expectedCount)
+    {
+        var invalidIds = GSProductIdValidator.InvalidExtraSequenceIds(startId, endId);
+        Assert.Equal(expectedCount, invalidIds.Count);
+    }
+
+    [Fact]
+    public void InvalidExtraSequenceIds_TestData_Sum_OK()
+    {
+        var allInvalidIds = new List<long>();
+        var ranges = TestData.Split(',');
+        foreach (var range in ranges)
+        {
+            var parts = range.Split('-');
+            long startId = long.Parse(parts[0]);
+            long endId = long.Parse(parts[1]);
+            var invalidIds = GSProductIdValidator.InvalidExtraSequenceIds(startId, endId);
+            if (invalidIds.Count > 0)
+            {
+                allInvalidIds.AddRange(invalidIds);
+            }
+        }
+        var totalInvalidIds = allInvalidIds.Sum();
+        Assert.Equal(4174379265, totalInvalidIds);
+    }
+
+    [Fact]
+    public void Day02_Part2_Sum_OK()
+    {
+        var allInvalidIds = new List<long>();
+        var ranges = PuzzleData.Split(',');
+        foreach (var range in ranges)
+        {
+            var parts = range.Split('-');
+            long startId = long.Parse(parts[0]);
+            long endId = long.Parse(parts[1]);
+            var invalidIds = GSProductIdValidator.InvalidExtraSequenceIds(startId, endId);
+            if (invalidIds.Count > 0)
+            {
+                allInvalidIds.AddRange(invalidIds);
+            }
+        }
+        var totalInvalidIds = allInvalidIds.Sum();
+        Assert.Equal(0, totalInvalidIds);
+    }
 }
