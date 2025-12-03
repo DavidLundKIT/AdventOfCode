@@ -121,6 +121,6 @@ public class Day02GiftShopUnitTests
             }
         }
         var totalInvalidIds = allInvalidIds.Sum();
-        Assert.Equal(0, totalInvalidIds);
+        Assert.Equal(30260171216, totalInvalidIds);
     }
 }
