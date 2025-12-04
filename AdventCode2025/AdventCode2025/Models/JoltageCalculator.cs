@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace AdventCode2025.Models;
 
-namespace AdventCode2025.Models;
-
-public  class JoltageCalculator
+public class JoltageCalculator
 {
     public JoltageCalculator()
     {
-        
+
     }
 
     public int CalculateJoltage(string battery)
@@ -27,7 +23,7 @@ public  class JoltageCalculator
                 int testJolt = jJolt + iJolt;
                 if (testJolt > joltage)
                 {
-                    joltage =testJolt;
+                    joltage = testJolt;
                 }
             }
         }
@@ -42,26 +38,31 @@ public  class JoltageCalculator
     public long CalculateTop12Joltage(string battery)
     {
         long joltage = 0;
-        // TODO David must make this work
-        var batteryJoltage = battery.ToCharArray();
-        var digitChars = (new String(' ', batteryJoltage.Length)).ToCharArray();
-
+        var batteryJoltage = battery.ToCharArray().Select(c => int.Parse(c.ToString())).ToList();
+        int startIndex = 0;
+        int batteryLen = 12;
         // find highest digit with at least 11 other after it
-        int firstHighest = 0;
-        for (int i = 0; i < batteryJoltage.Length - 1; i++)
+        for (int i = 0; i < batteryLen; i++)
         {
-            int iJolt = int.Parse(batteryJoltage[i].ToString()) * 10;
-            for (int j = i + 1; j < batteryJoltage.Length; j++)
-            {
-                int jJolt = int.Parse(batteryJoltage[j].ToString());
-
-                int testJolt = jJolt + iJolt;
-                if (testJolt > joltage)
-                {
-                    joltage = testJolt;
-                }
-            }
+            int theIndex = FindNextHighestChar(batteryJoltage, startIndex, batteryLen - (i + 1));
+            joltage = joltage * 10 + batteryJoltage[theIndex];
+            startIndex = theIndex + 1;
         }
         return joltage;
+    }
+
+    public int FindNextHighestChar(List<int> batteryJoltage, int startIndex, int minLenLeft)
+    {
+        int highest = 0;
+        int highestIndex = -1;
+        for (int idx = startIndex; idx < batteryJoltage.Count - minLenLeft; idx++)
+        {
+            if (highest < batteryJoltage[idx])
+            {
+                highest = batteryJoltage[idx];
+                highestIndex = idx;
+            }
+        }
+        return highestIndex;
     }
 }
