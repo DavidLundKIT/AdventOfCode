@@ -65,4 +65,38 @@ public class Day06TrashCompactorUnitTests
         var actual = sut.CalculateSumOfAllProblems();
         Assert.Equal(4805473544166, actual);
     }
+
+    [Fact]
+    public void Day06_TestData_V2_OK()
+    {
+        var lines = Utils.ReadLinesFromFile("Day06test.txt");
+        Assert.Equal(4, lines.Length);
+
+        var sut = new CephalapodCalculatorV2(lines);
+
+        long totalSum = 0;
+        for (int i = 0; i < sut.Operands.Count; i++)
+        {
+            var actual = sut.CalculateNextProblem();
+            totalSum += actual;
+        }
+        Assert.Equal(3263827, totalSum);
+    }
+
+    [Fact]
+    public void Day06_Part2_Solution_OK()
+    {
+        var lines = Utils.ReadLinesFromFile("Day06.txt");
+        Assert.Equal(5, lines.Length);
+
+        var sut = new CephalapodCalculatorV2(lines);
+
+        long totalSum = 0;
+        for (int i = 0; i < sut.Operands.Count; i++)
+        {
+            var actual = sut.CalculateNextProblem();
+            totalSum += actual;
+        }
+        Assert.Equal(8907730960817, totalSum);
+    }
 }

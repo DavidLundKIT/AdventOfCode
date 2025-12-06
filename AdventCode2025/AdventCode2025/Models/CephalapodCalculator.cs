@@ -1,4 +1,6 @@
-﻿namespace AdventCode2025.Models;
+﻿using System.Text;
+
+namespace AdventCode2025.Models;
 
 public class CephalapodCalculator
 {
@@ -53,5 +55,72 @@ public class CephalapodCalculator
             totalSum += CalculateProblem(i);
         }
         return totalSum;
+    }
+}
+
+public class CephalapodCalculatorV2
+{
+    public List<string> Factors { get; set; }
+    public List<string> Operands { get; set; }
+
+    public int Index { get; set; }
+    public int NextPos { get; set; }
+    public int LineLength { get; set; }
+
+    public CephalapodCalculatorV2(string[] lines)
+    {
+        Factors = new List<string>();
+        Operands = new List<string>();
+        Index = 0;
+        NextPos = 0;
+        LineLength = lines[0].Length;
+
+        foreach (var line in lines)
+        {
+            var tempArr = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            if (tempArr[0] == "*" || tempArr[0] == "+")
+                Operands = tempArr.ToList();
+            else
+            {
+                Factors.Add(line);
+            }
+        }
+    }
+
+    public long CalculateNextProblem()
+    {
+        long result = 0;
+        var operand = Operands[Index];
+        if (operand == "*")
+        {
+            result = 1;
+        }
+        else
+        {
+            result = 0;
+        }
+        for (int ipos = NextPos; ipos < LineLength; ipos++, NextPos++)
+        {
+            var factor = new StringBuilder();
+            foreach (var factorLine in Factors)
+            {
+                factor.Append(factorLine[ipos]);
+            }
+            if (long.TryParse(factor.ToString(), out long factorValue) == false)
+            {
+                NextPos++;
+                break;
+            }
+            if (operand == "*")
+            {
+                result *= factorValue;
+            }
+            else if (operand == "+")
+            {
+                result += factorValue;
+            }
+        }
+        Index++;
+        return result;
     }
 }
