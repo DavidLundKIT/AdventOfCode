@@ -72,6 +72,30 @@ public class FoodChecker
         return FreshIngredients.Count;
     }
 
+    /// <summary>
+    /// Blows up for large ranges
+    /// </summary>
+    /// <returns></returns>
+    public long FindValidIngredients_No_Good()
+    {
+        Dictionary<long, long> ValidIngredients = new Dictionary<long, long>();
+        foreach (var range in IngredientRanges.Keys)
+        {
+            for (long foodId = range.StartFoodId; foodId <= range.EndFoodId; foodId++)
+            {
+                if (ValidIngredients.ContainsKey(foodId))
+                {
+                    ValidIngredients[foodId]++;
+                }
+                else
+                {
+                    ValidIngredients[foodId] = 1;
+                }
+            }
+        }
+        return ValidIngredients.Count;
+    }
+
     public long FindValidIngredients()
     {
         Dictionary<long, long> ValidIngredients = new Dictionary<long, long>();
