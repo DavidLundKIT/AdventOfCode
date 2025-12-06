@@ -46,7 +46,7 @@ public class Day05CafeteriaUnitTests
         Assert.Equal(14, freshCount);
     }
 
-    [Fact(Skip ="Not working")]
+    [Fact]
     public void Day05_Part2_Solution_OK()
     {
         var lines = Utils.ReadLinesFromFile("Day05.txt");
@@ -57,6 +57,6 @@ public class Day05CafeteriaUnitTests
         Assert.Equal(1000, sut.Ingredients.Count);
 
         var freshCount = sut.FindValidIngredients();
-        Assert.Equal(0, freshCount);
+        Assert.Equal(361615643045059, freshCount);
     }
 }

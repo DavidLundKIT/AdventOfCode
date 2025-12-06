@@ -72,48 +72,56 @@ public class FoodChecker
         return FreshIngredients.Count;
     }
 
-    /// <summary>
-    /// Blows up for large ranges
-    /// </summary>
-    /// <returns></returns>
-    public long FindValidIngredients_No_Good()
-    {
-        Dictionary<long, long> ValidIngredients = new Dictionary<long, long>();
-        foreach (var range in IngredientRanges.Keys)
-        {
-            for (long foodId = range.StartFoodId; foodId <= range.EndFoodId; foodId++)
-            {
-                if (ValidIngredients.ContainsKey(foodId))
-                {
-                    ValidIngredients[foodId]++;
-                }
-                else
-                {
-                    ValidIngredients[foodId] = 1;
-                }
-            }
-        }
-        return ValidIngredients.Count;
-    }
-
     public long FindValidIngredients()
     {
-        Dictionary<long, long> ValidIngredients = new Dictionary<long, long>();
-        foreach (var range in IngredientRanges.Keys)
+        Dictionary<long, long> CombinedIngredientRanges = new Dictionary<long, long>();
+
+        Queue<IngredientRange> rangesQueue = new Queue<IngredientRange>(IngredientRanges.Keys.OrderBy(range => range.StartFoodId).ToList());
+        var lastRange = rangesQueue.Dequeue();
+        CombinedIngredientRanges.Add(lastRange.StartFoodId, lastRange.EndFoodId);
+        long highestEndFoodId = lastRange.EndFoodId;
+        while (rangesQueue.Count > 0)
         {
-            for (long foodId = range.StartFoodId; foodId <= range.EndFoodId; foodId++)
+            var nextRange = rangesQueue.Dequeue();
+            if (CombinedIngredientRanges.ContainsKey(nextRange.StartFoodId))
             {
-                if (ValidIngredients.ContainsKey(foodId))
+                // Exact match on start
+                if (nextRange.EndFoodId > CombinedIngredientRanges[lastRange.StartFoodId])
                 {
-                    ValidIngredients[foodId]++;
+                    // new latest end foodid
+                    CombinedIngredientRanges[lastRange.StartFoodId] = nextRange.EndFoodId;
+                    highestEndFoodId = nextRange.EndFoodId;
                 }
-                else
+                // else no update needed
+                continue;
+            }
+            else if (nextRange.StartFoodId <= highestEndFoodId)
+            {
+                // starts inside existing range
+                if (nextRange.EndFoodId > CombinedIngredientRanges[lastRange.StartFoodId])
                 {
-                    ValidIngredients[foodId] = 1;
+                    // new latest end foodid
+                    CombinedIngredientRanges[lastRange.StartFoodId] = nextRange.EndFoodId;
+                    highestEndFoodId = nextRange.EndFoodId;
                 }
+                // else no update needed
+                continue;
+            }
+            else
+            {
+                // past the last range
+                lastRange = nextRange;
+                CombinedIngredientRanges.Add(nextRange.StartFoodId, nextRange.EndFoodId);
+                highestEndFoodId = nextRange.EndFoodId;
             }
         }
-        return ValidIngredients.Count;
+
+        long totalValidIngredients = 0;
+        foreach (var range in CombinedIngredientRanges)
+        {
+            totalValidIngredients += (range.Value - range.Key + 1);
+        }
+        return totalValidIngredients;
     }
 }
 
