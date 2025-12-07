@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace AdventCode2025.Models;
+﻿namespace AdventCode2025.Models;
 
 public class TachyonTracer
 {
@@ -62,7 +58,9 @@ public class TachyonTracer
 
     public long TotalTimelines()
     {
-        long totalTimelines = 0;
+        List<long> Timelines = Enumerable.Range(0, Manifold[0].Count).Select(i => (long)0).ToList();
+        List<long> prevTimeLines = Enumerable.Range(0, Manifold[0].Count).Select(i => (long)0).ToList();
+
         for (int rowIdx = 0; rowIdx < Manifold.Count; rowIdx++)
         {
             var row = Manifold[rowIdx];
@@ -71,7 +69,6 @@ public class TachyonTracer
                 continue;
 
             var prevRow = Manifold[prevIdx];
-            bool splits = false;
             for (int colIdx = 0; colIdx < row.Count; colIdx++)
             {
                 var prevCh = prevRow[colIdx];
@@ -80,29 +77,38 @@ public class TachyonTracer
                 {
                     case 'S':
                         row[colIdx] = '|';
+                        Timelines[colIdx] = ++prevTimeLines[colIdx];
                         break;
                     case '|':
                         if (row[colIdx] == '^')
                         {
                             // beam splitter
-                            splits = true;
                             if (colIdx - 1 >= 0)
+                            {
                                 row[colIdx - 1] = '|';
+                                Timelines[colIdx - 1] += prevTimeLines[colIdx];
+                            }
                             if (colIdx + 1 < row.Count)
+                            {
                                 row[colIdx + 1] = '|';
+                                Timelines[colIdx + 1] += prevTimeLines[colIdx];
+                            }
+                            Timelines[colIdx] = 0;
                         }
                         else
+                        {
                             row[colIdx] = '|';
+                            Timelines[colIdx] += prevTimeLines[colIdx];
+                        }
                         break;
                     default:
                         break;
                 }
             }
-            if (splits)
-            {
-                totalTimelines += row.Where(c => c == '|').Count();
-            }
+            prevTimeLines = Timelines;
+            Timelines = Enumerable.Range(0, Manifold[0].Count).Select(i => (long)0).ToList();
         }
+        long totalTimelines = prevTimeLines.Sum();
         return totalTimelines;
     }
 }

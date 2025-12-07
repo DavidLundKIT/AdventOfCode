@@ -45,6 +45,7 @@ public class Day07LaboratoriesUnitTests
 
         var tracer = new TachyonTracer(lines);
         var actual = tracer.TotalTimelines();
-        Assert.Equal(0, actual);
+        // 3125 too low
+        Assert.Equal(18818811755665, actual);
     }
 }
