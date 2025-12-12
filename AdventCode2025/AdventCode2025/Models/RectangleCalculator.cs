@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Text;
+﻿using System.Text;
 
 namespace AdventCode2025.Models;
 
@@ -41,8 +40,8 @@ public class RectangleCalculator
 
     public void FillGreenTileLines(Tile tile0, Tile tile1)
     {
-        FloorMap[tile0]= "#";
-        FloorMap[tile1]= "#";
+        FloorMap[tile0] = "#";
+        FloorMap[tile1] = "#";
         if (tile0.X == tile1.X)
         {
             int startY = Math.Min(tile0.Y, tile1.Y);
@@ -61,7 +60,7 @@ public class RectangleCalculator
                 FloorMap.Add(new Tile(dx, tile0.Y), "x");
             }
         }
-        else        
+        else
         {
             throw new ArgumentException("Tiles must be aligned either horizontally or vertically.");
         }
@@ -97,6 +96,10 @@ public class RectangleCalculator
             {
                 var tile1 = Tiles[i];
                 var tile2 = Tiles[j];
+                if (!IsRectangleContained(tile1, tile2))
+                {
+                    continue;
+                }
                 long width = Math.Abs(tile2.X - tile1.X) + 1;
                 long height = Math.Abs(tile2.Y - tile1.Y) + 1;
                 long area = width * height;
@@ -107,6 +110,22 @@ public class RectangleCalculator
             }
         }
         return maxArea;
+    }
+
+    public bool IsRectangleContained(Tile tile1, Tile tile2)
+    {
+        int minX = Math.Min(tile1.X, tile2.X);
+        int maxX = Math.Max(tile1.X, tile2.X);
+        int minY = Math.Min(tile1.Y, tile2.Y);
+        int maxY = Math.Max(tile1.Y, tile2.Y);
+
+        // nothing on the inside 
+        var innerTiles = FloorMap.Keys.Where(t => t.X > minX && t.X < maxX && t.Y > minY && t.Y < maxY);
+        if (innerTiles.Any())
+        {
+            return false;
+        }
+        return true;
     }
 
     public void PrintFloor(string filePath)

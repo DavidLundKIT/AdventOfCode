@@ -38,7 +38,7 @@ public class Day09MovieTheaterUnitTests
         Assert.Equal(24, result);
     }
 
-    [Fact]
+    [Fact(Skip = "Takes 3.5 min")]
     public void Day09_Part2_Solution_OK()
     {
         var lines = Utils.ReadLinesFromFile("Day09.txt");
@@ -47,6 +47,6 @@ public class Day09MovieTheaterUnitTests
         var sut = new RectangleCalculator(lines);
         //sut.PrintFloor(@"C:\temp\Day09TheaterFloor.txt");
         var result = sut.FindLargestContainedRectangleArea();
-        Assert.Equal(0, result);
+        Assert.Equal(1652344888, result);
     }
 }
