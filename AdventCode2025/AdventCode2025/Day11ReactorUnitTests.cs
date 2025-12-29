@@ -59,6 +59,7 @@ public class Day11ReactorUnitTests
         var actual = sut.CountAllDataPathsFromDevice("svr");
         Assert.Equal(555, actual);
     }
+
     [Fact(Skip = "Not ending")]
     public void Day11_Part2_Solution_OK()
     {

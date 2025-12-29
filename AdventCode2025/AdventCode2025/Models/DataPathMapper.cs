@@ -39,6 +39,7 @@ public class DataPathMapper
     {
         if (!DeviceOutputs.ContainsKey(device))
         {
+            Console.WriteLine("Missing key: {0}", device);
             return 0;
         }
 
@@ -49,6 +50,7 @@ public class DataPathMapper
             if (devices.Contains(device))
             {
                 // been here before, devices 
+                Console.WriteLine("Contains key: {0}", device);
                 return 0;
             }
         }
@@ -63,7 +65,11 @@ public class DataPathMapper
         if (outputs.Count == 1 && string.Equals(outputs[0], "out"))
         {
             if (foundDac && foundFft)
+            {
+                Console.WriteLine("Found path");
                 return 1;
+            }
+            Console.WriteLine("Out but not via dac and fft");
             return 0;
         }
         if (string.Equals(device, "dac"))
@@ -73,6 +79,10 @@ public class DataPathMapper
         foreach (var output in outputs)
         {
             totalPaths += CountPathsViaDacFftFromDevice(output, foundDac, foundFft, newDataPath);
+        }
+        if (totalPaths > 0)
+        {
+            Console.WriteLine("Total paths: {0}", totalPaths);
         }
         return totalPaths;
     }
