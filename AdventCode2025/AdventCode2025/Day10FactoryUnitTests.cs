@@ -1,5 +1,4 @@
 ﻿using AdventCode2025.Models;
-using System.Diagnostics;
 
 namespace AdventCode2025;
 
@@ -31,14 +30,6 @@ public class Day10FactoryUnitTests
         var sut = new MachineConfigurator(line);
         Assert.Equal(buttons, sut.Buttons.Count);
 
-        for (int i = 0; i < sut.Buttons.Count; i++)
-        {
-            var inLights = new string('.', sut.Lights.Length);
-            var outLights = sut.PushButton(i, inLights);
-            Debug.WriteLine($"btn({i}: {inLights} => {outLights}");
-            inLights = sut.PushButton(i, outLights);
-            Debug.WriteLine($"btn({i}: {outLights} => {inLights}");
-        }
         int actualSteps = sut.MinPressesForStartUp();
         Assert.Equal(expectedSteps, actualSteps);
     }
@@ -70,14 +61,6 @@ public class Day10FactoryUnitTests
         var sut = new MachineConfigurator(line);
         Assert.Equal(buttons, sut.Buttons.Count);
 
-        for (int i = 0; i < sut.Buttons.Count; i++)
-        {
-            var inLights = new string('.', sut.Lights.Length);
-            var outLights = sut.PushButton(i, inLights);
-            Debug.WriteLine($"btn({i}: {inLights} => {outLights}");
-            inLights = sut.PushButton(i, outLights);
-            Debug.WriteLine($"btn({i}: {outLights} => {inLights}");
-        }
         int actualSteps = sut.MinPressesForJoltage();
         Assert.Equal(expectedSteps, actualSteps);
     }
@@ -115,5 +98,4 @@ public class Day10FactoryUnitTests
 
         Assert.Equal(0, total);
     }
-
 }
