@@ -1,4 +1,6 @@
-﻿namespace AdventCode2025.Models;
+﻿using System.Diagnostics;
+
+namespace AdventCode2025.Models;
 
 public class DataPathMapper
 {
@@ -31,6 +33,67 @@ public class DataPathMapper
         foreach (var output in outputs)
         {
             totalPaths += CountAllDataPathsFromDevice(output);
+        }
+        return totalPaths;
+    }
+
+    public long CountAllDataPathsFromDevice(string device, string endDevice)
+    {
+        if (!DeviceOutputs.ContainsKey(device))
+        {
+            return 0;
+        }
+        long totalPaths = 0;
+        var outputs = DeviceOutputs[device];
+        if (string.Equals(outputs[0], endDevice))
+        {
+            return 1;
+        }
+        foreach (var output in outputs)
+        {
+            totalPaths += CountAllDataPathsFromDevice(output, endDevice);
+        }
+        return totalPaths;
+    }
+
+    public long CountAllDataPathsFromDevice(string device, string endDevice, HashSet<string> visited)
+    {
+        Debug.WriteLine("Device: {0}, end: {1}", device, endDevice);
+        if (string.Equals(device, endDevice))
+        {
+            return 1;
+        }
+        if (string.Equals("out", device))
+        {
+            if (string.Equals("out", endDevice))
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        if (!DeviceOutputs.ContainsKey(device))
+        {
+            return 0;
+        }
+        long totalPaths = 0;
+        var outputs = DeviceOutputs[device];
+        if (string.Equals(outputs[0], endDevice))
+        {
+            return 1;
+        }
+
+        if (visited.Contains(device))
+        {
+            return 0;
+        }
+        var nv = new HashSet<string>(visited);
+        nv.Add(device);
+        foreach (var output in outputs)
+        {
+            totalPaths += CountAllDataPathsFromDevice(output, endDevice, nv);
         }
         return totalPaths;
     }
