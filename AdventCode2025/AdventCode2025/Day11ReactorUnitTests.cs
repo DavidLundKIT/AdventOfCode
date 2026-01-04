@@ -28,7 +28,7 @@ public class Day11ReactorUnitTests
         Assert.Equal(647, sut.DeviceOutputs.Count);
         Assert.True(sut.DeviceOutputs.ContainsKey("you"));
 
-        var actual = sut.CountAllDataPathsFromDevice("you");
+        var actual = sut.CountAllDataPathsFromDevice("you", "out");
         Assert.Equal(555, actual);
     }
 
@@ -57,8 +57,7 @@ public class Day11ReactorUnitTests
         Assert.Equal(647, sut.DeviceOutputs.Count);
         Assert.True(sut.DeviceOutputs.ContainsKey("you"));
 
-        var visited = new HashSet<string>();
-        var actual = sut.CountAllDataPathsFromDevice("you", "out", visited);
+        var actual = sut.CountAllDataPathsFromDevice("you", "out");
         Assert.Equal(555, actual);
     }
 
@@ -93,8 +92,7 @@ public class Day11ReactorUnitTests
         Assert.Equal(13, sut.DeviceOutputs.Count);
         Assert.True(sut.DeviceOutputs.ContainsKey("svr"));
 
-        var visited = new HashSet<string>();
-        var actual = sut.CountAllDataPathsFromDevice(startDevice, endDevice, visited);
+        var actual = sut.CountAllDataPathsFromDevice(startDevice, endDevice);
         Assert.Equal(expectedCount, actual);
     }
 
@@ -129,7 +127,7 @@ public class Day11ReactorUnitTests
     }
 
     [Fact(Skip = "Not ending")]
-    public void Day11_Part2_Solution_OK()
+    public void Day11_Part2_Solution_not_working_OK()
     {
         var lines = Utils.ReadLinesFromFile("Day11.txt");
         Assert.Equal(647, lines.Length);
@@ -142,14 +140,14 @@ public class Day11ReactorUnitTests
         Assert.Equal(5, actual);
     }
 
-    [Theory(Skip = "duh")]
-    [InlineData("svr", "fft", 7)]
-    [InlineData("svr", "dac", 3)]
+    [Theory]
+    [InlineData("svr", "fft", 16279)]
+    [InlineData("svr", "dac", 300856682806)]
     [InlineData("dac", "fft", 0)]
-    [InlineData("fft", "dac", 3)]
-    [InlineData("dac", "out", 69)]
-    [InlineData("fft", "out", 69)]
-    public void Day11_Part2_Svr_NewMethod_parts_OK(string startDevice, string endDevice, int expectedCount)
+    [InlineData("fft", "dac", 3408588)]
+    [InlineData("dac", "out", 9055)]
+    [InlineData("fft", "out", 2345470204960)]
+    public void Day11_Part2_Svr_NewMethod_parts_OK(string startDevice, string endDevice, long expectedCount)
     {
         var lines = Utils.ReadLinesFromFile("Day11.txt");
         Assert.Equal(647, lines.Length);
@@ -158,13 +156,12 @@ public class Day11ReactorUnitTests
         Assert.Equal(647, sut.DeviceOutputs.Count);
         Assert.True(sut.DeviceOutputs.ContainsKey("svr"));
 
-        var visited = new HashSet<string>();
-        var actual = sut.CountAllDataPathsFromDevice(startDevice, endDevice, visited);
+        var actual = sut.CountAllDataPathsFromDevice(startDevice, endDevice);
         Assert.Equal(expectedCount, actual);
     }
 
-    [Fact(Skip = "duh")]
-    public void Day11_Part2_Svr_NewMethod_Visited_OK()
+    [Fact]
+    public void Day11_Part2_Solution_OK()
     {
         var lines = Utils.ReadLinesFromFile("Day11.txt");
         Assert.Equal(647, lines.Length);
@@ -173,9 +170,9 @@ public class Day11ReactorUnitTests
         Assert.Equal(647, sut.DeviceOutputs.Count);
         Assert.True(sut.DeviceOutputs.ContainsKey("svr"));
 
-        var actual = (sut.CountAllDataPathsFromDevice("svr", "dac", new HashSet<string>()) * sut.CountAllDataPathsFromDevice("dac", "fft", new HashSet<string>()) * sut.CountAllDataPathsFromDevice("fft", "out", new HashSet<string>()));
-        actual += (sut.CountAllDataPathsFromDevice("svr", "fft", new HashSet<string>()) * sut.CountAllDataPathsFromDevice("fft", "dac", new HashSet<string>()) * sut.CountAllDataPathsFromDevice("dac", "out", new HashSet<string>()));
-        Assert.Equal(2, actual);
+        var actual = (sut.CountAllDataPathsFromDevice("svr", "dac") * sut.CountAllDataPathsFromDevice("dac", "fft") * sut.CountAllDataPathsFromDevice("fft", "out"));
+        actual += (sut.CountAllDataPathsFromDevice("svr", "fft") * sut.CountAllDataPathsFromDevice("fft", "dac") * sut.CountAllDataPathsFromDevice("dac", "out"));
+        Assert.Equal(502447498690860, actual);
     }
 
 }
