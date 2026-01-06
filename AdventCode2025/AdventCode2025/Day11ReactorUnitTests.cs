@@ -14,7 +14,7 @@ public class Day11ReactorUnitTests
         Assert.Equal(10, sut.DeviceOutputs.Count);
         Assert.True(sut.DeviceOutputs.ContainsKey("you"));
 
-        var actual = sut.CountAllDataPathsFromDevice("you");
+        var actual = sut.CountAllDataPathsFromDevice("you", "out");
         Assert.Equal(5, actual);
     }
 
@@ -30,50 +30,6 @@ public class Day11ReactorUnitTests
 
         var actual = sut.CountAllDataPathsFromDevice("you", "out");
         Assert.Equal(555, actual);
-    }
-
-    [Fact]
-    public void Day11_TestData_NewMethod_OK()
-    {
-        var lines = Utils.ReadLinesFromFile("Day11test.txt");
-        Assert.Equal(10, lines.Length);
-
-        var sut = new DataPathMapper(lines);
-        Assert.Equal(10, sut.DeviceOutputs.Count);
-        Assert.True(sut.DeviceOutputs.ContainsKey("you"));
-
-        var visited = new HashSet<string>();
-        var actual = sut.CountAllDataPathsFromDevice("you", "out", visited);
-        Assert.Equal(5, actual);
-    }
-
-    [Fact]
-    public void Day11_Part1_Solution_NewMethod_OK()
-    {
-        var lines = Utils.ReadLinesFromFile("Day11.txt");
-        Assert.Equal(647, lines.Length);
-
-        var sut = new DataPathMapper(lines);
-        Assert.Equal(647, sut.DeviceOutputs.Count);
-        Assert.True(sut.DeviceOutputs.ContainsKey("you"));
-
-        var actual = sut.CountAllDataPathsFromDevice("you", "out");
-        Assert.Equal(555, actual);
-    }
-
-
-    [Fact]
-    public void Day11_TestData2_Svr_OK()
-    {
-        var lines = Utils.ReadLinesFromFile("Day11test2.txt");
-        Assert.Equal(13, lines.Length);
-
-        var sut = new DataPathMapper(lines);
-        Assert.Equal(13, sut.DeviceOutputs.Count);
-        Assert.True(sut.DeviceOutputs.ContainsKey("svr"));
-
-        var actual = sut.CountPathsViaDacFftFromDevice("svr", false, false, string.Empty);
-        Assert.Equal(2, actual);
     }
 
     [Theory]
@@ -109,35 +65,6 @@ public class Day11ReactorUnitTests
         var actual = (sut.CountAllDataPathsFromDevice("svr", "dac") * sut.CountAllDataPathsFromDevice("dac", "fft") * sut.CountAllDataPathsFromDevice("fft", "out"));
         actual += (sut.CountAllDataPathsFromDevice("svr", "fft") * sut.CountAllDataPathsFromDevice("fft", "dac") * sut.CountAllDataPathsFromDevice("dac", "out"));
         Assert.Equal(2, actual);
-    }
-
-
-    [Fact(Skip = "Not ending")]
-    public void Day11_Part1_Solution_using_svr_OK()
-    {
-        var lines = Utils.ReadLinesFromFile("Day11.txt");
-        Assert.Equal(647, lines.Length);
-
-        var sut = new DataPathMapper(lines);
-        Assert.Equal(647, sut.DeviceOutputs.Count);
-        Assert.True(sut.DeviceOutputs.ContainsKey("svr"));
-
-        var actual = sut.CountAllDataPathsFromDevice("svr");
-        Assert.Equal(555, actual);
-    }
-
-    [Fact(Skip = "Not ending")]
-    public void Day11_Part2_Solution_not_working_OK()
-    {
-        var lines = Utils.ReadLinesFromFile("Day11.txt");
-        Assert.Equal(647, lines.Length);
-
-        var sut = new DataPathMapper(lines);
-        Assert.Equal(647, sut.DeviceOutputs.Count);
-        Assert.True(sut.DeviceOutputs.ContainsKey("svr"));
-
-        var actual = sut.CountPathsViaDacFftFromDevice("svr", false, false, string.Empty);
-        Assert.Equal(5, actual);
     }
 
     [Theory]
