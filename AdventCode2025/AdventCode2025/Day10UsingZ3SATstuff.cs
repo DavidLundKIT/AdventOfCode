@@ -3,6 +3,11 @@ using System.Text.RegularExpressions;
 
 namespace AdventCode2025;
 
+/// <summary>
+/// This solution uses the Z3 SMT solver to solve part 2 of day 10.
+/// Andreas L. is the source of this code/idea.
+/// It works on my data but I still don't fully understand it.
+/// </summary>
 public class Day10UsingZ3SATstuff
 {
     [Fact]
