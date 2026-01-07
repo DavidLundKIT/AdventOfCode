@@ -10,6 +10,13 @@ public class Utils
         return orbits;
     }
 
+    public static string ReadAllTextFromFile(string filename)
+    {
+        string baseDir = AppContext.BaseDirectory;
+        string filePath = $"{baseDir}\\Data\\{filename}";
+        return File.ReadAllText(filePath);
+    }
+
     public static List<int> ReadIntsFromFile(string filename)
     {
         List<string> lines = ReadLinesFromFile(filename).ToList();
